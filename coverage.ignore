@@ -1,0 +1,3 @@
+.*/externals/.*
+.*/tests/.*
+.*/tournament_runner_gui/moc_.*

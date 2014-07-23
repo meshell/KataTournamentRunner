@@ -1,0 +1,49 @@
+env:
+  matrix:
+  - CONFIG=Debug COVERAGE=0 MAKECOMMAND='make'
+  - CONFIG=Debug COVERAGE=1 MAKECOMMAND='make coverage' 
+  - CONFIG=Release COVERAGE=0 MAKECOMMAND='make' DOC=1
+  - CONFIG=Release COVERAGE=0 MAKECOMMAND='make' DOC=0
+  global:
+    secure: OiWVlOgCAEM06CDhHa1zoqJ1wjs1bYzLLH0WS4EJWcqh3wuYzw0qXMe1Rzo8pnr/YzB9VIqGDVsw9QfmPMp5LW7Bk0oW1Lw5z7EwicbU2mA59FibGtxKfyYfRoTIaNX5xNHLSm4QAwdzyMiK5g2x8XaOevOYT1Y5dvAn23yEuHY=
+language: cpp
+compiler:
+- gcc
+- clang
+matrix:
+  exclude:
+  - compiler: clang
+    env: CONFIG=Debug COVERAGE=1 MAKECOMMAND='make coverage'
+  - compiler: clang
+    env: CONFIG=Release COVERAGE=0 MAKECOMMAND='make' DOC=0
+  - compiler: gcc
+    env: CONFIG=Release COVERAGE=0 MAKECOMMAND='make' DOC=1
+branches:
+  only:
+  - master
+notifications:
+  recipients:
+  - estermann.michel@gmail.com
+  email:
+    on_success: change
+    on_failure: always
+before_install:
+  - if test ${CC} = gcc ; then sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test ; fi
+  - sudo apt-add-repository -y ppa:ubuntu-sdk-team/ppa
+  - sudo apt-get update -qq
+  - sudo apt-get install qtbase5-dev xvfb
+  - if test ${CC} = gcc ; then sudo apt-get install -qq g++-4.8 ; fi
+  - if test ${CC} = gcc ; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 40 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8 --slave /usr/bin/gcov gcov /usr/bin/gcov-4.8 ; fi
+  - if test ${CC} = gcc ; then sudo update-alternatives --set gcc /usr/bin/gcc-4.8 ; fi
+  - gem install cucumber
+  - if [ "${COVERAGE}" = '1' ] ; then sudo pip install cpp-coveralls --use-mirrors; fi
+  - if [ "${DOC}" = '1' ] ; then sudo apt-get install doxygen graphviz; fi
+
+before_script:
+- make prepare CONFIG=$CONFIG
+script:
+- xvfb-run --server-args="-screen 0 1024x768x24" ${MAKECOMMAND}
+- if [ "${DOC}" = '1' ] ; then xvfb-run --server-args="-screen 0 1024x768x24" make doc ; fi
+after_success:
+- if [ "${COVERAGE}" = '1' ] ; then coveralls -E.*/externals/.* -E.*build.* -E.*/tests/.*; fi
+- if [ "${DOC}" = '1' ] ; then ./update-gh-pages.sh ; fi

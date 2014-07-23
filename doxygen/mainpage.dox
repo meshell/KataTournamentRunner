@@ -1,0 +1,11 @@
+/**
+\mainpage Kata Tournament Runner
+
+\li \ref page_introduction
+\li \ref page_features
+\li \ref page_development_environment
+
+\defgroup GUI Graphical User Interface
+
+*/
+

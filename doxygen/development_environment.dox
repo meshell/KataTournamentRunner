@@ -1,0 +1,53 @@
+/**
+\page page_development_environment Development Environment
+
+<h2>Build Instructions</h2>
+
+To build the project you need a recent compiler supporting C++11 features, e.g. gcc version 4.8 or Microsoft Visual Studio 2013 (MSVC12).
+
+Building the "Kata Tournament Runner" requires [CMake] (http://www.cmake.org/) Version 2.8. See CMake documentation for more information about building using CMake.
+
+Building the Unittests requires [google mock] (http://code.google.com/p/googlemock/) and [google test] (http://code.google.com/p/googletest/).
+
+Building the feature tests (BDD style tests using Gerkhin) requires [Cucumber-cpp] (https://github.com/cucumber/cucumber-cpp) by Paolo Ambrosio and Boost (regex, filesystem, date_time, chrono, thread, system). 
+
+
+<h3>Generate Visual Studio 2013 solution</h3>
+
+\li executing the <tt>create_VS2013_solution.bat</tt> batch file creates a Visual Studio 2013 solution under <tt>vs_build</tt>
+
+<h3>Linux</h3>
+
+<ul>
+  <li>execute <tt>make prepare</tt></li>
+  <li>make any of the targets provided in the <tt>Makefile</tt></li>
+    <ul>
+      <li>\e all: Build the main application and build and run the unit and feature tests</li>
+      <li>\e clean: Run cmake target clean and delete the output folder (build/)</li>
+      <li>\e prepare: Download and build all external dependencies (boost, gmock/gtest, CppSpec, cucumber-cpp)</li>
+      <li>\e test: Build the individual tests and run cmake target test</li>
+      <li>\e unittest: Build a single unit test test runner including all unit tests and run it </li>
+      <li>\e features: Build the cucumber feature tests and run it</li>
+      <li>\e wip-features: Build the cucumber feature tests and run only the WIP features</li>
+      <li>\e features-doc: Build the cucumber feature tests and run it producing html output at reports/tests/</li>
+      <li>\e gui-unittest: Build a single unit test test runner including all unit tests of the gui and run it </li>
+      <li>\e gui-features: Build the cucumber feature tests of the gui and run it</li>
+			<li>\e coverage: Build and run the unit test test runner and feature tests with coverage measurement enabled. Generates coverage reports which can be found in reports/coverage/ and JUnit compatible test result reports in reports/tests/</li>
+      <li>\e memcheck: Build and run the feature tests with valgrind. A report is generated in build/reports</li>
+      <li>\e cppcheck: Run the [cppcheck] (http://cppcheck.sourceforge.net/) static code analysis. A report is generated in build/reports</li>
+      <li>\e rats: Run the [RATS] (http://code.google.com/p/rough-auditing-tool-for-security/) static code analysis. A report is generated in build/reports</li>
+      <li>\e sonar-runner: Make target coverage, memcheck and cppcheck and publish the reports on the [SonarQube] (http://www.sonarqube.org/) server </li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Running Feature tests</h2>
+
+See the [Cucumber-cpp documentation] (https://github.com/cucumber/cucumber-cpp) on how to run the feature tests with cucumber.
+
+<h2>Sonar Metrics</h2>
+In order to generate the code metrics and use sonar for publishing the metrics, [sonar-runner](http://docs.codehaus.org/display/SONAR/Installing+and+Configuring+Sonar+Runner), [cppcheck] (http://cppcheck.sourceforge.net/), [valgrind] (http://valgrind.org/) and [Rough Auditing Tool for Security (RATS)] (http://code.google.com/p/rough-auditing-tool-for-security/) are needed. 
+On the sonar server the [C++ Community Plugin](http://docs.codehaus.org/pages/viewpage.action?pageId=185073817) should be installed.
+
+*/
+

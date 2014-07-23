@@ -1,0 +1,45 @@
+/**
+\page page_features Kata Tournament Runner Features
+
+\tableofcontents
+
+\section features Features
+
+\subsection sec-001 Setup Tournament
+\verbinclude features/SetupTournament.feature
+
+\subsection sec-002 Kata Round
+\verbinclude features/KataRound.feature
+
+\subsection sec-003 Kata Round Startlist
+\verbinclude features/KataRoundStartlist.feature
+
+\subsection sec-004 Persistency (Serialization)
+\verbinclude features/Persistency.feature
+
+\subsection sec-005 Setup Categories
+\verbinclude features/SetupCategories.feature
+
+\section gui-features GUI Features
+
+\subsection sec-gui-001 About Dialog
+\verbinclude features/AboutDialog.feature
+
+\subsection sec-gui-002 Create Tournament Dialog
+\verbinclude features/CreateTournamentDialog.feature
+
+\subsection sec-gui-003 Save and Load menu
+\verbinclude features/SaveAndLoad.feature
+
+\subsection sec-gui-004 Add Participant Dialog
+\verbinclude features/AddParticipantDialog.feature
+
+\section sec-relish Relish
+The project is also hosted on <a href="https://www.relishapp.com/meshell/KataTournamentRunner/docs" target="_blank">relish</a>.
+
+\section sec-results Results
+
+- <a href="../Kata_Tournament_Runner_Features.html" target="_blank">Library Features</a>
+- <a href="../Kata_Tournament_Runner_GUI_Features.html" target="_blank">GUI Features</a>
+
+*/
