@@ -29,13 +29,13 @@ void Tournament::add_participant (const Karateka& participant)
     participants_.push_back(tmp_participant);
 }
 
-uint32_t Tournament::number_of_participants () const
+size_t Tournament::number_of_participants() const
 {
     return participants_.size();
 }
 
 
-Karateka& Tournament::get_participant (uint8_t start_number)
+Karateka& Tournament::get_participant (size_t start_number)
 {
     return participants_.at(start_number);
 }
@@ -50,9 +50,9 @@ std::vector<Karateka> Tournament::get_ranked_list_of_participants () const
     return ranked_list;
 }
 
-std::vector<std::pair<uint32_t, Karateka>> Tournament::get_anotated_ranked_list_of_participants () const
+std::vector<std::pair<size_t, Karateka> > Tournament::get_anotated_ranked_list_of_participants() const
 {
-    auto ranklist = std::vector<std::pair<uint32_t, Karateka>>{};
+    auto ranklist = std::vector<std::pair<size_t, Karateka>>{};
     auto rankedlist = get_ranked_list_of_participants();
     if(rankedlist.empty())
     {
@@ -87,14 +87,14 @@ uint8_t Tournament::start_next_kata_round ()
 }
 
 
-std::vector<uint32_t> Tournament::get_startlist_for_next_kata_round (uint32_t no_of_participants_for_round) const
+std::vector<size_t> Tournament::get_startlist_for_next_kata_round (size_t no_of_participants_for_round) const
 {
     auto start_list = get_list_of_participants_for_next_kata_round(no_of_participants_for_round);
     std::reverse(std::begin(start_list), std::end(start_list));
     return start_list;
 }
 
-std::vector<uint32_t> Tournament::get_list_of_participants_for_next_kata_round (uint32_t no_of_participants_for_round) const
+std::vector<size_t> Tournament::get_list_of_participants_for_next_kata_round (size_t no_of_participants_for_round) const
 {
     auto ranked_list = get_ranked_list_of_participants();
     auto next_round_list = std::vector<Karateka>{};
@@ -112,7 +112,7 @@ std::vector<uint32_t> Tournament::get_list_of_participants_for_next_kata_round (
                  std::back_inserter(next_round_list),
                  copy_if_predicate);
 
-    auto next_round_startnumbers_list = std::vector<uint32_t>{};
+    auto next_round_startnumbers_list = std::vector<size_t>{};
     std::for_each(std::begin(next_round_list), std::end(next_round_list),
                   [&next_round_startnumbers_list](const Karateka& karateka)
                   {

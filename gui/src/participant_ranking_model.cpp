@@ -45,7 +45,7 @@ QVariant ParticipantRankingModel::data (const QModelIndex& index,
         {
             case index_of_rank:
             {
-                return std::get<0>(annotated_ranked_list_.at(index.row()));
+                return QVariant::fromValue(std::get<0>(annotated_ranked_list_.at(index.row())));
             }
             case index_of_name:
             {

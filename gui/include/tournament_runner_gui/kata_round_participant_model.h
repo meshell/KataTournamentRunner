@@ -36,7 +36,7 @@ public:
      */
     KataRoundParticipantModel (const uint8_t kata_round,
                                TournamentRunner::Tournament& tournament,
-                               std::vector<uint32_t> startlist,
+                               std::vector<size_t> startlist,
                                QObject* parent = 0);
     /**
      * @brief Return the number of registred tournaments
@@ -55,7 +55,7 @@ public:
 private:
     const uint8_t round_{};
     TournamentRunner::Tournament& tournament_;
-    std::vector<uint32_t> startlist_;
+    std::vector<size_t> startlist_;
 
     enum participant_model_column_indices
     {

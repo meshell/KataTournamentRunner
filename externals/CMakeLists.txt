@@ -18,6 +18,13 @@ else(MSVC)
   set(SCRIPT_SUFFIX .sh)
 endif(MSVC)
 
+
+check_cxx_compiler_flag("-Wunused-local-typedefs" COMPILER_KNOWS_UNUSED_LOCAL_TYPEDEF)
+if(COMPILER_KNOWS_UNUSED_LOCAL_TYPEDEF)
+  set(CXX_FLAGS "-Wno-unused-local-typedefs")
+  set(BOOST_CXX_FLAGS "cxxflags='-Wno-unused-local-typedefs'")
+endif(COMPILER_KNOWS_UNUSED_LOCAL_TYPEDEF)
+
 ####################
 # Google Mock
 ####################
@@ -29,7 +36,7 @@ ExternalProject_Add(
   UPDATE_COMMAND ""
   CMAKE_ARGS
     -DCMAKE_PREFIX_PATH=${CMAKE_SOURCE_DIR}/externals
-    -DCMAKE_CXX_FLAGS='-Wno-unused-local-typedefs'
+    -DCMAKE_CXX_FLAGS=${CXX_FLAGS}
     -DCMAKE_MODULE_PATH=${PROJECT_SOURCE_DIR}/cmake/
     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     -Dgtest_force_shared_crt=${MSVC}
@@ -84,18 +91,12 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   set(BOOST_TOOLSET "clang")
   set(BOOST_TOOLSET_BUILD "toolset=clang")
+  set(BOOST_CXX_FLAGS "cxxflags='-Wno-c99-extensions'")
 elseif(MSVC)
   if (NOT BOOST_TOOLSET)
     set(BOOST_TOOLSET "msvc")
   endif(NOT BOOST_TOOLSET)
 endif(CMAKE_COMPILER_IS_GNUCXX)
-
-
-check_cxx_compiler_flag("-Wunused-local-typedefs" COMPILER_KNOWS_UNUSED_LOCAL_TYPEDEF)
-if(COMPILER_KNOWS_UNUSED_LOCAL_TYPEDEF)
-  set(CXX_FLAGS "-Wno-unused-local-typedefs")
-  set(BOOST_CXX_FLAGS "cxxflags='-Wno-unused-local-typedefs'")
-endif(COMPILER_KNOWS_UNUSED_LOCAL_TYPEDEF)
 
 ExternalProject_Add(
   boost

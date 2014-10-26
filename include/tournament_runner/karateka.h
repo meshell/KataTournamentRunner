@@ -54,17 +54,18 @@ public:
      * @brief set_startnumber
      * @param start_number
      */
-    void set_startnumber (uint32_t start_number);
+    void set_startnumber (size_t start_number);
 
     /**
      * @brief Return the startnumber
      * @return startnumber
      */
-    uint32_t get_startnumber () const;
+    size_t get_startnumber() const;
 
     /**
      * @copydoc IKataPerformer::add_kata_score
      * @throws std::length_error exception if more than number_of_kata_scores_per_round scores are added
+     * @return Number of kata scores added already for current round
      */
     uint32_t add_kata_score (float score) final;
 
@@ -170,7 +171,7 @@ private:
     std::string rank_{};
     array<std::vector<float>, max_number_of_kata_rounds> kata_scores_;
     array<float, max_number_of_kata_rounds> deductions_;
-    uint32_t start_number_{};
+    size_t start_number_{};
     uint8_t kata_round_{};
 };
 
@@ -199,12 +200,12 @@ bool kata_score_is_equal(const IKataPerformer& lhs,
 
 
 
-inline void Karateka::set_startnumber (uint32_t start_number)
+inline void Karateka::set_startnumber (size_t start_number)
 {
     start_number_ = start_number;
 }
 
-inline uint32_t Karateka::get_startnumber () const
+inline size_t Karateka::get_startnumber () const
 {
     return start_number_;
 }

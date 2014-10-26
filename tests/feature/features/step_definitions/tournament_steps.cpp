@@ -242,7 +242,7 @@ GIVEN("^the following participants performed a kata in the 2nd round:$")
 GIVEN("^the best (\\d+) participants are nominated for the next round$")
 {
     ScenarioScope<TournamentContext> context;
-    REGEX_PARAM(uint32_t, number_of_nominated_participants);
+    REGEX_PARAM(size_t, number_of_nominated_participants);
     context->number_of_participants_of_next_round = number_of_nominated_participants ;
 }
 
@@ -480,7 +480,7 @@ THEN("^the list of participants for the round is the following:$")
 
 THEN("^the list contains (\\d+) participants$")
 {
-    REGEX_PARAM(uint32_t, number_of_starting_participants);
+    REGEX_PARAM(size_t, number_of_starting_participants);
     ScenarioScope<TournamentContext> context;
     ASSERT_THAT(context->participant_startlist.size(), Eq(number_of_starting_participants));
 }
@@ -515,7 +515,7 @@ THEN("^the following tournament is opened:$")
 
 THEN("^the number of participants for the tournament should be (\\d+)$")
 {
-    REGEX_PARAM(uint32_t, expected_number_of_participants);
+    REGEX_PARAM(size_t, expected_number_of_participants);
     ScenarioScope<TournamentContext> context;
     ASSERT_THAT(context->tournament->number_of_participants(), Eq(expected_number_of_participants));
 

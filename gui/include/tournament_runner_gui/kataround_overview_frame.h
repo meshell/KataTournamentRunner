@@ -60,7 +60,7 @@ private:
 
     std::shared_ptr<Ui::KataRoundOverviewFrame> ui_{};
     TournamentRunner::Tournament& tournament_;
-    std::vector<uint32_t> startlist_;
+    std::vector<size_t> startlist_;
     uint8_t round_{};
 
 };

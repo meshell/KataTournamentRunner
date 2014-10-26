@@ -12,7 +12,7 @@ using ::TournamentRunner::Tournament;
 
 KataRoundParticipantModel::KataRoundParticipantModel (const uint8_t kata_round,
                                                       TournamentRunner::Tournament& tournament,
-                                                      std::vector<uint32_t> startlist,
+                                                      std::vector<size_t> startlist,
                                                       QObject* parent) :
     QAbstractTableModel{parent},
     round_{kata_round},

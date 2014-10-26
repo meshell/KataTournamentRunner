@@ -372,7 +372,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_next_round_which_conta
     testee.add_participant(participant_second_place);
     testee.add_participant(participant_first_place);
 
-    auto participant_list_for_second_round = testee.get_startlist_for_next_kata_round(std::numeric_limits<uint32_t>::max());
+    auto participant_list_for_second_round = testee.get_startlist_for_next_kata_round(std::numeric_limits<size_t>::max());
     const auto no_second_round_participants = testee.number_of_participants();
     ASSERT_EQ(no_second_round_participants, participant_list_for_second_round.size());
     const auto participant_1 = testee.get_participant(participant_list_for_second_round.at(0));

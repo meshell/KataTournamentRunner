@@ -37,7 +37,7 @@ TEST(The_KataRoundParticipantModel, number_of_rows_should_equal_to_the_size_of_t
     const auto expected_number_of_rows = 2;
 
     const auto next_round_startlist = tournament.get_startlist_for_next_kata_round(expected_number_of_rows);
-    std::vector<uint32_t> startlist;
+    std::vector<size_t> startlist;
     startlist.assign(std::begin(next_round_startlist), std::end(next_round_startlist));
     KataRoundParticipantModel testee(first_round, tournament, startlist);
 
@@ -72,7 +72,7 @@ TEST(The_KataRoundParticipantModel, has_the_participant_of_the_startlist_in_the_
     tournament.add_participant(participant2);
 
     const auto next_round_startlist = tournament.get_startlist_for_next_kata_round(tournament.number_of_participants());
-    std::vector<uint32_t> startlist;
+    std::vector<size_t> startlist;
     startlist.assign(std::begin(next_round_startlist), std::end(next_round_startlist));
     KataRoundParticipantModel testee{first_round, tournament, startlist};
 
@@ -103,7 +103,7 @@ TEST(The_KataRoundParticipantModel, shows_the_scores_of_the_curent_kata_round)
     tournament.add_participant(participant);
 
     const auto next_round_startlist = tournament.get_startlist_for_next_kata_round(tournament.number_of_participants());
-    std::vector<uint32_t> startlist;
+    std::vector<size_t> startlist;
     startlist.assign(std::begin(next_round_startlist), std::end(next_round_startlist));
 
     KataRoundParticipantModel testee(first_round, tournament, startlist);
@@ -126,7 +126,7 @@ TEST(The_KataRoundParticipantModel, shows_the_overall_deduction_of_the_curent_ka
     tournament.add_participant(participant);
 
     const auto next_round_startlist = tournament.get_startlist_for_next_kata_round(tournament.number_of_participants());
-    std::vector<uint32_t> startlist;
+    std::vector<size_t> startlist;
     startlist.assign(std::begin(next_round_startlist), std::end(next_round_startlist));
 
     KataRoundParticipantModel testee(first_round, tournament, startlist);
@@ -158,7 +158,7 @@ TEST(The_KataRoundParticipantModel, shows_the_overall_score_of_the_curent_kata_r
     tournament.add_participant(participant);
 
     const auto next_round_startlist = tournament.get_startlist_for_next_kata_round(tournament.number_of_participants());
-    std::vector<uint32_t> startlist;
+    std::vector<size_t> startlist;
     startlist.assign(std::begin(next_round_startlist), std::end(next_round_startlist));
 
     KataRoundParticipantModel testee(first_round, tournament, startlist);

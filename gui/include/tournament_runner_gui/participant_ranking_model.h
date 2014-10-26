@@ -66,7 +66,7 @@ private:
         index_last
     };
 
-    std::vector<std::pair<uint32_t, TournamentRunner::Karateka>> annotated_ranked_list_;
+    std::vector<std::pair<size_t, TournamentRunner::Karateka>> annotated_ranked_list_;
 };
 
 } // namespace TournamentRunnerGUI

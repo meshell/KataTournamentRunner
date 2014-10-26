@@ -156,14 +156,14 @@ public:
      * @brief Return the number of registred participants
      * @return The number of registred participants
      */
-    uint32_t number_of_participants () const;
+    size_t number_of_participants () const;
 
     /**
      * @brief Return the participant with the given startnumber
      * @param start_number Start number given to the karateka
      * @return Karateka with the given Start number
      */
-    Karateka& get_participant (uint8_t start_number);
+    Karateka& get_participant (size_t start_number);
 
     /**
      * @brief Return a ranked list of participants. The highest ranked comes first.
@@ -175,7 +175,7 @@ public:
      * @brief Return a ranked list of participants anotated with the actual rank.
      * @return list of the (rank, participants) tuples ranked by the scores.
      */
-    std::vector<std::pair<uint32_t, Karateka> > get_anotated_ranked_list_of_participants() const;
+    std::vector<std::pair<size_t, Karateka> > get_anotated_ranked_list_of_participants() const;
 
     /**
      * @brief Return the current active round
@@ -195,7 +195,7 @@ public:
      * @return The startlist for the next kata round.
      * @note The ordering is backwards, i.e. the best scored participant starts last
      */
-    std::vector<uint32_t> get_startlist_for_next_kata_round(uint32_t no_of_participants_for_round) const;
+    std::vector<size_t> get_startlist_for_next_kata_round(size_t no_of_participants_for_round) const;
 
 private:
     friend class boost::serialization::access;
@@ -204,7 +204,7 @@ private:
     void serialize (Archive& archive,
                     const unsigned int version);
 
-    std::vector<uint32_t> get_list_of_participants_for_next_kata_round (uint32_t no_of_participants_for_round) const;
+    std::vector<size_t> get_list_of_participants_for_next_kata_round (size_t no_of_participants_for_round) const;
 
     TournamentData data_{};
     std::vector<Karateka> participants_;

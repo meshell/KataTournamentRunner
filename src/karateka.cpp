@@ -126,7 +126,7 @@ float Karateka::get_maximum_score_of_round (uint8_t round) const
 float Karateka::get_minimum_score_of_round (uint8_t round) const
 {
     auto minimum_score = 0.0F;
-    if (round >= 0 && !kata_scores_[round].empty())
+    if (!kata_scores_[round].empty())
     {
         minimum_score = (*std::min_element(std::begin(kata_scores_[round]), std::end(kata_scores_[round])));
     }

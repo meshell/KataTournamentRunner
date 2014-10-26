@@ -22,8 +22,8 @@ namespace TournamentRunnerGUI
 /**
   Number of elements for the next round startlist
  */
-static const std::map<uint8_t, uint32_t> round_configuration = {
-    {first_round, std::numeric_limits<uint32_t>::max()},
+static const std::map<uint8_t, size_t> round_configuration = {
+    {first_round, std::numeric_limits<size_t>::max()},
     {second_round, 8U},
     {final_round, 4U}
 };

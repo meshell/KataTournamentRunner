@@ -29,7 +29,7 @@ struct TournamentContext
     uint8_t kata_round {0};
     uint32_t number_of_participants_of_next_round {0};
     std::vector<TournamentRunner::Karateka> participant_list;
-    std::vector<uint32_t> participant_startlist;
+    std::vector<size_t> participant_startlist;
 };
 
 struct PersistencyContext
