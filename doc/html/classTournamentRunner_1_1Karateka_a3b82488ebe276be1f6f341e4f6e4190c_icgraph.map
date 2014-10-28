@@ -1,0 +1,6 @@
+<map id="TournamentRunner::Karateka::get_maximum_score_of_round" name="TournamentRunner::Karateka::get_maximum_score_of_round">
+<area shape="rect" id="node2" href="$classTournamentRunner_1_1Karateka.html#a811dbf840214063aad5a39f5fe091cb7" title="Return the overall score of the given round. " alt="" coords="293,11,486,53"/>
+<area shape="rect" id="node4" href="$classTournamentRunnerGUI_1_1ParticipantRankingModel.html#acdab1fab95782e811bde2a4dd5c526cf" title="TournamentRunnerGUI\l::ParticipantRankingModel::data" alt="" coords="580,70,788,111"/>
+<area shape="rect" id="node5" href="$classTournamentRunner_1_1Karateka.html#a19610e028f77ea81ad1e4deae4d53d3d" title="Return the maximum score of the current round. " alt="" coords="262,129,517,170"/>
+<area shape="rect" id="node3" href="$classTournamentRunner_1_1Karateka.html#a85f32ba1c9b10652865aa30f5e4d2ca8" title="Return the overall score of the current round. " alt="" coords="566,5,802,46"/>
+</map>

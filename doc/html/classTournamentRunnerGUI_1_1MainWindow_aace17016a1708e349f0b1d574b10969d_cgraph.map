@@ -1,0 +1,4 @@
+<map id="TournamentRunnerGUI::MainWindow::next_kata_round_slot" name="TournamentRunnerGUI::MainWindow::next_kata_round_slot">
+<area shape="rect" id="node2" href="$classTournamentRunnerGUI_1_1MainWindow.html#a519d8133d199594d2d428429a957a855" title="Slot to start a kata round. " alt="" coords="224,4,381,60"/>
+<area shape="rect" id="node3" href="$classTournamentRunnerGUI_1_1MainWindow.html#a8fa3c3c5aba946cd28a3c5e493e68d06" title="Slot to finish the tournament and show the tournament overview. " alt="" coords="429,4,608,60"/>
+</map>

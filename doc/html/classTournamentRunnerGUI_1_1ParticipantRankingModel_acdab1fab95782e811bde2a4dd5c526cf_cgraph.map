@@ -1,0 +1,8 @@
+<map id="TournamentRunnerGUI::ParticipantRankingModel::data" name="TournamentRunnerGUI::ParticipantRankingModel::data">
+<area shape="rect" id="node2" href="$classTournamentRunner_1_1Karateka.html#aa4913fc295cc335c54376a858717a338" title="Return the name of the Karateka. " alt="" coords="262,5,455,46"/>
+<area shape="rect" id="node3" href="$classTournamentRunner_1_1Karateka.html#ae934c9c6c716eed40a6ab63044d63734" title="Return the surname of the Karateka. " alt="" coords="262,70,455,111"/>
+<area shape="rect" id="node4" href="$classTournamentRunner_1_1Karateka.html#aec01c493b3f583571d86ef7e14f8d4c5" title="Return the dojo the Karateka belongs to. " alt="" coords="262,135,455,177"/>
+<area shape="rect" id="node5" href="$classTournamentRunner_1_1Karateka.html#a811dbf840214063aad5a39f5fe091cb7" title="Return the overall score of the given round. " alt="" coords="262,253,455,294"/>
+<area shape="rect" id="node6" href="$classTournamentRunner_1_1Karateka.html#a3b82488ebe276be1f6f341e4f6e4190c" title="Return the maximum score of the given round. " alt="" coords="504,207,712,249"/>
+<area shape="rect" id="node7" href="$classTournamentRunner_1_1Karateka.html#a970a9a1557693cc1c06ec074ba3a1d34" title="Return the minimum score of the given round. " alt="" coords="506,286,710,327"/>
+</map>

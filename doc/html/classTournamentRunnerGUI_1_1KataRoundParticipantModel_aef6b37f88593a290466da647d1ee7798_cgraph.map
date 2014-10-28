@@ -1,0 +1,5 @@
+<map id="TournamentRunnerGUI::KataRoundParticipantModel::data" name="TournamentRunnerGUI::KataRoundParticipantModel::data">
+<area shape="rect" id="node2" href="$classTournamentRunner_1_1Tournament.html#ac0ab706579d620d23a9c12679687e8ff" title="Return the current active round. " alt="" coords="280,5,491,46"/>
+<area shape="rect" id="node3" href="$classTournamentRunner_1_1Tournament.html#ac4974e7fde00b78cc1385f0f60dbf458" title="Return the number of registred participants. " alt="" coords="280,70,491,111"/>
+<area shape="rect" id="node4" href="$classTournamentRunner_1_1Tournament.html#a920dc72b8e9cb4e52b893f13f88a9778" title="Return the participant with the given startnumber. " alt="" coords="280,135,491,177"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="TournamentRunnerGUI::ParticipantModel::data" name="TournamentRunnerGUI::ParticipantModel::data">
+<area shape="rect" id="node2" href="$classTournamentRunner_1_1Tournament.html#ac4974e7fde00b78cc1385f0f60dbf458" title="Return the number of registred participants. " alt="" coords="213,5,424,46"/>
+<area shape="rect" id="node3" href="$classTournamentRunner_1_1Tournament.html#a920dc72b8e9cb4e52b893f13f88a9778" title="Return the participant with the given startnumber. " alt="" coords="213,70,424,111"/>
+</map>

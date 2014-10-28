@@ -1,0 +1,4 @@
+<map id="TournamentRunner::Karateka::get_overall_score_of_round" name="TournamentRunner::Karateka::get_overall_score_of_round">
+<area shape="rect" id="node2" href="$classTournamentRunner_1_1Karateka.html#a3b82488ebe276be1f6f341e4f6e4190c" title="Return the maximum score of the given round. " alt="" coords="248,5,456,46"/>
+<area shape="rect" id="node3" href="$classTournamentRunner_1_1Karateka.html#a970a9a1557693cc1c06ec074ba3a1d34" title="Return the minimum score of the given round. " alt="" coords="250,70,454,111"/>
+</map>

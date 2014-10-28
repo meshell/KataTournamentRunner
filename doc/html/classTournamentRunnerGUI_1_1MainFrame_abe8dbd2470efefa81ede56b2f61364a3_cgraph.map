@@ -1,0 +1,7 @@
+<map id="TournamentRunnerGUI::MainFrame::update_tournament_slot" name="TournamentRunnerGUI::MainFrame::update_tournament_slot">
+<area shape="rect" id="node2" href="$classTournamentRunner_1_1Tournament.html#a88230906689dfdb629c66a314b435f8d" title="Update the tournament data. " alt="" coords="211,5,421,46"/>
+<area shape="rect" id="node3" href="$classTournamentRunner_1_1Tournament.html#abc531f81be90622285267b0f6209ec5e" title="Tournament name. " alt="" coords="211,70,421,111"/>
+<area shape="rect" id="node4" href="$classTournamentRunner_1_1Tournament.html#af3dfe86b6dc014e5cd503642acdc5f34" title="Return the date the tournament is held as ISO 8601 extended format string (CCYY&#45;MM&#45;DD) ..." alt="" coords="211,135,421,177"/>
+<area shape="rect" id="node6" href="$classTournamentRunner_1_1Tournament.html#a91f89a674cb866b042399e8d17497128" title="Tournament location address. " alt="" coords="211,201,421,242"/>
+<area shape="rect" id="node5" href="$classTournamentRunner_1_1Date.html#ad74baec0c1c74ac1d24b60bd7023355e" title="Return date as extended iso string. " alt="" coords="470,135,639,177"/>
+</map>

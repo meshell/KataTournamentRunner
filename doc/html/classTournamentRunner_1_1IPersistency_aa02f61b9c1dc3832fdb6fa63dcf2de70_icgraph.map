@@ -1,0 +1,4 @@
+<map id="TournamentRunner::IPersistency::save_profile" name="TournamentRunner::IPersistency::save_profile">
+<area shape="rect" id="node2" href="$classTournamentRunnerGUI_1_1MainWindow.html#ac3303ce352e45b431826858bd453c784" title="Slot to save to the default profile. " alt="" coords="270,5,469,61"/>
+<area shape="rect" id="node3" href="$classTournamentRunnerGUI_1_1MainWindow.html#a877fa98b9bea2547e1e1fd1db7f94332" title="Slot to save the profile to a file. " alt="" coords="270,85,469,141"/>
+</map>

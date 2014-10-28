@@ -1,0 +1,6 @@
+<map id="TournamentRunnerGUI::ParticipantKataRoundWizardPage::ParticipantKataRoundWizardPage" name="TournamentRunnerGUI::ParticipantKataRoundWizardPage::ParticipantKataRoundWizardPage">
+<area shape="rect" id="node2" href="$classTournamentRunner_1_1Karateka.html#aa4913fc295cc335c54376a858717a338" title="Return the name of the Karateka. " alt="" coords="313,5,506,46"/>
+<area shape="rect" id="node3" href="$classTournamentRunner_1_1Karateka.html#ae934c9c6c716eed40a6ab63044d63734" title="Return the surname of the Karateka. " alt="" coords="313,70,506,111"/>
+<area shape="rect" id="node4" href="$classTournamentRunner_1_1Karateka.html#aec01c493b3f583571d86ef7e14f8d4c5" title="Return the dojo the Karateka belongs to. " alt="" coords="313,135,506,177"/>
+<area shape="rect" id="node5" href="$classTournamentRunner_1_1Karateka.html#a3363437aa311a2e26c007818158269b5" title="Return the startnumber. " alt="" coords="313,201,506,242"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="TournamentRunnerGUI::ParticipantKataRoundWizardPage::validatePage" name="TournamentRunnerGUI::ParticipantKataRoundWizardPage::validatePage">
+<area shape="rect" id="node2" href="$classTournamentRunner_1_1Karateka.html#a3363437aa311a2e26c007818158269b5" title="Return the startnumber. " alt="" coords="254,5,447,46"/>
+<area shape="rect" id="node3" href="$classTournamentRunner_1_1Karateka.html#adfa83ecc51ffb4fa8b3cbcf9f26ecdcb" title="Add a kata score for the current round. " alt="" coords="254,70,447,111"/>
+<area shape="rect" id="node4" href="$classTournamentRunner_1_1Karateka.html#afbae06ed16c7940a95bfee1b11c97b4c" title="Add a deduction, which is subtracted from the overall score. " alt="" coords="254,135,447,177"/>
+</map>

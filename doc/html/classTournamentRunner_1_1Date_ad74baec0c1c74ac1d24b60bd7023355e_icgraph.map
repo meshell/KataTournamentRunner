@@ -1,0 +1,5 @@
+<map id="TournamentRunner::Date::to_iso_extended_string" name="TournamentRunner::Date::to_iso_extended_string">
+<area shape="rect" id="node2" href="$classTournamentRunner_1_1Karateka.html#a895974b64c06cc7937bd72dcdbfae94a" title="Return the date of birth of the Karateka. " alt="" coords="233,5,426,46"/>
+<area shape="rect" id="node3" href="$classTournamentRunner_1_1Tournament.html#af3dfe86b6dc014e5cd503642acdc5f34" title="Return the date the tournament is held as ISO 8601 extended format string (CCYY&#45;MM&#45;DD) ..." alt="" coords="224,70,435,111"/>
+<area shape="rect" id="node4" href="$classTournamentRunnerGUI_1_1MainFrame.html#abe8dbd2470efefa81ede56b2f61364a3" title="Slot to update the tournament data. " alt="" coords="483,63,640,119"/>
+</map>
