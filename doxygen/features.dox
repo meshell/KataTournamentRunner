@@ -3,6 +3,9 @@
 
 \tableofcontents
 
+\section sec-relish Relish
+The project is also hosted on <a href="https://www.relishapp.com/meshell/KataTournamentRunner/docs" target="_blank">relish</a>.
+
 \section features Features
 
 \subsection sec-001 Setup Tournament
@@ -43,10 +46,7 @@
 \subsection sec-gui-007 Final Rankedlist Page
 \verbinclude features/RankedlistPage.feature
 
-\section sec-relish Relish
-The project is also hosted on <a href="https://www.relishapp.com/meshell/KataTournamentRunner/docs" target="_blank">relish</a>.
-
-\section sec-results Results
+\section sec-results Feature Results
 
 - <a href="../Kata_Tournament_Runner_Features.html" target="_blank">Library Features</a>
 - <a href="../Kata_Tournament_Runner_GUI_Features.html" target="_blank">GUI Features</a>
