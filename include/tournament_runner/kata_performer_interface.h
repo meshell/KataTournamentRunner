@@ -26,8 +26,7 @@ public:
 
     /**
      * @brief Add a deduction, which is subtracted from the overall score
-     * @param deduction Deduction score
-     * @return
+     * @param deduction Deduction value
      */
     virtual void add_deduction (float deduction) = 0;
 

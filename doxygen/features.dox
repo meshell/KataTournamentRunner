@@ -17,22 +17,31 @@
 \subsection sec-004 Persistency (Serialization)
 \verbinclude features/Persistency.feature
 
-\subsection sec-005 Setup Categories
-\verbinclude features/SetupCategories.feature
+\subsection sec-005 Setup Rankedlist
+\verbinclude features/Rankedlist.feature
 
 \section gui-features GUI Features
 
 \subsection sec-gui-001 About Dialog
 \verbinclude features/AboutDialog.feature
 
-\subsection sec-gui-002 Create Tournament Dialog
-\verbinclude features/CreateTournamentDialog.feature
+\subsection sec-gui-002 Create New Tournament Dialog
+\verbinclude features/NewTournamentDialog.feature
 
 \subsection sec-gui-003 Save and Load menu
 \verbinclude features/SaveAndLoad.feature
 
 \subsection sec-gui-004 Add Participant Dialog
 \verbinclude features/AddParticipantDialog.feature
+
+\subsection sec-gui-005 Edit Tournament Dialog
+\verbinclude features/EditTournamentDialog.feature
+
+\subsection sec-gui-006 Kate Round Start Page
+\verbinclude features/KataRoundStartPage.feature
+
+\subsection sec-gui-007 Final Rankedlist Page
+\verbinclude features/RankedlistPage.feature
 
 \section sec-relish Relish
 The project is also hosted on <a href="https://www.relishapp.com/meshell/KataTournamentRunner/docs" target="_blank">relish</a>.

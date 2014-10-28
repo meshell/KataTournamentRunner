@@ -22,6 +22,10 @@ class Karateka;
 namespace TournamentRunnerGUI
 {
 
+/**
+ * @ingroup GUI
+ * @brief The Kataround enum
+ */
 enum Kataround
 {
     first_round = 0,
@@ -29,16 +33,31 @@ enum Kataround
     final_round
 };
 
+/**
+ * @ingroup GUI
+ *
+ * @brief The KataRoundOverviewFrame class shows an overview for a specific kata round.
+ */
 class KataRoundOverviewFrame:
     public QFrame
 {
     Q_OBJECT
 
 public:
+    /**
+     * @brief Default Constructor
+     * @param tournament Reference to Tournament
+     * @param round The kata round this frame is for.
+     * @param parent Parent Widget
+     */
     KataRoundOverviewFrame(TournamentRunner::Tournament& tournament,
                            uint8_t round,
                            QWidget* parent = 0);
 public slots:
+    /**
+     * @brief Slot when the Kata Round Wizard finishes
+     * @param result
+     */
     void wizard_finished_slot (int result);
 
 signals:
@@ -47,6 +66,9 @@ signals:
      * @details Used to start the kata tournament
      */
     void next_kata_tournament (uint8_t round);
+    /**
+     * @brief Tournament finished (Last round finsihed).
+     */
     void tournament_finished ();
 
 private slots:
@@ -62,7 +84,6 @@ private:
     TournamentRunner::Tournament& tournament_;
     std::vector<size_t> startlist_;
     uint8_t round_{};
-
 };
 
 } // namespace TournamentRunnerGUI

@@ -27,8 +27,8 @@ ParticipantKataRoundWizardPage::ParticipantKataRoundWizardPage(TournamentRunner:
     setSubTitle(tr("Please fill all scores."));
 
     // TODO make this configurable
-    const auto bottom_score = 5.0F;
-    const auto top_score = 7.0F;
+    const auto bottom_score = 6.0F;
+    const auto top_score = 8.0F;
     const int decimals = 1;
     auto* score_validator = new QDoubleValidator{bottom_score, top_score, decimals};
     score_validator->setNotation(QDoubleValidator::StandardNotation);

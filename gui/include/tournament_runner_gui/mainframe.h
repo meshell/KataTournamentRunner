@@ -18,12 +18,22 @@ class MainFrame;
 namespace TournamentRunnerGUI
 {
 
+/**
+ * @ingroup GUI
+ *
+ * @brief The MainFrame class shows the tournament overview before the any round is executed.
+ */
 class MainFrame:
     public QFrame
 {
     Q_OBJECT
 
 public:
+    /**
+     * @brief Default Constructor
+     * @param tournament Reference to the tournament
+     * @param parent Parent Widget
+     */
     explicit MainFrame(TournamentRunner::Tournament& tournament,
                        QWidget* parent = 0);
 
@@ -58,6 +68,9 @@ private slots:
     */
     void on_EditTournamentButton_clicked ();
 
+    /**
+    * @brief Slot to start the tournament (switch to first Kata Round Overview page)
+    */
     void on_StartTournamentButton_clicked ();
 
 private:

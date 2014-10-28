@@ -27,8 +27,8 @@ class NewTournamentDialog :
 
 public:
     /**
-     * @brief default constructor
-     * @param parent
+     * @brief Default constructor
+     * @param parent Parent Widget
      */
     explicit NewTournamentDialog (QWidget* parent = 0);
 

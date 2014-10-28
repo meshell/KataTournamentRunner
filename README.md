@@ -10,7 +10,7 @@ IFK Switzerland Kata Tournament Runner
 
 # Dependencies
 ----------------
-To build the project you need a recent compiler supporting C++11 features, e.g. gcc version > 4.7 or Microsoft Visual Studio 2013 (MSVC12).
+To build the project you need a recent compiler supporting C++11 features, e.g. gcc version >= 4.7, clang >= 3.5 or Microsoft Visual Studio 2013 Update 4 (MSVC12) and Qt >= 5.2 installed.
 
 Building the "Kata Tournament Runner" requires CMake (http://www.cmake.org/) Version 2.8. See CMake documentation for more information about building using CMake.
 

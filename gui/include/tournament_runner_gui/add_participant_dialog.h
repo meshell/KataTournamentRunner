@@ -29,7 +29,7 @@ class AddParticipantDialog :
 public:
     /**
      * @brief default constructor
-     * @param parent
+     * @param parent Parent Widget
      */
     explicit AddParticipantDialog (QWidget* parent = 0);
 

@@ -18,8 +18,8 @@ namespace TournamentRunnerGUI
 /**
  * @ingroup GUI
  *
- * @brief The ParticipantModel class
- * @details The model for the participant table view
+ * @brief The KataRoundParticipantModel class
+ * @details The model for the participant table view of each round
  */
 class KataRoundParticipantModel :
     public QAbstractTableModel
@@ -30,24 +30,35 @@ public:
 
     /**
      * @brief KataRoundParticipantModel
-     * @param kata_round
-     * @param tournament
-     * @param parent
+     * @param kata_round The round the model is for.
+     * Depending on this argument participants are visible or not.
+     * @param tournament Reference to the Tournament
+     * @param startlist The startlist for the round.
+     * @param parent Parent Widget
      */
     KataRoundParticipantModel (const uint8_t kata_round,
                                TournamentRunner::Tournament& tournament,
                                std::vector<size_t> startlist,
                                QObject* parent = 0);
     /**
-     * @brief Return the number of registred tournaments
+     * @copydoc QAbstractTableModel::rowCount
      */
     int rowCount (const QModelIndex& parent = QModelIndex()) const final;
 
+    /**
+     * @copydoc QAbstractTableModel::columnCount
+     */
     int columnCount (const QModelIndex& parent = QModelIndex()) const final;
 
+    /**
+     * @copydoc QAbstractTableModel::data
+     */
     QVariant data (const QModelIndex& index,
                    int role = Qt::DisplayRole) const final;
 
+    /**
+     * @copydoc QAbstractTableModel::headerData
+     */
     QVariant headerData (int section,
                          Qt::Orientation orientation,
                          int role = Qt::DisplayRole ) const  final;

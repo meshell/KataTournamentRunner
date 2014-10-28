@@ -19,8 +19,15 @@ class Persistency :
     public IPersistency
 {
 public:
+    /**
+     * @brief Default Constructor
+    */
     Persistency () = default;
 
+    /**
+     * @brief Constructor with default path
+     * @param default_path The default path to profile files.
+     */
     explicit Persistency (std::string default_path);
 
     /**

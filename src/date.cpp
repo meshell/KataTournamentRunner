@@ -35,18 +35,6 @@ int32_t Date::day () const
     return date_.day();
 }
 
-
-bool Date::operator== (const Date& other) const
-{
-    return (this->date_ == other.date_);
-}
-
-bool Date::operator!= (const Date& other) const
-{
-    return !(*this == other);
-}
-
-
 boost::gregorian::date Date::date_from_string (const std::string& date_as_string)
 {
     boost::gregorian::date date{};
@@ -88,6 +76,16 @@ boost::gregorian::date Date::date_from_string (const std::string& date_as_string
         date = boost::gregorian::from_undelimited_string(date_as_string);
     }
     return date;
+}
+
+bool operator== (const Date& lhs, const Date& rhs)
+{
+    return (lhs.date_ == rhs.date_);
+}
+
+bool operator!= (const Date& lhs, const Date& rhs)
+{
+    return !(lhs == rhs);
 }
 
 std::ostream& operator<<(std::ostream& os,

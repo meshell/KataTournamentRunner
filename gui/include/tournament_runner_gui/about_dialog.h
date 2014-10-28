@@ -25,11 +25,12 @@ class AboutDialog :
 
 public:
     /**
+     * @ingroup GUI
      * @brief About Dialog constructor
      * @param version Programm version
      * @param minor_version Minor version
      * @param patch_version Patch version
-     * @param parent
+     * @param parent Parent Widget
      */
     AboutDialog (const QString& version,
                  const QString& minor_version,

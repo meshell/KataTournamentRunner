@@ -1,3 +1,4 @@
+# based on http://sleepycoders.blogspot.ch/2013/03/sharing-travis-ci-generated-files.html
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   echo -e "Starting to publish doxygen docu on gh-pages\n"
   #copy data we're interested in to other place

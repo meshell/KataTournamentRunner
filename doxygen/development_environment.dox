@@ -3,7 +3,7 @@
 
 <h2>Build Instructions</h2>
 
-To build the project you need a recent compiler supporting C++11 features, e.g. gcc version 4.8 or Microsoft Visual Studio 2013 (MSVC12).
+To build the project you need a recent compiler supporting C++11 features, e.g. gcc version >= 4.7, clang >= 3.5 or Microsoft Visual Studio 2013 Update 4 (MSVC12) and Qt >= 5.2 installed.
 
 Building the "Kata Tournament Runner" requires [CMake] (http://www.cmake.org/) Version 2.8. See CMake documentation for more information about building using CMake.
 
@@ -32,7 +32,7 @@ Building the feature tests (BDD style tests using Gerkhin) requires [Cucumber-cp
       <li>\e features-doc: Build the cucumber feature tests and run it producing html output at reports/tests/</li>
       <li>\e gui-unittest: Build a single unit test test runner including all unit tests of the gui and run it </li>
       <li>\e gui-features: Build the cucumber feature tests of the gui and run it</li>
-			<li>\e coverage: Build and run the unit test test runner and feature tests with coverage measurement enabled. Generates coverage reports which can be found in reports/coverage/ and JUnit compatible test result reports in reports/tests/</li>
+	  <li>\e coverage: Build and run the unit test test runner and feature tests with coverage measurement enabled. Generates coverage reports which can be found in reports/coverage/ and JUnit compatible test result reports in reports/tests/</li>
       <li>\e memcheck: Build and run the feature tests with valgrind. A report is generated in build/reports</li>
       <li>\e cppcheck: Run the [cppcheck] (http://cppcheck.sourceforge.net/) static code analysis. A report is generated in build/reports</li>
       <li>\e rats: Run the [RATS] (http://code.google.com/p/rough-auditing-tool-for-security/) static code analysis. A report is generated in build/reports</li>

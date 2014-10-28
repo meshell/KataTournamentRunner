@@ -17,12 +17,23 @@ class FinalFrame;
 namespace TournamentRunnerGUI
 {
 
+/**
+ * @ingroup GUI
+ *
+ * @brief The FinalFrame class
+ * @details Shows the Tournament overview (ranked list) after the final round was executed
+ */
 class FinalFrame:
     public QFrame
 {
     Q_OBJECT
 
 public:
+    /**
+     * @brief Default Constructor
+     * @param tournament Refernce to the tournament
+     * @param parent Parent Widget
+     */
     explicit FinalFrame(TournamentRunner::Tournament& tournament,
                         QWidget* parent = 0);
 private:

@@ -18,8 +18,7 @@ namespace TournamentRunnerGUI
 /**
  * @ingroup GUI
  *
- * @brief The ParticipantModel class
- * @details The model for the participant table view
+ * @brief The ParticipantRankingModel class shows the rankes list of participants
  */
 class ParticipantRankingModel :
     public QAbstractTableModel
@@ -30,21 +29,31 @@ public:
 
     /**
      * @brief ParticipantRankingModel
-     * @param tournament Reference to the tournament registrator
-     * @param parent Parent widget
+     * @param tournament Reference to the tournament
+     * @param parent Parent Widget
      */
     explicit ParticipantRankingModel (TournamentRunner::Tournament& tournament,
                                       QObject* parent = 0);
     /**
-     * @brief Return the number of registred tournaments
+     * @copydoc QAbstractTableModel::rowCount
+     * @brief Return the number of registred participant
      */
     int rowCount (const QModelIndex& parent = QModelIndex()) const final;
 
+    /**
+     * @copydoc QAbstractTableModel::columnCount
+    */
     int columnCount (const QModelIndex& parent = QModelIndex()) const final;
 
+    /**
+     * @copydoc QAbstractTableModel::data
+    */
     QVariant data (const QModelIndex& index,
                    int role = Qt::DisplayRole) const final;
 
+    /**
+     * @copydoc QAbstractTableModel::headerData
+    */
     QVariant headerData (int section,
                          Qt::Orientation orientation,
                          int role = Qt::DisplayRole ) const  final;

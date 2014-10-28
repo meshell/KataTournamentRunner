@@ -31,6 +31,11 @@ public:
      * @brief default constructor
      * @param parent
      */
+    /**
+     * @brief Default Constructor
+     * @param tournament Reference to the Tournament
+     * @param parent Parent Widget
+     */
     explicit EditTournamentDialog (TournamentRunner::Tournament& tournament,
                                    QWidget* parent = 0);
 

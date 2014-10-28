@@ -41,8 +41,16 @@ class MainWindow :
 
 public:
     /**
-     * @brief default Constructor
+     * @brief
+     * @param about_dialog
+     * @param parent Parent Widget
+     */
+
+    /**
+     * @brief Default Constructor
      * @param about_dialog Reference to the About Dialog which opens on request
+     * @param persistency_handler Reference to the Persistency class
+     * @param tournament reference to the Tournament
      * @param parent Parent Widget
      */
     MainWindow (QDialog& about_dialog,
@@ -52,10 +60,13 @@ public:
 
 public slots:
     /**
-    * @brief Slot to open program's about dialog
+    * @brief Slot to open program's about dialog (Menu About)
     */
     void on_actionAbout_triggered ();
 
+    /**
+     * @brief Slot to load a tournament (Menu Open)
+     */
     void on_actionOpen_triggered ();
 
     /**
@@ -69,20 +80,31 @@ public slots:
     void on_actionSave_triggered ();
 
     /**
-    * @brief Slot to save to the profile to a file
+    * @brief Slot to save the profile to a file
     */
     void on_actionSaveAs_triggered ();
 
     /**
      * @brief Slot to create a new tournament
-     * @param tournament A tournament to create
+     * @param tournament Data for the tournament to create
      */
     void create_tournament_slot (TournamentRunner::TournamentData tournament);
 
+    /**
+     * @brief Slot to start a kata round
+     * @param round
+     */
     void start_kata_round_slot (uint8_t round);
 
+    /**
+     * @brief Slot to advance to the next kata round overview
+     * @param round
+     */
     void next_kata_round_slot(uint8_t round);
 
+    /**
+     * @brief Slot to finish the tournament and show the tournament overview
+     */
     void tournament_finished_slot ();
 
 private:

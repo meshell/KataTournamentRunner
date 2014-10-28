@@ -12,7 +12,8 @@ namespace TournamentRunner
 {
 
 /**
- * @brief The Date class
+ * @brief The Date class provides Date handling
+ * Serializable
  */
 class Date
 {
@@ -56,15 +57,14 @@ public:
      */
     int32_t day () const;
 
-    bool operator== (const Date& other) const;
-    bool operator!= (const Date& other) const;
-
     Date& operator= (const Date& rhs) = default;
 
 private:
     static boost::gregorian::date date_from_string (const std::string& date_as_string);
 
     friend class boost::serialization::access;
+
+    friend bool operator==(const Date&, const Date&);
 
     /**
      * @brief Serialization save function (boost::serialization)
@@ -84,6 +84,10 @@ private:
 
     boost::gregorian::date date_{boost::gregorian::day_clock::local_day()};
 };
+
+bool operator== (const Date& lhs, const Date& rhs);
+
+bool operator!= (const Date& lhs, const Date& rhs);
 
 std::ostream& operator<<(std::ostream& os,
                          const Date& date);
