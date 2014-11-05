@@ -19,7 +19,7 @@ namespace TournamentRunnerGUI
  * @ingroup GUI
  *
  * @brief The NewTournamentDialog class
- * @details Dialog to enter the tournament data
+ * @details Dialog to change the tournament data
  */
 class EditTournamentDialog :
     public QDialog

@@ -13,7 +13,7 @@ namespace TournamentRunner
 
 /**
  * @brief The Date class provides Date handling
- * Serializable
+ * @remark Serializable
  */
 class Date
 {
@@ -35,6 +35,12 @@ public:
      */
     explicit Date (boost::gregorian::date date);
 
+    /**
+     * @brief Return true if the date is valid
+     * @retval true Date is a valid date
+     * @retval false Date is not a valid date
+     */
+    bool is_valid () const;
     /**
      * @brief Return date as extended iso string
      * @return Date as iso string

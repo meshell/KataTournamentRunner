@@ -6,11 +6,9 @@
 #include <QtCore/QAbstractTableModel>
 
 #include "tournament_runner/karateka.h"
+#include "tournament_runner/tournament.h"
 
-namespace TournamentRunner
-{
-class Tournament;
-}
+using TournamentRunner::Tournament;
 
 namespace TournamentRunnerGUI
 {
@@ -18,7 +16,8 @@ namespace TournamentRunnerGUI
 /**
  * @ingroup GUI
  *
- * @brief The ParticipantRankingModel class shows the rankes list of participants
+ * @brief The ParticipantRankingModel
+ * @details The model for the ranked list of participants
  */
 class ParticipantRankingModel :
     public QAbstractTableModel
@@ -75,7 +74,7 @@ private:
         index_last
     };
 
-    std::vector<std::pair<size_t, TournamentRunner::Karateka>> annotated_ranked_list_;
+    std::vector<Tournament::RankAnnotatedParticipant> annotated_ranked_list_;
 };
 
 } // namespace TournamentRunnerGUI

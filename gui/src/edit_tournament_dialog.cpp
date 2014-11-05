@@ -19,8 +19,8 @@ EditTournamentDialog::EditTournamentDialog (TournamentRunner::Tournament& tourna
 
     ui_->TournamentNameEdit->setText(QString::fromStdString(tournament.name()));
     ui_->TournamentDateEdit->setDate(QDate(tournament.date().year(),
-    tournament.date().month(),
-    tournament.date().day()));
+                                           tournament.date().month(),
+                                           tournament.date().day()));
     ui_->TournamentLocationEdit->setText(QString::fromStdString(tournament.location()));
 
     setWindowTitle(tr("Edit tournament"));

@@ -21,7 +21,7 @@ namespace TournamentRunnerGUI
 /**
  * @ingroup GUI
  *
- * @brief The MainFrame class shows the tournament overview before the any round is executed.
+ * @brief The MainFrame class shows the tournament overview before any round is executed.
  */
 class MainFrame:
     public QFrame

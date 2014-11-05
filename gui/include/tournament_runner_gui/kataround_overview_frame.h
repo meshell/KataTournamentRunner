@@ -24,6 +24,7 @@ namespace TournamentRunnerGUI
 
 /**
  * @ingroup GUI
+ *
  * @brief The Kataround enum
  */
 enum Kataround

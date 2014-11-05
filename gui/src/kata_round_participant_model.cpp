@@ -40,7 +40,7 @@ QVariant KataRoundParticipantModel::data (const QModelIndex& index,
         (index.row() >= static_cast<int>(tournament_.number_of_participants())) ||
         (index.row() < 0))
     {
-        return QVariant{};
+        return {};
     }
 
     const auto startnumber = startlist_.at(index.row());
@@ -67,7 +67,7 @@ QVariant KataRoundParticipantModel::data (const QModelIndex& index,
             case index_of_score_5:
             {
                 const auto scores = participant.get_scores(round_);
-                if (scores.size() == 5)
+                if (scores.size() == TournamentRunner::number_of_kata_scores_per_round)
                 {
                     return scores.at(index.column()-index_of_score_1);
                 }
@@ -86,38 +86,38 @@ QVariant KataRoundParticipantModel::data (const QModelIndex& index,
             }
         }
     }
-    return QVariant();
+    return {};
 }
 
+
+
+
 QVariant KataRoundParticipantModel::headerData (int section,
-                                                Qt::Orientation,
-                                                int role) const
+                                       Qt::Orientation orientation,
+                                       int role) const
 {
-    if (role == Qt::DisplayRole)
+    const std::map<size_t, std::string> header_data =
     {
-        switch (section)
+        {index_of_name, "Name (Dojo)"},
+        {index_of_score_1, "score 1"},
+        {index_of_score_2, "score 2"},
+        {index_of_score_3, "score 3"},
+        {index_of_score_4, "score 4"},
+        {index_of_score_5, "score 5"},
+        {index_of_overall_score, "overall"},
+        {index_of_deduction, "deduction"}
+    };
+
+    if ((role == Qt::DisplayRole) && (orientation == Qt::Horizontal))
+    {
+        const auto header = header_data.find(section);
+        if(header != std::end(header_data))
         {
-            case index_of_name:
-                return tr("Name (Dojo)");
-            case index_of_score_1:
-                return tr("score 1");
-            case index_of_score_2:
-                return tr("score 2");
-            case index_of_score_3:
-                return tr("score 3");
-            case index_of_score_4:
-                return tr("score 4");
-            case index_of_score_5:
-                return tr("score 5");
-            case index_of_deduction:
-                return tr("deduction");
-            case index_of_overall_score:
-                return tr("overall");
-            default:
-                return QVariant{};
+            return tr((header->second).c_str());
         }
+
     }
-    return QVariant{};
+    return {};
 }
 
 

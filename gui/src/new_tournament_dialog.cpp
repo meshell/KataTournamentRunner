@@ -28,7 +28,7 @@ void NewTournamentDialog::on_createButton_accepted ()
                                       ui_->TournamentDateEdit->date().month(),
                                       ui_->TournamentDateEdit->date().day());
 
-    TournamentData tournament = TournamentData()
+    TournamentData tournament = TournamentData{}
                                 .with_name(ui_->TournamentNameEdit->text().toStdString())
                                 .on_date(Date{date})
                                 .at_location(ui_->TournamentLocationEdit->document()->toPlainText().toStdString());

@@ -35,7 +35,7 @@ MainFrame::MainFrame (TournamentRunner::Tournament& tournament,
 
 void MainFrame::on_AddParticipantButton_clicked ()
 {
-    AddParticipantDialog* add_participant_dialog = new AddParticipantDialog(this);
+    auto* add_participant_dialog = new AddParticipantDialog(this);
     connect(add_participant_dialog, SIGNAL(register_participant(TournamentRunner::Karateka)),
             this, SLOT(register_participant_slot(TournamentRunner::Karateka)));
     add_participant_dialog->show();
@@ -43,7 +43,7 @@ void MainFrame::on_AddParticipantButton_clicked ()
 
 void MainFrame::on_EditTournamentButton_clicked ()
 {
-    EditTournamentDialog* edit_tournament_dialog = new EditTournamentDialog(tournament_, this);
+    auto* edit_tournament_dialog = new EditTournamentDialog(tournament_, this);
     connect(edit_tournament_dialog, SIGNAL(update_tournament(TournamentRunner::TournamentData)),
             this, SLOT(update_tournament_slot(TournamentRunner::TournamentData)));
     edit_tournament_dialog->show();

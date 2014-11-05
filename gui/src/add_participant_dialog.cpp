@@ -37,12 +37,12 @@ void AddParticipantDialog::on_addButton_accepted ()
     const auto dojo = ui_->DojoEdit->text().toStdString();
     const auto rank = ui_->RankComboBox->currentText().toStdString();
 
-    auto participant = Karateka{}
-                       .with_name(name)
-                       .with_surname(surname)
-                       .with_birthdate(Date(date_of_birth))
-                       .from_dojo(dojo)
-                       .with_rank(rank);
+    const auto participant = Karateka{}
+                                .with_name(name)
+                                .with_surname(surname)
+                                .with_birthdate(Date(date_of_birth))
+                                .from_dojo(dojo)
+                                .with_rank(rank);
 
 
     emit register_participant(participant);

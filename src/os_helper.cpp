@@ -7,13 +7,12 @@ namespace OS
 
 std::string get_home_folder ()
 {
-    auto home_dir = std::string{};
     const auto home = getenv("HOME");
-    if (home != nullptr)
+    if (home)
     {
-        home_dir = home;
+        return std::string{home};
     }
-    return home_dir;
+    return {};
 }
 
 } //namespace OS

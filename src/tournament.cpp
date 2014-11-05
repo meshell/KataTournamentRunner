@@ -50,7 +50,7 @@ std::vector<Karateka> Tournament::get_ranked_list_of_participants () const
     return ranked_list;
 }
 
-std::vector<std::pair<size_t, Karateka> > Tournament::get_anotated_ranked_list_of_participants() const
+std::vector<Tournament::RankAnnotatedParticipant> Tournament::get_anotated_ranked_list_of_participants() const
 {
     auto ranklist = std::vector<std::pair<size_t, Karateka>>{};
     auto rankedlist = get_ranked_list_of_participants();

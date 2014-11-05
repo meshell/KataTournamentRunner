@@ -15,6 +15,11 @@ Date::Date (boost::gregorian::date date):
 {
 }
 
+bool Date::is_valid() const
+{
+    return !date_.is_special();
+}
+
 std::string Date::to_iso_extended_string () const
 {
     return boost::gregorian::to_iso_extended_string(date_);
@@ -37,43 +42,28 @@ int32_t Date::day () const
 
 boost::gregorian::date Date::date_from_string (const std::string& date_as_string)
 {
-    boost::gregorian::date date{};
-    auto exception_catched = false;
-    try
+    boost::gregorian::date date{boost::gregorian::not_a_date_time};
+
+    using date_from_string_func = std::function<boost::gregorian::date(std::string)>;
+    const std::vector<date_from_string_func> from_string_functions =
     {
-        date = boost::gregorian::from_simple_string(date_as_string);
-    }
-    catch (const std::exception& )
+        &boost::gregorian::from_simple_string,
+        &boost::gregorian::from_uk_string,
+        &boost::gregorian::from_us_string,
+        &boost::gregorian::from_undelimited_string
+    };
+
+    for (const auto& func : from_string_functions)
     {
-        exception_catched = true;
-    }
-    if (exception_catched)
-    {
-        exception_catched = false;
         try
         {
-            date = boost::gregorian::from_uk_string(date_as_string);
+            date = func(date_as_string);
+            return date;
         }
         catch (const std::exception& )
         {
-            exception_catched = true;
+
         }
-    }
-    if (exception_catched)
-    {
-        exception_catched = false;
-        try
-        {
-            date = boost::gregorian::from_us_string(date_as_string);
-        }
-        catch (const std::exception& )
-        {
-            exception_catched = true;
-        }
-    }
-    if (exception_catched)
-    {
-        date = boost::gregorian::from_undelimited_string(date_as_string);
     }
     return date;
 }

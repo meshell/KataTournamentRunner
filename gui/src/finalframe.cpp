@@ -22,6 +22,10 @@ FinalFrame::FinalFrame (TournamentRunner::Tournament& tournament,
     ui_->ParticipantTableView->verticalHeader()->hide();
 
     ui_->ParticipantTableView->setModel(new ParticipantRankingModel(tournament_, this));
+    ui_->ParticipantTableView->setWordWrap(true);
+
+    ui_->ParticipantTableView->resizeColumnsToContents();
+    ui_->ParticipantTableView->resizeRowsToContents();
 
     ui_->ParticipantTableView->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
     ui_->ParticipantTableView->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectRows);

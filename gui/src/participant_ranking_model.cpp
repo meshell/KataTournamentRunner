@@ -1,5 +1,6 @@
 #include "tournament_runner_gui/participant_ranking_model.h"
 
+#include <map>
 #include <QStandardItem>
 
 #include "tournament_runner/tournament.h"
@@ -8,8 +9,9 @@ namespace TournamentRunnerGUI
 {
 
 using ::TournamentRunner::Karateka;
+using ::TournamentRunner::Tournament;
 
-ParticipantRankingModel::ParticipantRankingModel (TournamentRunner::Tournament& tournament,
+ParticipantRankingModel::ParticipantRankingModel (Tournament& tournament,
                                                   QObject* parent) :
     QAbstractTableModel{parent}
 {
@@ -34,10 +36,14 @@ QVariant ParticipantRankingModel::data (const QModelIndex& index,
          index.row() >= static_cast<int>(annotated_ranked_list_.size()) ||
          index.row() < 0)
     {
-        return QVariant{};
+        return {};
     }
 
-    TournamentRunner::Karateka participant = std::get<1>(annotated_ranked_list_.at(index.row()));
+    Karateka participant = std::get<Tournament::rank_annotated_participant_karateka_idx>(annotated_ranked_list_.at(index.row()));
+
+    const auto first_round = 0;
+    const auto second_round = 1;
+    const auto third_round = 2;
 
     if (role == Qt::DisplayRole)
     {
@@ -45,7 +51,7 @@ QVariant ParticipantRankingModel::data (const QModelIndex& index,
         {
             case index_of_rank:
             {
-                return QVariant::fromValue(std::get<0>(annotated_ranked_list_.at(index.row())));
+                return QVariant::fromValue(std::get<Tournament::rank_annotated_participant_rank_idx>(annotated_ranked_list_.at(index.row())));
             }
             case index_of_name:
             {
@@ -59,106 +65,77 @@ QVariant ParticipantRankingModel::data (const QModelIndex& index,
             }
             case index_overall_score_1:
             {
-                return participant.get_overall_score_of_round(0);
+                return participant.get_overall_score_of_round(first_round);
             }
             case index_min_score_1:
             {
-                return participant.get_minimum_score_of_round(0);
+                return participant.get_minimum_score_of_round(first_round);
             }
             case index_max_score_1:
             {
-                return participant.get_maximum_score_of_round(0);
+                return participant.get_maximum_score_of_round(first_round);
             }
             case index_overall_score_2:
             {
-                return participant.get_overall_score_of_round(1);
+                return participant.get_overall_score_of_round(second_round);
             }
             case index_min_score_2:
             {
-                return participant.get_minimum_score_of_round(1);
+                return participant.get_minimum_score_of_round(second_round);
             }
             case index_max_score_2:
             {
-                return participant.get_maximum_score_of_round(1);
+                return participant.get_maximum_score_of_round(second_round);
             }
             case index_overall_score_3:
             {
-                return participant.get_overall_score_of_round(2);
+                return participant.get_overall_score_of_round(third_round);
             }
             case index_min_score_3:
             {
-                return participant.get_minimum_score_of_round(2);
+                return participant.get_minimum_score_of_round(third_round);
             }
             case index_max_score_3:
             {
-                return participant.get_maximum_score_of_round(2);
+                return participant.get_maximum_score_of_round(third_round);
             }
             default:
             {
             }
         }
     }
-    return QVariant();
+    return {};
 }
 
 QVariant ParticipantRankingModel::headerData (int section,
-                                       Qt::Orientation,
+                                       Qt::Orientation orientation,
                                        int role) const
 {
-    if (role == Qt::DisplayRole)
+    const std::map<size_t, std::string> header_data =
     {
-        switch (section)
+        {index_of_rank, "Rank"},
+        {index_of_name, "Name,\nSurname\n(Dojo)"},
+        {index_overall_score_1, "1th round\noverall"},
+        {index_min_score_1, "1th round\nmin"},
+        {index_max_score_1, "1th round\nmax"},
+        {index_overall_score_2, "2nd round\noverall"},
+        {index_min_score_2, "2nd round\nmin"},
+        {index_max_score_2, "2nd round\nmax"},
+        {index_overall_score_3, "3rd round\noverall"},
+        {index_min_score_3, "3rd round\nmin"},
+        {index_max_score_3, "3rd round\nmax"}
+    };
+
+    if ((role == Qt::DisplayRole) && (orientation == Qt::Horizontal))
+    {
+        const auto header = header_data.find(section);
+        if(header != std::end(header_data))
         {
-            case index_of_rank:
-            {
-                return tr("Rank");
-            }
-            case index_of_name:
-            {
-                return tr("Name, Surname (Dojo)");
-            }
-            case index_overall_score_1:
-            {
-                return tr("1th round\noverall");
-            }
-            case index_min_score_1:
-            {
-                return tr("1th round\nmin");
-            }
-            case index_max_score_1:
-            {
-                return tr("1th round\nmax");
-            }
-            case index_overall_score_2:
-            {
-                return tr("2nd round\noverall");
-            }
-            case index_min_score_2:
-            {
-                return tr("2nd round\nmin");
-            }
-            case index_max_score_2:
-            {
-                return tr("2nd round\nmax");
-            }
-            case index_overall_score_3:
-            {
-                return tr("3rd round\noverall");
-            }
-            case index_min_score_3:
-            {
-                return tr("3rd round\nmin");
-            }
-            case index_max_score_3:
-            {
-                return tr("3rd round\nmax");
-            }
-            default:
-            {
-            }
+            return tr((header->second).c_str());
         }
+
     }
-    return QVariant{};
+    return {};
 }
 
 

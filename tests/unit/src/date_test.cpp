@@ -15,54 +15,64 @@ using ::testing::Eq;
 namespace
 {
 
-TEST(A_Date, should_throw_an_exception_when_created_from_a_string_with_invalid_day)
+TEST(A_Date, returns_a_invalid_date_when_created_from_a_string_with_invalid_day)
 {
-    ASSERT_ANY_THROW(Date{"2013-02-29"});
+    auto date = Date{"2013-02-29"};
+    ASSERT_FALSE(date.is_valid());
 }
 
-TEST(A_Date, should_throw_an_exception_when_created_from_a_string_with_invalid_month)
+TEST(A_Date, returns_a_invalid_date_when_created_from_a_string_with_invalid_month)
 {
-    ASSERT_ANY_THROW(Date{"2013-13-20"});
+    auto date = Date{"2013-13-20"};
+    ASSERT_FALSE(date.is_valid());
 }
 
-TEST(A_Date, should_throw_an_exception_when_created_from_a_string_with_invalid_year)
+TEST(A_Date, returns_a_invalid_date_when_created_from_a_string_with_invalid_year)
 {
-    ASSERT_ANY_THROW(Date{"13-13-20"});
+    auto date = Date{"13-13-20"};
+    ASSERT_FALSE(date.is_valid());
 }
 
-TEST(A_Date, should_throw_an_exception_when_created_from_a_string_with_empty_date)
+TEST(A_Date, returns_a_invalid_date_when_created_from_a_string_with_empty_date)
 {
-    ASSERT_ANY_THROW(Date{""});
+    auto date = Date{""};
+    ASSERT_FALSE(date.is_valid());
 }
 
-TEST(A_Date, should_not_throw_an_exception_when_created_from_a_string_with_uk_format_date)
+TEST(A_Date, returns_a_valid_date_when_created_from_a_string_with_uk_format_date)
 {
-    ASSERT_NO_THROW(Date{"23-07-2013"});
+    auto date = Date{"23-07-2013"};
+    ASSERT_TRUE(date.is_valid());
 }
 
-TEST(A_Date, should_not_throw_an_exception_when_created_date_from_a_string_with_us_format_date)
+TEST(A_Date, returns_a_valid_date_when_created_date_from_a_string_with_us_format_date)
 {
-    ASSERT_NO_THROW(Date{"07-23-2013"});
+    auto date = Date{"07-23-2013"};
+    ASSERT_TRUE(date.is_valid());
 }
 
-TEST(A_Date, should_not_throw_an_exception_when_created_from_a_string_with_iso_type_date)
+TEST(A_Date, returns_a_valid_date_when_created_from_a_string_with_iso_type_date)
 {
-    ASSERT_NO_THROW(Date{"20130125"});
+    auto date = Date{"20130125"};
+    ASSERT_TRUE(date.is_valid());
 }
 
-TEST(A_Date, should_not_throw_an_exception_when_created_from_a_string_with_iso_extended_type_date)
+TEST(A_Date, returns_a_valid_date_when_created_from_a_string_with_iso_extended_type_date)
 {
-    ASSERT_NO_THROW(Date{"2013-October-09"});
+    auto date = Date{"2013-October-09"};
+    ASSERT_TRUE(date.is_valid());
 }
 
-TEST(A_Date, should_not_throw_an_exception_when_created_from_a_string_with_iso_extended_type_date_with_short_month)
+TEST(A_Date, returns_a_valid_date_when_created_from_a_string_with_iso_extended_type_date_with_short_month)
 {
-    ASSERT_NO_THROW(Date{"2013-Oct-09"});
+    auto date = Date{"2013-Oct-09"};
+    ASSERT_TRUE(date.is_valid());
 }
 
-TEST(A_Date, should_not_throw_an_exception_when_created_from_a_string_with_iso_extended_type_date_with_wrong_month)
+TEST(A_Date, returns_a_invalid_date_when_created_from_a_string_with_iso_extended_type_date_with_wrong_month)
 {
-    ASSERT_ANY_THROW(Date{"2013-Set-09"});
+    auto date = Date{"2013-Set-09"};
+    ASSERT_FALSE(date.is_valid());
 }
 
 TEST(A_Date, should_be_serializable_and_deserializable)

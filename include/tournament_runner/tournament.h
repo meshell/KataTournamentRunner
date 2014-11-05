@@ -12,7 +12,9 @@
 #include "tournament_runner/karateka.h"
 #include "tournament_runner/date.h"
 
-
+/**
+ * Namespace of the Tournament Runner core-library
+ */
 namespace TournamentRunner
 {
 
@@ -100,7 +102,7 @@ struct TournamentData
 
 /**
  * @brief The Tournament class is the starting point for the tournament management.
- * @details Serializable
+ * @remark Serializable
  */
 class Tournament
 {
@@ -171,11 +173,15 @@ public:
      */
     std::vector<Karateka> get_ranked_list_of_participants () const;
 
+    using RankAnnotatedParticipant = std::pair<size_t, Karateka>;
+
+    static const auto rank_annotated_participant_rank_idx = 0u;
+    static const auto rank_annotated_participant_karateka_idx = 1u;
     /**
      * @brief Return a ranked list of participants anotated with the actual rank.
      * @return list of the (rank, participants) tuples ranked by the scores.
      */
-    std::vector<std::pair<size_t, Karateka> > get_anotated_ranked_list_of_participants() const;
+    std::vector<RankAnnotatedParticipant> get_anotated_ranked_list_of_participants() const;
 
     /**
      * @brief Return the current active round

@@ -188,7 +188,7 @@ cppcheck: $(REPORT_DIR)
 
 .PHONY: rats
 rats: $(REPORT_DIR)
-	rats --quiet --xml $SOURCE_PATH/src $SOURCE_PATH/include $SOURCE_PATH/gui/src $SOURCE_PATH/gui/include > $(REPORT_DIR)/rats.xml
+	rats --quiet --xml src include gui/src gui/include > $(REPORT_DIR)/rats.xml
 
 .PHONY: clean	
 clean: $(OUTPUT_DIR)/CMakeFiles
@@ -205,7 +205,7 @@ clean-reports:
 	rm -rf $(REPORT_DIR)
 
 .PHONY: sonar-runner
-sonar-runner: clean-reports cppcheck rats coverage memcheck
+sonar-runner: clean-reports cppcheck rats coverage 
 	sonar-runner
 
 .PHONY: doxygen

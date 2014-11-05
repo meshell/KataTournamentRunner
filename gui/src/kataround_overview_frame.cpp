@@ -63,12 +63,16 @@ KataRoundOverviewFrame::KataRoundOverviewFrame (TournamentRunner::Tournament& to
     ui_->RoundTableView->setModel(new KataRoundParticipantModel{round_, tournament_, startlist_, this});
 
     ui_->RoundTableView->setWordWrap(true);
+
+    ui_->RoundTableView->resizeColumnsToContents();
+
     ui_->RoundTableView->setSelectionMode(QAbstractItemView::SelectionMode::NoSelection);
 }
 
 void KataRoundOverviewFrame::wizard_finished_slot (int result)
 {
     ui_->RoundTableView->setModel(new KataRoundParticipantModel{round_, tournament_, startlist_, this});
+    ui_->RoundTableView->resizeColumnsToContents();
     if (result)
     {
         ui_->StartTournamentButton->hide();
@@ -119,10 +123,10 @@ QWizardPage* KataRoundOverviewFrame::create_start_tournament_intro_page ()
     boost::algorithm::to_lower(lower_case_titel);
 
     const std::string label_text{"This wizard will guide you through the "+ lower_case_titel};
-    QLabel* label = new QLabel{tr(label_text.c_str())};
+    auto* label = new QLabel{tr(label_text.c_str())};
     label->setWordWrap(true);
 
-    QVBoxLayout *layout = new QVBoxLayout{};
+    auto *layout = new QVBoxLayout{};
     layout->addWidget(label);
     page->setLayout(layout);
 
@@ -131,9 +135,7 @@ QWizardPage* KataRoundOverviewFrame::create_start_tournament_intro_page ()
 
 QWizardPage* KataRoundOverviewFrame::create_participant_kata_run_page (TournamentRunner::Karateka& participant)
 {
-    QWizardPage* page = new ParticipantKataRoundWizardPage{participant};
-
-    return page;
+    return new ParticipantKataRoundWizardPage{participant};
 }
 
 } // namespace TournamentRunnerGUI

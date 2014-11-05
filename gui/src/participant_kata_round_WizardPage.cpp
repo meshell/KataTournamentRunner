@@ -33,33 +33,33 @@ ParticipantKataRoundWizardPage::ParticipantKataRoundWizardPage(TournamentRunner:
     auto* score_validator = new QDoubleValidator{bottom_score, top_score, decimals};
     score_validator->setNotation(QDoubleValidator::StandardNotation);
 
-    QLabel* score_1_Label = new QLabel("Score 1:");
-    QLineEdit* score_1_LineEdit = new QLineEdit;
+    auto* score_1_Label = new QLabel("Score 1:");
+    auto* score_1_LineEdit = new QLineEdit;
     score_1_LineEdit->setValidator(score_validator);
     score_1_Label->setBuddy(score_1_LineEdit);
 
-    QLabel* score_2_Label = new QLabel("Score 2:");
-    QLineEdit* score_2_LineEdit = new QLineEdit;
+    auto* score_2_Label = new QLabel("Score 2:");
+    auto* score_2_LineEdit = new QLineEdit;
     score_2_LineEdit->setValidator(score_validator);
     score_2_Label->setBuddy(score_2_LineEdit);
 
-    QLabel* score_3_Label = new QLabel("Score 3:");
-    QLineEdit* score_3_LineEdit = new QLineEdit;
+    auto* score_3_Label = new QLabel("Score 3:");
+    auto* score_3_LineEdit = new QLineEdit;
     score_3_LineEdit->setValidator(score_validator);
     score_3_Label->setBuddy(score_3_LineEdit);
 
-    QLabel* score_4_Label = new QLabel("Score 4:");
-    QLineEdit* score_4_LineEdit = new QLineEdit;
+    auto* score_4_Label = new QLabel("Score 4:");
+    auto* score_4_LineEdit = new QLineEdit;
     score_4_LineEdit->setValidator(score_validator);
     score_4_Label->setBuddy(score_4_LineEdit);
 
-    QLabel* score_5_Label = new QLabel("Score 5:");
-    QLineEdit* score_5_LineEdit = new QLineEdit;
+    auto* score_5_Label = new QLabel("Score 5:");
+    auto* score_5_LineEdit = new QLineEdit;
     score_5_LineEdit->setValidator(score_validator);
     score_5_Label->setBuddy(score_5_LineEdit);
 
-    QLabel* deduction_Label = new QLabel("Overall Deduction:");
-    QLineEdit* deduction_LineEdit = new QLineEdit;
+    auto* deduction_Label = new QLabel("Overall Deduction:");
+    auto* deduction_LineEdit = new QLineEdit;
     deduction_LineEdit->setValidator(score_validator);
     deduction_Label->setBuddy(deduction_LineEdit);
 

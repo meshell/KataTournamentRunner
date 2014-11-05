@@ -16,6 +16,7 @@ namespace TournamentRunnerGUI
 
 /**
  * @ingroup GUI
+ *
  * @brief The AboutDialog class
  */
 class AboutDialog :

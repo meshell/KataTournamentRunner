@@ -37,9 +37,11 @@ void MainWindow::on_actionAbout_triggered ()
 
 void MainWindow::on_actionNewTournament_triggered ()
 {
-    NewTournamentDialog* tournament_dialog =  new NewTournamentDialog(this);
+    auto* tournament_dialog =  new NewTournamentDialog(this);
+
     connect(tournament_dialog, SIGNAL(new_tournament(TournamentRunner::TournamentData)),
             this, SLOT(create_tournament_slot(TournamentRunner::TournamentData)));
+
     tournament_dialog->show();
 }
 
@@ -81,7 +83,7 @@ void MainWindow::start_kata_round_slot(uint8_t round)
 {
     if (round_frame_widget_index.find(round) == std::end(round_frame_widget_index))
     {
-        QWidget* kata_start_widget = new KataRoundOverviewFrame(*tournament_, round, this);
+        auto* kata_start_widget = new KataRoundOverviewFrame(*tournament_, round, this);
         connect(kata_start_widget, SIGNAL(next_kata_tournament(uint8_t)),
                 this, SLOT(next_kata_round_slot(uint8_t)));
         connect(kata_start_widget, SIGNAL(tournament_finished()),
@@ -103,14 +105,14 @@ void MainWindow::next_kata_round_slot(uint8_t round)
 
 void MainWindow::tournament_finished_slot()
 {
-    QWidget* final_page = new FinalFrame(*tournament_, this);
+    auto* final_page = new FinalFrame(*tournament_, this);
     const auto final_page_index = main_widget_->addWidget(final_page);
     main_widget_->setCurrentIndex(final_page_index);
 }
 
 QFileDialog* MainWindow::create_file_dialog (QFileDialog::AcceptMode mode)
 {
-    QFileDialog* file_dialog = new QFileDialog(this);
+    auto* file_dialog = new QFileDialog(this);
     file_dialog->setAcceptMode(mode);
     set_file_dialog_filter(file_dialog);
     return file_dialog;
@@ -128,7 +130,7 @@ void MainWindow::set_central_widget ()
     if (tournament_ != nullptr)
     {
         main_widget_ = new QStackedWidget();
-        QWidget* tournament_main_widget = new MainFrame(*tournament_, this);
+        auto* tournament_main_widget = new MainFrame(*tournament_, this);
         connect(ui_->actionAddParticipant, SIGNAL(triggered()),
                 tournament_main_widget, SLOT(on_AddParticipantButton_clicked()));
         connect(ui_->actionEditTournament, SIGNAL(triggered()),

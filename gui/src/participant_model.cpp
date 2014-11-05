@@ -35,7 +35,7 @@ QVariant ParticipantModel::data (const QModelIndex& index,
         index.row() >= static_cast<int>(tournament_.number_of_participants()) ||
         index.row() < 0)
     {
-        return QVariant{};
+        return {};
     }
 
     auto participant = tournament_.get_participant(index.row());
@@ -69,44 +69,33 @@ QVariant ParticipantModel::data (const QModelIndex& index,
             }
         }
     }
-    return QVariant();
+    return {};
 }
 
+
 QVariant ParticipantModel::headerData (int section,
-                                       Qt::Orientation,
+                                       Qt::Orientation orientation,
                                        int role) const
 {
-    if (role == Qt::DisplayRole)
+    const std::map<size_t, std::string> header_data =
     {
-        switch (section)
-        {
-            case index_of_name:
-            {
-                return tr("Name");
-            }
-            case index_of_surname:
-            {
-                return tr("Surname");
-            }
-            case index_of_date_of_birth:
-            {
-                return tr("Date of birth");
-            }
-            case index_of_dojo:
-            {
-                return tr("Dojo");
-            }
-            case index_of_rank:
-            {
-                return tr("Rank");
-            }
-            default:
-            {
+        {index_of_name, "Name"},
+        {index_of_surname, "Surname"},
+        {index_of_date_of_birth, "Date of birth"},
+        {index_of_dojo, "Dojo"},
+        {index_of_rank, "Rank"}
+    };
 
-            }
+    if ((role == Qt::DisplayRole) && (orientation == Qt::Horizontal))
+    {
+        const auto header = header_data.find(section);
+        if(header != std::end(header_data))
+        {
+            return tr((header->second).c_str());
         }
+
     }
-    return QVariant{};
+    return {};
 }
 
 

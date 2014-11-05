@@ -13,11 +13,9 @@
 #include "tournament_runner/date.h"
 #include "tournament_runner/kata_performer_interface.h"
 
-// TODO: replace with std::array as soon as serialization is supported
-using boost::array;
-
 namespace TournamentRunner
 {
+
 
 /**
  * @brief Number of kata scores per round (5)
@@ -31,7 +29,7 @@ const uint8_t max_number_of_kata_rounds = 3;
 /**
  * @brief The Karateka class
  * @details A karateka is a person practicing karate and participating at a tournament.
- * Serializable
+ * @remark Serializable
  */
 class Karateka :
     public IKataPerformer
@@ -169,8 +167,8 @@ private:
     Date date_of_birth_{};
     std::string dojo_{};
     std::string rank_{};
-    array<std::vector<float>, max_number_of_kata_rounds> kata_scores_;
-    array<float, max_number_of_kata_rounds> deductions_;
+    std::array<std::vector<float>, max_number_of_kata_rounds> kata_scores_;
+    std::array<float, max_number_of_kata_rounds> deductions_;
     size_t start_number_{};
     uint8_t kata_round_{};
 };
@@ -197,8 +195,6 @@ bool kata_score_sort_greater(const IKataPerformer& lhs,
  */
 bool kata_score_is_equal(const IKataPerformer& lhs,
                          const IKataPerformer& rhs);
-
-
 
 inline void Karateka::set_startnumber (size_t start_number)
 {

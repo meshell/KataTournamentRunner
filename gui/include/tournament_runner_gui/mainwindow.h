@@ -32,7 +32,7 @@ namespace TournamentRunnerGUI
  * @ingroup GUI
  *
  * @brief The MainWindow class
- * @details Main window containing the tournament.
+ * @details Main window containing specific frames, e.g. MainFrame.
  */
 class MainWindow :
     public QMainWindow

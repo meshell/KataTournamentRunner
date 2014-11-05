@@ -6,6 +6,6 @@
 \li \ref page_development_environment
 
 \defgroup GUI Graphical User Interface
-
+\brief Qt GUI
 */
 
