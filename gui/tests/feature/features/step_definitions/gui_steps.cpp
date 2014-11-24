@@ -69,6 +69,24 @@ static const std::map<std::string, std::string> button_map
     ,{"Start", "StartTournamentButton"}
 };
 
+static const std::map<std::string, Qt::Key> key_map
+{
+    {"Delete", Qt::Key_Delete}
+    ,{"Ctrl", Qt::Key_Meta}
+    ,{"Alt", Qt::Key_Alt}
+    ,{"F1", Qt::Key_F1}
+    ,{"Enter", Qt::Key_Enter}
+    ,{"S", Qt::Key_S}
+    ,{"N", Qt::Key_N}
+};
+
+static const std::map<std::string, Qt::KeyboardModifiers> modifier_key_map
+{
+    {"Ctrl", Qt::ControlModifier}
+    ,{"Ctrl+Shift", Qt::ControlModifier | Qt::ShiftModifier}
+    ,{"Alt", Qt::AltModifier}
+};
+
 static QAction* get_action (QMainWindow& mainwindow,
                      std::string which_action)
 {
@@ -98,6 +116,7 @@ struct gui_context
     boost::filesystem::path profile_file{test_profile_file};
     std::shared_ptr<Tournament> tournament{};
     std::shared_ptr<QMainWindow> mainwindow{std::make_shared<MainWindow>(about_dialog, persistency, tournament)};
+    QWidget* current_widget{};
     QDialog* current_dialog{};
 };
 
@@ -178,7 +197,7 @@ GIVEN("^the Tournament has the following participants:$")
         {
             attendee.with_birthdate(table_row.at("date of birth"));
             attendee.from_dojo(table_row.at("dojo"));
-            attendee.with_rank(table_row.at("belt"));
+            attendee.with_rank(table_row.at("rank"));
         }
         catch (const std::exception&)
         {
@@ -325,23 +344,20 @@ WHEN("^I press the \"([^\"]*)\" button$")
     REGEX_PARAM(std::string, button_string);
     ScenarioScope<gui_context> context;
 
-    auto button = get_button(*(context->mainwindow), button_string);
+    auto* button = get_button(*(context->mainwindow), button_string);
 
     ASSERT_TRUE(button);
 
     button->click();
 }
 
-WHEN("^I save the profile to \"([^\"]*)\"$")
+WHEN("^save the profile to \"([^\"]*)\"$")
 {
     REGEX_PARAM(std::string, file_path);
     ScenarioScope<gui_context> context;
     context->profile_file = file_path;
-    auto save_as_action = get_action(*(context->mainwindow), "Save As");
-    ASSERT_TRUE(save_as_action);
-    save_as_action->trigger();
 
-    auto file_dialog = context->mainwindow->findChild<QFileDialog*>();
+    auto* file_dialog = context->mainwindow->findChild<QFileDialog*>();
     ASSERT_TRUE(file_dialog);
     file_dialog->fileSelected(QString::fromStdString(file_path));
     file_dialog->close();
@@ -352,11 +368,11 @@ WHEN("^I load the profile \"([^\"]*)\"$")
     REGEX_PARAM(std::string, file_path);
     ScenarioScope<gui_context> context;
     context->profile_file = file_path;
-    auto open_action = get_action(*(context->mainwindow), "Open");
+    auto* open_action = get_action(*(context->mainwindow), "Open");
     ASSERT_TRUE(open_action);
     open_action->trigger();
 
-    auto file_dialog = context->mainwindow->findChild<QFileDialog*>();
+    auto* file_dialog = context->mainwindow->findChild<QFileDialog*>();
     ASSERT_TRUE(file_dialog);
     file_dialog->fileSelected(QString::fromStdString(file_path));
     file_dialog->close();
@@ -375,7 +391,7 @@ WHEN("^I enter the following tournament data in the \"([^\"]*)\" dialog:$")
     REGEX_PARAM(std::string, dialog_name);
     ScenarioScope<gui_context> context;
 
-    auto dialog = get_dialog(*(context->mainwindow), dialog_name);
+    auto* dialog = get_dialog(*(context->mainwindow), dialog_name);
 
     ASSERT_TRUE(dialog);
 
@@ -385,21 +401,21 @@ WHEN("^I enter the following tournament data in the \"([^\"]*)\" dialog:$")
     const auto& tournament_table = tournament_param.hashes();
     for (const auto& table_row : tournament_table)
     {
-        const auto tournament_name_edit = context->mainwindow->findChild<QLineEdit*>("TournamentNameEdit");
+        auto* tournament_name_edit = context->mainwindow->findChild<QLineEdit*>("TournamentNameEdit");
         if (tournament_name_edit != nullptr)
         {
             const auto name = std::string(table_row.at("name"));
             tournament_name_edit->setText(QString::fromStdString(name));
         }
 
-        const auto tournament_date_edit = context->mainwindow->findChild<QDateEdit*>("TournamentDateEdit");
+        auto* tournament_date_edit = context->mainwindow->findChild<QDateEdit*>("TournamentDateEdit");
         if (tournament_date_edit != nullptr)
         {
             const Date date(std::string(table_row.at("date")));
             tournament_date_edit->setDate(QDate(date.year(), date.month(), date.day()));
         }
 
-        const auto tournament_location_edit = context->mainwindow->findChild<QTextEdit*>("TournamentLocationEdit");
+        auto* tournament_location_edit = context->mainwindow->findChild<QTextEdit*>("TournamentLocationEdit");
         if (tournament_location_edit != nullptr)
         {
             const auto location = std::string(table_row.at("location"));
@@ -408,18 +424,11 @@ WHEN("^I enter the following tournament data in the \"([^\"]*)\" dialog:$")
     }
 }
 
-WHEN("^I submit the data$")
-{
-    ScenarioScope<gui_context> context;
-    ASSERT_TRUE(context->current_dialog);
-    QTest::keyClick(context->current_dialog, Qt::Key_Enter);
-}
-
 WHEN("^I enter the following participant data:$")
 {
     ScenarioScope<gui_context> context;
 
-    auto add_participant_dialog = context->mainwindow->findChild<QDialog*>("AddParticipantDialog");
+    auto* add_participant_dialog = context->mainwindow->findChild<QDialog*>("AddParticipantDialog");
 
     ASSERT_TRUE(add_participant_dialog);
 
@@ -429,35 +438,35 @@ WHEN("^I enter the following participant data:$")
     const auto& participant_table = participant_param.hashes();
     for (const auto& table_row : participant_table)
     {
-        const auto participant_name_edit = context->mainwindow->findChild<QLineEdit*>("ParticipantNameEdit");
+        auto* participant_name_edit = context->mainwindow->findChild<QLineEdit*>("ParticipantNameEdit");
         if (participant_name_edit != nullptr)
         {
             const auto name = std::string(table_row.at("name"));
             participant_name_edit->setText(QString::fromStdString(name));
         }
 
-        const auto participant_surname_edit = context->mainwindow->findChild<QLineEdit*>("ParticipantSurnameEdit");
+        auto* participant_surname_edit = context->mainwindow->findChild<QLineEdit*>("ParticipantSurnameEdit");
         if (participant_surname_edit != nullptr)
         {
             const auto surname = std::string(table_row.at("surname"));
             participant_surname_edit->setText(QString::fromStdString(surname));
         }
 
-        const auto date_of_birth_edit = context->mainwindow->findChild<QDateEdit*>("DateOfBirthEdit");
+        auto* date_of_birth_edit = context->mainwindow->findChild<QDateEdit*>("DateOfBirthEdit");
         if (date_of_birth_edit != nullptr)
         {
             const Date date(std::string(table_row.at("date of birth")));
             date_of_birth_edit->setDate(QDate(date.year(), date.month(), date.day()));
         }
 
-        const auto dojo_edit = context->mainwindow->findChild<QLineEdit*>("DojoEdit");
+        auto* dojo_edit = context->mainwindow->findChild<QLineEdit*>("DojoEdit");
         if (dojo_edit != nullptr)
         {
             const auto dojo = std::string(table_row.at("dojo"));
             dojo_edit->setText(QString::fromStdString(dojo));
         }
 
-        const auto rank_edit = context->mainwindow->findChild<QComboBox*>("RankComboBox");
+        auto* rank_edit = context->mainwindow->findChild<QComboBox*>("RankComboBox");
         if (rank_edit != nullptr)
         {
             const auto rank = std::string(table_row.at("rank"));
@@ -466,6 +475,59 @@ WHEN("^I enter the following participant data:$")
         }
 
     }
+}
+
+WHEN("^I select the (\\d+)(?:nd|st|rd|th) row$")
+{
+    ScenarioScope<gui_context> context;
+    REGEX_PARAM(int, row);
+
+    auto* participantTable = context->mainwindow->findChild<QTableView*>("ParticipantTableView");
+    participantTable->selectRow(row-1);
+    context->current_widget = participantTable;
+}
+
+WHEN("^I press the \"([^\"]*)\" key$")
+{
+    ScenarioScope<gui_context> context;
+    REGEX_PARAM(std::string, key);
+
+    if(context->current_dialog)
+    {
+        QTest::keyClick(context->current_dialog, key_map.at(key));
+    }
+    else if(context->current_widget)
+    {
+        QTest::keyClick(context->current_widget, key_map.at(key));
+    }
+    else
+    {
+        context->mainwindow->show();
+        QTest::keyClick(context->mainwindow.get(), key_map.at(key));
+    }
+}
+
+WHEN("^I press the \"([^\"]*)\" and the \"([^\"]*)\" key together$")
+{
+    ScenarioScope<gui_context> context;
+    REGEX_PARAM(std::string, modifier_key);
+    REGEX_PARAM(std::string, key);
+
+    context->mainwindow->show();
+    QTest::keyClick(context->mainwindow.get(), key_map.at(key), modifier_key_map.at(modifier_key), 50);
+}
+
+WHEN("^I press the \"([^\"]*)\" the \"([^\"]*)\" and the \"([^\"]*)\" key together$")
+{
+    ScenarioScope<gui_context> context;
+    REGEX_PARAM(std::string, first_modifier_key);
+    REGEX_PARAM(std::string, second_modifier_key);
+    REGEX_PARAM(std::string, key);
+
+    const auto modifier_key = first_modifier_key + "+" + second_modifier_key;
+
+    context->mainwindow->show();
+    QTest::keyClick(context->mainwindow.get(), key_map.at(key), modifier_key_map.at(modifier_key), 50);
 }
 
 THEN("^the \"About\" dialog is shown$")
@@ -483,7 +545,7 @@ THEN("^the mainscreen shows the following tournament:$")
     const auto& tournament_table = tournament_param.hashes();
     for (const auto& table_row : tournament_table)
     {
-        const auto tournament_name = context->mainwindow->findChild<QLabel*>("TournamentName");
+        const auto* tournament_name = context->mainwindow->findChild<QLabel*>("TournamentName");
         EXPECT_TRUE(tournament_name != nullptr);
         if (tournament_name != nullptr)
         {
@@ -491,7 +553,7 @@ THEN("^the mainscreen shows the following tournament:$")
             EXPECT_EQ(name, tournament_name->text().toStdString());
         }
 
-        const auto tournament_date = context->mainwindow->findChild<QLabel*>("TournamentDate");
+        const auto* tournament_date = context->mainwindow->findChild<QLabel*>("TournamentDate");
         EXPECT_TRUE(tournament_date != nullptr);
         if (tournament_date != nullptr)
         {
@@ -499,14 +561,13 @@ THEN("^the mainscreen shows the following tournament:$")
             EXPECT_EQ(date, tournament_date->text().toStdString());
         }
 
-        const auto tournament_location = context->mainwindow->findChild<QLabel*>("TournamentLocation");
+        const auto* tournament_location = context->mainwindow->findChild<QLabel*>("TournamentLocation");
         EXPECT_TRUE(tournament_location != nullptr);
         if (tournament_location != nullptr)
         {
             const auto location = std::string(table_row.at("location"));
             EXPECT_EQ(location, tournament_location->text().toStdString());
         }
-
     }
 }
 
@@ -519,9 +580,9 @@ THEN("^the participant list contains the following participants:$")
     auto index = 0U;
     for (const auto& table_row : participant_table)
     {
-        QTableView* participantTable = context->mainwindow->findChild<QTableView*>("ParticipantTableView");
+        const auto* participantTable = context->mainwindow->findChild<QTableView*>("ParticipantTableView");
 
-        auto model = participantTable->model();
+        auto* model = participantTable->model();
         const auto name = model->data(model->index(index, 0)).toString().toStdString();
         ASSERT_EQ(std::string(table_row.at("name")), name);
 
@@ -564,7 +625,7 @@ THEN("^the following partipants are shown on the startpage:$")
     ScenarioScope<start_frame_context> context;
 
     ASSERT_THAT(context->startframe, NotNull());
-    QTableView* participantTable = context->startframe->findChild<QTableView*>("RoundTableView");
+    const auto* participantTable = context->startframe->findChild<QTableView*>("RoundTableView");
     ASSERT_THAT(participantTable, NotNull());
     auto model = participantTable->model();
 
@@ -585,9 +646,9 @@ THEN("^the following table is shown on the finalpage:$")
     ASSERT_THAT(mainwindow, NotNull());
     mainwindow->tournament_finished_slot();
 
-    QFrame* finalframe = context->mainwindow->findChild<QFrame*>("FinalFrame");
+    const auto* finalframe = context->mainwindow->findChild<QFrame*>("FinalFrame");
     ASSERT_THAT(finalframe, NotNull());
-    QTableView* participantTable = finalframe->findChild<QTableView*>("ParticipantTableView");
+    const auto* participantTable = finalframe->findChild<QTableView*>("ParticipantTableView");
     ASSERT_THAT(participantTable, NotNull());
     auto model = participantTable->model();
     auto index = 0;

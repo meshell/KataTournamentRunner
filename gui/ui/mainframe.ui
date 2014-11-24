@@ -64,11 +64,7 @@
        <item>
         <widget class="QPushButton" name="EditTournamentButton">
          <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>../resources/pencil.png</normaloff>../resources/pencil.png</iconset>
+          <string>Edit</string>
          </property>
          <property name="iconSize">
           <size>

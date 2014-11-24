@@ -1,6 +1,7 @@
 #include "tournament_runner_gui/participant_model.h"
 
 #include <QStandardItem>
+#include <QPushButton>
 
 #include "tournament_runner/tournament.h"
 #include "tournament_runner/karateka.h"
@@ -98,5 +99,27 @@ QVariant ParticipantModel::headerData (int section,
     return {};
 }
 
+bool ParticipantModel::removeRows(int position, int rows, const QModelIndex &index)
+{
+    Q_UNUSED(index);
+    beginRemoveRows(QModelIndex(), position, position+rows-1);
+
+    for (int row = 0; row < rows; ++row)
+    {
+        tournament_.remove_participant(position+row);
+    }
+    endRemoveRows();
+    emit layoutChanged();
+    return true;
+}
+
+Qt::ItemFlags ParticipantModel::flags(const QModelIndex &index) const
+{
+    if (!index.isValid())
+    {
+        return Qt::ItemIsEnabled;
+    }
+    return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
+}
 
 } // namespace TournamentRunnerGUI

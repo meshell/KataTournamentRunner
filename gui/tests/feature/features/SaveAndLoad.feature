@@ -15,6 +15,17 @@ Scenario: Save and load to/from a default profile
     | name  |   date     | location | 
     | SM    | 2013-06-20 |   Kriens | 
 
+@shortcut
+Scenario: Save and load to/from a default profile using the shortcut
+  Given the following Tournament is open:
+    |name   |    date    | location |
+    | SM    | 2013-06-20 |   Kriens |
+  When I press the "Ctrl" and the "S" key together
+  And I restart the application
+  Then the mainscreen shows the following tournament:
+    | name  |   date     | location |
+    | SM    | 2013-06-20 |   Kriens |
+
 Scenario Outline: Save to a profile file
   Given the following Tournament is open:
     |name   |    date    | location |
@@ -25,6 +36,20 @@ Scenario Outline: Save to a profile file
 Examples:
   |      file           |
   | ~/tmp/myprofile.ktr |
+
+@shortcut
+Scenario Outline: Save to a profile file using the shortcut
+  Given the following Tournament is open:
+    |name   |    date    | location |
+    | SM    | 2013-06-20 |   Kriens |
+  When I press the "Ctrl" the "Shift" and the "S" key together
+  And save the profile to "<file>"
+  Then the file "<file>" exists
+
+Examples:
+  |      file           |
+  | ~/tmp/myprofile.ktr |
+
 
 # TODO make this test work. It works in real application
 @wip

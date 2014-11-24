@@ -2,6 +2,7 @@
 #include "ui_mainframe.h"
 
 #include <QLabel>
+#include <QKeyEvent>
 
 #include "tournament_runner_gui/add_participant_dialog.h"
 #include "tournament_runner_gui/participant_model.h"
@@ -61,6 +62,22 @@ void MainFrame::update_tournament_slot (TournamentRunner::TournamentData tournam
     ui_->TournamentName->setText(QString::fromStdString(tournament_.name()));
     ui_->TournamentDate->setText(QString::fromStdString(tournament_.date_as_string()));
     ui_->TournamentLocation->setText(QString::fromStdString(tournament_.location()));
+}
+
+void MainFrame::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Delete)
+    {
+       auto* selectionModel = ui_->ParticipantTableView->selectionModel();
+       QModelIndexList indexes = selectionModel->selectedRows();
+
+       auto* model = ui_->ParticipantTableView->model();
+       for (const auto& index: indexes)
+       {
+           model->removeRows(index.row(), 1, QModelIndex());
+       }
+    }
+
 }
 
 void MainFrame::on_StartTournamentButton_clicked ()

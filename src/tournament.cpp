@@ -37,9 +37,26 @@ size_t Tournament::number_of_participants() const
 
 Karateka& Tournament::get_participant (size_t start_number)
 {
-    return participants_.at(start_number);
+    auto particpant = std::find_if(std::begin(participants_),
+                 std::end(participants_),
+                 [start_number](const Karateka& participant)
+                    {
+                         return (participant.get_startnumber() == start_number);
+                    });
+    return *particpant;
 }
 
+void Tournament::remove_participant(size_t start_number)
+{
+    if (start_number < participants_.size())
+    {
+        participants_.erase(std::begin(participants_)+start_number);
+    }
+    else
+    {
+        throw std::out_of_range{"Cannot remove participant. Startnumber "+ std::to_string(start_number)+" doesn't exist."};
+    }
+}
 
 std::vector<Karateka> Tournament::get_ranked_list_of_participants () const
 {

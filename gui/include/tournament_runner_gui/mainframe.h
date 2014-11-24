@@ -57,6 +57,9 @@ signals:
      */
     void start_kata_tournament (uint8_t round);
 
+protected:
+    void keyPressEvent(QKeyEvent* event) final;
+
 private slots:
     /**
     * @brief Slot to open program's add participant dialog

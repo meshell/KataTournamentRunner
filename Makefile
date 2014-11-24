@@ -24,7 +24,7 @@ CUCUMBER_FEATURES_PATH=tests/feature
 CUCUMBER=cd $(CUCUMBER_FEATURES_PATH) && cucumber
 
 CUCUMBER_GUI_FEATURES_PATH=gui/tests/feature
-CUCUMBER_GUI=cd $(CUCUMBER_GUI_FEATURES_PATH) && cucumber
+CUCUMBER_GUI=cd $(CUCUMBER_GUI_FEATURES_PATH) && cucumber -p xvfb
 
 all: unittest features gui-unittest gui-features gui
 
@@ -166,9 +166,6 @@ featurescoverage:  coverage-features coverage-gui-features
 overallcoverage:  coverage-unittests coverage-gui-unittests coverage-features coverage-gui-features
 	./collect-coverage.sh $(REPORT_DIR)/overall-coverage.xml
 
-.PHONY: coverage
-coverage: unittestcoverage featurescoverage overallcoverage
-
 .PHONY: memcheck
 memcheck: build-features
 	$(LAUNCH_PREFIX) $(MEMCHECK) $(OUTPUT_DIR)/tests/feature/$(BINARY_DIR)/features$(BINARY_SUFFIX) $(LAUNCH_SUFFIX)
@@ -180,7 +177,6 @@ memcheck-gui: build-gui-features
 	$(LAUNCH_PREFIX) $(MEMCHECK_GUI) $(OUTPUT_DIR)/gui/tests/feature/$(BINARY_DIR)/gui_features$(BINARY_SUFFIX) $(LAUNCH_SUFFIX)
 	sleep 20
 	$(CUCUMBER_GUI)	
-	
 
 .PHONY: cppcheck
 cppcheck: $(REPORT_DIR)
@@ -205,7 +201,8 @@ clean-reports:
 	rm -rf $(REPORT_DIR)
 
 .PHONY: sonar-runner
-sonar-runner: clean-reports cppcheck rats coverage 
+sonar-runner: clean-reports cppcheck rats unittestcoverage featurescoverage
+	@make overallcoverage
 	sonar-runner
 
 .PHONY: doxygen

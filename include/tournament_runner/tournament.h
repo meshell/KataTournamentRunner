@@ -168,6 +168,12 @@ public:
     Karateka& get_participant (size_t start_number);
 
     /**
+     * @brief remove_participant
+     * @param start_number
+     */
+    void remove_participant (size_t start_number);
+
+    /**
      * @brief Return a ranked list of participants. The highest ranked comes first.
      * @return list of the participants ranked by the scores
      */

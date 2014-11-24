@@ -13,7 +13,7 @@ compiler:
 matrix:
   exclude:
   - compiler: clang
-    env: CONFIG=Debug COVERAGE=1 MAKECOMMAND='make coverage'
+    env: CONFIG=Debug COVERAGE=1 MAKECOMMAND='make overallcoverage'
   - compiler: clang
     env: CONFIG=Release COVERAGE=0 MAKECOMMAND='make' DOC=0
   - compiler: gcc

@@ -1090,4 +1090,43 @@ TEST(A_Tournament, should_have_third_karateka_on_rank_3_if_two_karatka_are_on_fi
     ASSERT_STREQ(participant3.name().c_str(), std::get<1>(ranked_list.at(2)).name().c_str());
 }
 
+
+TEST(A_Tournament, should_remove_participant_and_reassign_startnumbers_when_removing_a_participant)
+{
+    auto participant1 = Karateka{}
+                       .with_name("Oyama")
+                       .with_surname("Mas");
+
+    auto participant2 = Karateka{}
+                        .with_name("Arneil")
+                        .with_surname("Steve");
+
+    Tournament testee{};
+    testee.add_participant(participant1);
+    testee.add_participant(participant2);
+    const auto no_of_participants_before_delete = 2u;
+    EXPECT_EQ(no_of_participants_before_delete, testee.number_of_participants());
+
+    const auto startnumber_participant1 = participant1.get_startnumber();
+    testee.remove_participant(startnumber_participant1);
+    const auto no_of_participants_after_delete = 1u;
+    EXPECT_EQ(no_of_participants_after_delete, testee.number_of_participants());
+
+    const auto new_participant1 = testee.get_participant(startnumber_participant1);
+    ASSERT_EQ(participant2.name(), new_participant1.name());
+}
+
+TEST(A_Tournament, should_throw_an_out_of_range_exception_when_trying_to_remove_a_non_existing_participant)
+{
+    auto participant = Karateka{}
+                       .with_name("Oyama")
+                       .with_surname("Mas");
+
+    Tournament testee{};
+    testee.add_participant(participant);
+
+    const auto nonexisting_startnumber = 3u;
+    ASSERT_THROW(testee.remove_participant(nonexisting_startnumber), std::out_of_range);
+}
+
 } //namespace

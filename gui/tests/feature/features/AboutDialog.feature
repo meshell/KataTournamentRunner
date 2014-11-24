@@ -9,3 +9,8 @@ Scenario: Open the dialog using the menu
   When I choose the "About" menu entry
   Then the "About" dialog is shown
 
+@shortcut
+Scenario: Open the dialog using the shortcut
+  When I press the "Alt" and the "F1" key together
+  Then the "About" dialog is shown
+

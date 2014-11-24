@@ -55,6 +55,10 @@ public:
                          Qt::Orientation orientation,
                          int role = Qt::DisplayRole ) const  final;
 
+    bool removeRows(int position, int rows, const QModelIndex &index = QModelIndex()) final;
+
+    Qt::ItemFlags flags(const QModelIndex &index) const final;
+
 private:
     enum participant_model_column_indices
     {

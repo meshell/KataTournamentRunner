@@ -9,7 +9,7 @@ Scenario: First round start page
 
   Given a tournaments is open
   And the Tournament has the following participants:
-    | name   | surname | date of birth |   dojo      | belt   |
+    | name   | surname | date of birth |   dojo      | rank   |
     |  Oyama |  Mas    |  1923-07-27   |   Honbu     | 10 Dan |
     | Arneil |  Steve  |  1934-08-29   |   London    |  9 Dan |
     | Norris |  Chuck  |  1940-03-10   | Chun Kuk Do |  6 Dan |
