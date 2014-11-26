@@ -23,6 +23,7 @@ if(GTEST_FOUND AND GMOCK_FOUND)
   register_test(src/tournament_test)
   register_test(src/date_test)
   register_test(src/karateka_test)
+  register_test(src/kataround_scores_test)
 
   if(USE_STATIC_BOOST)
     set(Boost_USE_STATIC_LIBS ON)

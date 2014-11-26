@@ -24,7 +24,7 @@ CUCUMBER_FEATURES_PATH=tests/feature
 CUCUMBER=cd $(CUCUMBER_FEATURES_PATH) && cucumber
 
 CUCUMBER_GUI_FEATURES_PATH=gui/tests/feature
-CUCUMBER_GUI=cd $(CUCUMBER_GUI_FEATURES_PATH) && cucumber -p xvfb
+CUCUMBER_GUI=cd $(CUCUMBER_GUI_FEATURES_PATH) && cucumber
 
 all: unittest features gui-unittest gui-features gui
 
@@ -166,6 +166,9 @@ featurescoverage:  coverage-features coverage-gui-features
 overallcoverage:  coverage-unittests coverage-gui-unittests coverage-features coverage-gui-features
 	./collect-coverage.sh $(REPORT_DIR)/overall-coverage.xml
 
+.PHONY: coverage
+coverage:  coverage-unittests coverage-gui-unittests coverage-features coverage-gui-features
+	
 .PHONY: memcheck
 memcheck: build-features
 	$(LAUNCH_PREFIX) $(MEMCHECK) $(OUTPUT_DIR)/tests/feature/$(BINARY_DIR)/features$(BINARY_SUFFIX) $(LAUNCH_SUFFIX)

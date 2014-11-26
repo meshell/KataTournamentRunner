@@ -1,10 +1,6 @@
 #include "tournament_runner/karateka.h"
 
-#include <algorithm>
-#include <numeric>
 #include <cmath>
-
-#include "tournament_runner/tournament.h"
 
 namespace TournamentRunner
 {
@@ -75,93 +71,64 @@ Karateka& Karateka::with_rank (std::string&& rank) noexcept
     return *this;
 }
 
-uint32_t Karateka::add_kata_score (float score)
+void Karateka::add_kata_score(float score)
 {
-    if (number_of_kata_scores_per_round > kata_scores_[kata_round_].size())
-    {
-        kata_scores_[kata_round_].push_back(score);
-    }
-    else
-    {
-        throw std::length_error("max number of scores per round reached");
-    }
-
-    return kata_scores_[kata_round_].size();
+    kata_scores_[current_kata_round_].add_kata_score(score);
 }
 
 void Karateka::add_deduction (float deduction)
 {
-    deductions_[kata_round_] = deduction;
+    kata_scores_[current_kata_round_].add_deduction(deduction);
 }
 
 uint8_t Karateka::next_round()
 {
-    if (kata_round_+1 == max_number_of_kata_rounds)
+    if (current_kata_round_+1 == max_number_of_kata_rounds)
     {
         throw std::length_error{"max number of kata rounds reached"};
     }
-    if (0 == kata_scores_[kata_round_].size())
-    {
-        kata_scores_[kata_round_].assign(number_of_kata_scores_per_round, 0.0F);
-    }
-    return ++kata_round_;
+    return ++current_kata_round_;
 }
 
 
 float Karateka::get_maximum_score_of_round (uint8_t round) const
 {
-    if (kata_scores_[round].empty())
-    {
-        return{};
-    }
-    return (*std::max_element(std::begin(kata_scores_[round]), std::end(kata_scores_[round])));
+    return kata_scores_[round].get_maximum_score();
 }
 
 float Karateka::get_minimum_score_of_round (uint8_t round) const
 {
-    if (kata_scores_[round].empty())
-    {
-        return{};
-    }
-    return (*std::min_element(std::begin(kata_scores_[round]), std::end(kata_scores_[round])));
+    return kata_scores_[round].get_minimum_score();
 }
 
 float Karateka::get_overall_score_of_round (uint8_t round) const
 {
-    if (kata_scores_[round].empty())
-    {
-        return{};
-    }
-    const auto init_value = 0.0F;
-    return std::accumulate(std::begin(kata_scores_[round]), std::end(kata_scores_[round]), init_value)
-            - get_maximum_score_of_round (round)
-            - get_minimum_score_of_round(round)
-            - deductions_[round];
+    return kata_scores_[round].get_overall_score();
 }
 
 float Karateka::get_maximum_score_of_current_round () const
 {
-    return get_maximum_score_of_round(kata_round_);
+    return kata_scores_[current_kata_round_].get_maximum_score();
 }
 
 float Karateka::get_minimum_score_of_current_round () const
 {
-    return get_minimum_score_of_round(kata_round_);
+    return kata_scores_[current_kata_round_].get_minimum_score();
 }
 
 float Karateka::get_overall_score_of_current_round () const
 {
-    return get_overall_score_of_round(kata_round_);
+    return kata_scores_[current_kata_round_].get_overall_score();
 }
 
 std::vector<float> Karateka::get_scores (uint8_t round) const
 {
-    return kata_scores_.at(round);
+    return kata_scores_[round].get_scores();
 }
 
-float Karateka::get_deduction(uint8_t round) const
+float Karateka::get_deduction (uint8_t round) const
 {
-    return deductions_.at(round);
+    return kata_scores_[round].get_deduction();
 }
 
 static int compare_scores_for_round (const IKataPerformer& lhs,

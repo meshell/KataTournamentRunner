@@ -3,5 +3,4 @@ html: --no-source --no-color -f html -o ../../../doc/Kata_Tournament_Runner_GUI_
 wip: --tags @wip:3 --wip --require features
 junit: -s --tags ~@wip --tags ~@proposal -f pretty -f junit -o ../../../reports/tests --require features
 step_definitions: -d --tags ~@proposal -f stepdefs --require features
-xvfb: --no-source --no-color --tags ~@wip --tags ~@shortcut --tags ~@proposal --require features
 

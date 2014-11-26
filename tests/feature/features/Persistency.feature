@@ -1,6 +1,6 @@
 # language: en
 Feature: Persistence data
-  As a Tournament Organizer
+  As a Tournament organizer
   I want to safe my tournament data persistence
   In order to continue with an earlier state
 

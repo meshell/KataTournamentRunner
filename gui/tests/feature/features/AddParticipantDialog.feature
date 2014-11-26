@@ -1,7 +1,7 @@
 # language: en
 
 Feature: Add participant Dialog
-  As a user of the Karate Tournament Manager
+  As a Kata tournament operator
   I want to open an add participant dialog
   In order to add participant to a tournament
 

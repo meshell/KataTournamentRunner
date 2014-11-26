@@ -2,25 +2,20 @@
 #define TOURNAMENT_RUNNER_KARATEKA_H_
 
 #include <string>
-#include <vector>
 #include <cstdint>
+#include <vector>
 #include <array>
 
 #include <boost/serialization/access.hpp>
-#include <boost/serialization/vector.hpp>
 #include <boost/serialization/array.hpp>
 
 #include "tournament_runner/date.h"
 #include "tournament_runner/kata_performer_interface.h"
+#include "tournament_runner/kataround_scores.h"
 
 namespace TournamentRunner
 {
 
-
-/**
- * @brief Number of kata scores per round (5)
- */
-const uint8_t number_of_kata_scores_per_round = 5;
 /**
  * @brief Max number of kata rounds (3)
  */
@@ -63,9 +58,8 @@ public:
     /**
      * @copydoc IKataPerformer::add_kata_score
      * @throws std::length_error exception if more than number_of_kata_scores_per_round scores are added
-     * @return Number of kata scores added already for current round
      */
-    uint32_t add_kata_score (float score) final;
+    void add_kata_score (float score) final;
 
     /**
      * @copydoc IKataPerformer::add_deduction
@@ -167,10 +161,9 @@ private:
     Date date_of_birth_{};
     std::string dojo_{};
     std::string rank_{};
-    std::array<std::vector<float>, max_number_of_kata_rounds> kata_scores_;
-    std::array<float, max_number_of_kata_rounds> deductions_;
+    std::array<KataRoundScores, max_number_of_kata_rounds> kata_scores_;
     size_t start_number_{};
-    uint8_t kata_round_{};
+    uint8_t current_kata_round_{};
 };
 
 /**
@@ -246,9 +239,8 @@ void Karateka::serialize (Archive& archive,
     archive & dojo_;
     archive & rank_;
     archive & kata_scores_;
-    archive & deductions_;
     archive & start_number_;
-    archive & kata_round_;
+    archive & current_kata_round_;
 }
 
 } //namespace TournamentRunner

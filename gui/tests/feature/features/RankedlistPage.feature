@@ -1,7 +1,7 @@
 # language: en
 
 Feature: Kata tournament rankedlist
-  As a Tournament Executor
+  As a Kata tournament executor
   I want to have a rankedlist of the participants after the final round
   In order to determine the winner of the tournament
 

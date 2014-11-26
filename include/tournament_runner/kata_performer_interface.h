@@ -20,9 +20,8 @@ public:
     /**
      * @brief Add a kata score for the current round
      * @param score  The score given
-     * @return the number of scores already added for this round
      */
-    virtual uint32_t add_kata_score (float score) = 0;
+    virtual void add_kata_score (float score) = 0;
 
     /**
      * @brief Add a deduction, which is subtracted from the overall score

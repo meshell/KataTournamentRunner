@@ -1,7 +1,7 @@
 # language: en
 
 Feature: Kata tournament round ranking
-  As a Tournament Executor
+  As a Tournament executor
   I want to have the points given for a kata summed up for every performance
   In order to do a ranking
 

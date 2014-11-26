@@ -1,7 +1,7 @@
 # language: en
 
 Feature: Delete Participant
-  As a user of the Tournament Runner
+  As a Kata tournament operator
   I want to delete an already entered participant
   In order to unregister participants which can not attend
 

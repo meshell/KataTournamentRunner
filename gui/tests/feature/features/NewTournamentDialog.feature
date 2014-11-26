@@ -1,7 +1,7 @@
 # language: en
 
 Feature: New tournament
-  As a user of the Karate Tournament Manager
+  As a Kata tournament operator
   I want to create a new tournament
   In order to start a tournament
 
@@ -16,7 +16,7 @@ Scenario: New tournament
     | name  |   date     | location | 
     |  SM   | 2014-01-20 |   Kriens |
 
-@shortcut
+@needsXWindow
 Scenario: New tournament using the shortcut
   When I press the "Ctrl" and the "N" key together
   And I enter the following tournament data in the "New Tournament" dialog:

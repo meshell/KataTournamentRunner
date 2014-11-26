@@ -1,6 +1,6 @@
 # language: en
 Feature: Setup Tournament
-  As a Tournament Organizer
+  As a Tournament organizer
   I want to setup a Tournament
   In order to get started
 

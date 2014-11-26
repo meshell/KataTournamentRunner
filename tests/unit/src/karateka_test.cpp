@@ -19,24 +19,15 @@ TournamentRunner::Karateka a_default_karateka ()
            .with_rank("2nd Dan");
 }
 
-TEST(A_KataPerformer, should_be_able_to_get_a_kata_score)
-{
-    auto testee = a_default_karateka();
-    const auto score = 5.5F;
-    const auto expected_number_of_scores = 1U;
-    ASSERT_EQ(expected_number_of_scores, testee.add_kata_score(score));
-}
-
 TEST(A_KataPerformer, should_be_able_to_get_five_kata_scores)
 {
     auto testee = a_default_karateka();
     const auto score = 5.5F;
-    const auto expected_number_of_scores = 5U;
-    for (auto i = 1U; i < expected_number_of_scores; ++i )
+    const auto number_of_scores = 5U;
+    for (auto i = 1U; i < number_of_scores; ++i )
     {
-        testee.add_kata_score(score);
+        ASSERT_NO_THROW(testee.add_kata_score(score));
     }
-    ASSERT_EQ(expected_number_of_scores, testee.add_kata_score(score));
 }
 
 TEST(A_KataPerformer, should_throw_length_error_exception_when_more_than_five_kata_scores_are_given)
@@ -72,20 +63,6 @@ TEST(A_KataPerformer, should_not_be_able_to_move_to_the_fourth_round)
     testee.next_round();
     testee.next_round();
     ASSERT_THROW(testee.next_round(), std::length_error);
-}
-
-TEST(A_KataPerformer, should_get_again_five_kata_scores_in_the_next_round)
-{
-    auto testee = a_default_karateka();
-    const auto score = 5.5F;
-    const auto number_of_scores_per_round = 5U;
-    for (auto i = 1U; i <= number_of_scores_per_round; ++i )
-    {
-        testee.add_kata_score(score);
-    }
-    testee.next_round();
-    const auto expected_number_of_scores_for_round = 1U;
-    ASSERT_EQ(expected_number_of_scores_for_round, testee.add_kata_score(score));
 }
 
 TEST(A_KataPerformer, should_have_five_kata_scores_of_0_if_moving_to_the_next_round_without_adding_scores)

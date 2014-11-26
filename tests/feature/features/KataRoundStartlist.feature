@@ -1,7 +1,7 @@
 # language: en
 
 Feature: Kata tournament round startlist
-  As a Tournament Executor
+  As a Tournament executor
   I want to have a startlist for the next round based on the scores of the previous round and the number of participant nominated for the next round
   In order to execute a kata tournament according to the rules
 

@@ -1,7 +1,7 @@
 # language: en
 
 Feature: Kata Round Start Page
-  As a user of the Karate Tournament Manager
+  As a Kata tournament executor
   I want to have a startpage for each new kata round
   In order to have an overview on the startlist
 

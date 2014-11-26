@@ -1,7 +1,7 @@
 # language: en
 
 Feature: Save and Load profiles
-  As a user of the Karate Tournament Manager
+  As a Kata tournament operator
   I want to save a profile, i.e. a tournament and load it later
   In order to preserve previous work
 
@@ -15,7 +15,7 @@ Scenario: Save and load to/from a default profile
     | name  |   date     | location | 
     | SM    | 2013-06-20 |   Kriens | 
 
-@shortcut
+@needsXWindow
 Scenario: Save and load to/from a default profile using the shortcut
   Given the following Tournament is open:
     |name   |    date    | location |
@@ -37,7 +37,7 @@ Examples:
   |      file           |
   | ~/tmp/myprofile.ktr |
 
-@shortcut
+@needsXWindow
 Scenario Outline: Save to a profile file using the shortcut
   Given the following Tournament is open:
     |name   |    date    | location |

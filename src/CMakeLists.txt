@@ -7,6 +7,7 @@ set(${PROJECT_NAME}_SOURCES
   karateka.cpp
   date.cpp
   persistency.cpp
+  kataround_scores.cpp
 )
 
 if(WIN32)

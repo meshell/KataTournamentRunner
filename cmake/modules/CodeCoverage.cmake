@@ -92,7 +92,7 @@ FUNCTION(SETUP_TARGET_UNDER_CUCUMBER_FOR_COVERAGE_COBERTURA _targetname _testrun
         # Run tests
         ${_testrunner}  ${ARGV4} &
 
-        COMMAND sleep 5 && cucumber --tags ~@wip --tags ~@proposal --no-color -f pretty -s -f json -o ${TESTS_REPORT_DIR}/${_testrunner}.json -f junit -o ${TESTS_REPORT_DIR}/ ${_features}
+        COMMAND sleep 5 && cucumber --tags ~@wip --tags ~@needsXWindow --tags ~@proposal --no-color -f pretty -s -f json -o ${TESTS_REPORT_DIR}/${_testrunner}.json -f junit -o ${TESTS_REPORT_DIR}/ ${_features}
         COMMENT "Running cucumber to produce coverage informations."
     )
 

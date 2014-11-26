@@ -1,7 +1,7 @@
 # language: en
 
 Feature: Edit tournament data
-  As a user of the Karate Tournament Manager
+  As a Kata tournament operator
   I want to edit the tournament data
   In order to change an existing tournament
 
