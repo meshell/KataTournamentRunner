@@ -37,13 +37,7 @@ size_t Tournament::number_of_participants() const
 
 Karateka& Tournament::get_participant (size_t start_number)
 {
-    auto particpant = std::find_if(std::begin(participants_),
-                 std::end(participants_),
-                 [start_number](const Karateka& participant)
-                    {
-                         return (participant.get_startnumber() == start_number);
-                    });
-    return *particpant;
+    return participants_.at(start_number);
 }
 
 void Tournament::remove_participant(size_t start_number)
@@ -51,6 +45,7 @@ void Tournament::remove_participant(size_t start_number)
     if (start_number < participants_.size())
     {
         participants_.erase(std::begin(participants_)+start_number);
+        reassign_startnumbers();
     }
     else
     {
@@ -137,6 +132,16 @@ std::vector<size_t> Tournament::get_list_of_participants_for_next_kata_round (si
                   });
 
     return next_round_startnumbers_list;
+}
+
+
+void Tournament::reassign_startnumbers ()
+{
+    auto startnumber = 0;
+    for (auto& participant : participants_)
+    {
+        participant.set_startnumber(startnumber++);
+    }
 }
 
 } // namespace TournamentRunner

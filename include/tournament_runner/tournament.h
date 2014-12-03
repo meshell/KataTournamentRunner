@@ -210,6 +210,7 @@ public:
     std::vector<size_t> get_startlist_for_next_kata_round(size_t no_of_participants_for_round) const;
 
 private:
+    void reassign_startnumbers ();
     friend class boost::serialization::access;
 
     template<class Archive>

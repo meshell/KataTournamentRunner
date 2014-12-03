@@ -77,6 +77,19 @@ TEST(A_Tournament, should_have_one_participant_more_if_a_participant_is_added)
     ASSERT_EQ(expected_no_of_participants, testee.number_of_participants());
 }
 
+TEST(A_Tournament, should_throw_an_exception_if_trying_to_retrieve_an_non_existing_karateka)
+{
+    auto participant = Karateka{}
+                       .with_name("Oyama")
+                       .with_surname("Mas")
+                       .with_birthdate("1923-07-27")
+                       .from_dojo("Honbu")
+                       .with_rank("10th Dan");
+    Tournament testee{};
+    testee.add_participant(participant);
+    ASSERT_THROW(testee.get_participant(2), std::out_of_range);
+}
+
 TEST(A_Tournament, should_give_a_ranked_list_with_the_higher_of_two_scores_first)
 {
     auto participant1 = Karateka{}
@@ -1090,14 +1103,13 @@ TEST(A_Tournament, should_have_third_karateka_on_rank_3_if_two_karatka_are_on_fi
     ASSERT_STREQ(participant3.name().c_str(), std::get<1>(ranked_list.at(2)).name().c_str());
 }
 
-
 TEST(A_Tournament, should_remove_participant_and_reassign_startnumbers_when_removing_a_participant)
 {
-    auto participant1 = Karateka{}
+    const auto participant1 = Karateka{}
                        .with_name("Oyama")
                        .with_surname("Mas");
 
-    auto participant2 = Karateka{}
+    const auto participant2 = Karateka{}
                         .with_name("Arneil")
                         .with_surname("Steve");
 
@@ -1107,13 +1119,14 @@ TEST(A_Tournament, should_remove_participant_and_reassign_startnumbers_when_remo
     const auto no_of_participants_before_delete = 2u;
     EXPECT_EQ(no_of_participants_before_delete, testee.number_of_participants());
 
-    const auto startnumber_participant1 = participant1.get_startnumber();
+    const auto startnumber_participant1 = 0;
     testee.remove_participant(startnumber_participant1);
     const auto no_of_participants_after_delete = 1u;
     EXPECT_EQ(no_of_participants_after_delete, testee.number_of_participants());
 
     const auto new_participant1 = testee.get_participant(startnumber_participant1);
     ASSERT_EQ(participant2.name(), new_participant1.name());
+    ASSERT_EQ(startnumber_participant1, new_participant1.get_startnumber());
 }
 
 TEST(A_Tournament, should_throw_an_out_of_range_exception_when_trying_to_remove_a_non_existing_participant)

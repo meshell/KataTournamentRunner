@@ -1,6 +1,6 @@
-default: --no-source --no-color --tags ~@wip --tags ~@proposal --require features
-html: --no-source --no-color -f html -o ../../../doc/Kata_Tournament_Runner_GUI_Features.html -f pretty --tags ~@wip --require features
+default: --no-source --no-color --tags ~@wip --tags ~@proposal --tags ~@needsXWindow --require features
+html: --no-source --no-color -f html -o ../../../doc/Kata_Tournament_Runner_GUI_Features.html -f pretty --tags ~@wip --tags ~@proposal --tags ~@needsXWindow --require features
 wip: --tags @wip:3 --wip --require features
-junit: -s --tags ~@wip --tags ~@proposal -f pretty -f junit -o ../../../reports/tests --require features
+junit: -s --tags ~@wip --tags ~@proposal --tags ~@needsXWindow -f pretty -f junit -o ../../../reports/tests --require features
 step_definitions: -d --tags ~@proposal -f stepdefs --require features
 

@@ -8,6 +8,8 @@
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/array.hpp>
 
+using boost::array;
+
 namespace TournamentRunner
 {
 
@@ -36,7 +38,7 @@ private:
    template<class Archive>
    void serialize (Archive& archive, const unsigned int version);
 
-   std::array<float, number_of_kata_scores_per_round> kata_scores_;
+   array<float, number_of_kata_scores_per_round> kata_scores_;
    float deduction_{};
    uint8_t current_score_{};
 };

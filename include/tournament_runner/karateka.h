@@ -13,6 +13,8 @@
 #include "tournament_runner/kata_performer_interface.h"
 #include "tournament_runner/kataround_scores.h"
 
+using boost::array;
+
 namespace TournamentRunner
 {
 
@@ -161,7 +163,7 @@ private:
     Date date_of_birth_{};
     std::string dojo_{};
     std::string rank_{};
-    std::array<KataRoundScores, max_number_of_kata_rounds> kata_scores_;
+    array<KataRoundScores, max_number_of_kata_rounds> kata_scores_;
     size_t start_number_{};
     uint8_t current_kata_round_{};
 };
