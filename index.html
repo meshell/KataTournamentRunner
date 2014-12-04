@@ -46,13 +46,13 @@
 <h1>
 <a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h1>
 
-<hr><p>Building the "Kata Tournament Runner" requires a recent C++11 compliant compiler (e.g. gcc 4.7), Qt Version 5.2 and CMake (<a href="http://www.cmake.org/">http://www.cmake.org/</a>) Version 2.8. See CMake documentation for more information about building using CMake.</p>
+<hr><p>Building the "Kata Tournament Runner" requires a recent C++11 compliant compiler (e.g. gcc 4.7), Qt Version 5.2 and CMake (<a href="http://www.cmake.org/">http://www.cmake.org/</a>) Version 2.8 or higher. See CMake documentation for more information about building using CMake.</p>
 
 <p>Building the Unittests requires google mock (<a href="http://code.google.com/p/googlemock/">http://code.google.com/p/googlemock/</a>) and google test (<a href="http://code.google.com/p/googletest/">http://code.google.com/p/googletest/</a>).</p>
 
-<p>Building the feature tests (BDD style tests using Gerkhin) requires Cucumber-cpp (<a href="https://github.com/cucumber/cucumber-cpp">https://github.com/cucumber/cucumber-cpp</a>) by Paolo Ambrosio, CppSpec (<a href="https://github.com/tpuronen/cppspec">https://github.com/tpuronen/cppspec</a>) by Timo Puronen and Boost (regex, filesystem, date_time, chrono, thread, system). </p>
-
-<p>See the Cucumber-cpp documentation on how to run the feature tests with cucumber.</p>
+<p>Building the feature tests (BDD style tests using Gherkin) requires Cucumber-cpp (<a href="https://github.com/cucumber/cucumber-cpp">https://github.com/cucumber/cucumber-cpp</a>) by Paolo Ambrosio, google test and Boost (regex, filesystem, date_time, chrono, thread, system).<br>
+See the Cucumber-cpp documentation on how to run the feature tests with cucumber.</p>
+<p>Google mock, google test, cucumber-cpp and Boost can be downloaded and built by runing <em>make prepare</em>.</p>
 <h1>
 <a name="kata-tournament-runner-docu" class="anchor" href="#kata-tournament-runner-docu"><span class="octicon octicon-link"></span></a>Documentation</h1>
 	  See <a href="doc/html/index.html" target="_blank">Generated doxygen documentation</a>
