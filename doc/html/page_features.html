@@ -111,7 +111,7 @@ Features</h1>
 Setup Tournament</h2>
 <pre class="fragment"># language: en
 Feature: Setup Tournament
-  As a Tournament Organizer
+  As a Tournament organizer
   I want to setup a Tournament
   In order to get started
 
@@ -153,7 +153,7 @@ Kata Round</h2>
 <pre class="fragment"># language: en
 
 Feature: Kata tournament round ranking
-  As a Tournament Executor
+  As a Tournament executor
   I want to have the points given for a kata summed up for every performance
   In order to do a ranking
 
@@ -237,7 +237,7 @@ Kata Round Startlist</h2>
 <pre class="fragment"># language: en
 
 Feature: Kata tournament round startlist
-  As a Tournament Executor
+  As a Tournament executor
   I want to have a startlist for the next round based on the scores of the previous round and the number of participant nominated for the next round
   In order to execute a kata tournament according to the rules
 
@@ -344,7 +344,7 @@ Scenario: Create the startlist for the third round.
 Persistency (Serialization)</h2>
 <pre class="fragment"># language: en
 Feature: Persistence data
-  As a Tournament Organizer
+  As a Tournament organizer
   I want to safe my tournament data persistence
   In order to continue with an earlier state
 
@@ -414,7 +414,7 @@ Setup Rankedlist</h2>
 <pre class="fragment"># language: en
 
 Feature: Kata tournament rankedlist
-  As a Tournament Executor
+  As a Tournament executor
   I want to have a rankedlist of the participants after the final round
   In order to determine the winner of the tournament
 
@@ -454,7 +454,7 @@ About Dialog</h2>
 <pre class="fragment"># language: en
 
 Feature: About Dialog
-  As a user of the Tournament Runner
+  As a user of the Kata Tournament Runner
   I want to have an About dialog
   In order get infos about the version
 
@@ -462,12 +462,17 @@ Scenario: Open the dialog using the menu
   When I choose the "About" menu entry
   Then the "About" dialog is shown
 
+@needsXWindow
+Scenario: Open the dialog using the shortcut
+  When I press the "Alt" and the "F1" key together
+  Then the "About" dialog is shown
+
 </pre><h2><a class="anchor" id="sec-gui-002"></a>
 Create New Tournament Dialog</h2>
 <pre class="fragment"># language: en
 
 Feature: New tournament
-  As a user of the Karate Tournament Manager
+  As a Kata tournament operator
   I want to create a new tournament
   In order to start a tournament
 
@@ -482,12 +487,23 @@ Scenario: New tournament
     | name  |   date     | location | 
     |  SM   | 2014-01-20 |   Kriens |
 
+@needsXWindow
+Scenario: New tournament using the shortcut
+  When I press the "Ctrl" and the "N" key together
+  And I enter the following tournament data in the "New Tournament" dialog:
+    | name  |   date     | location |
+    |  SM   | 2014-01-20 |   Kriens |
+  And I submit the data
+
+  Then the mainscreen shows the following tournament:
+    | name  |   date     | location |
+    |  SM   | 2014-01-20 |   Kriens |
 </pre><h2><a class="anchor" id="sec-gui-003"></a>
 Save and Load menu</h2>
 <pre class="fragment"># language: en
 
 Feature: Save and Load profiles
-  As a user of the Karate Tournament Manager
+  As a Kata tournament operator
   I want to save a profile, i.e. a tournament and load it later
   In order to preserve previous work
 
@@ -501,6 +517,17 @@ Scenario: Save and load to/from a default profile
     | name  |   date     | location | 
     | SM    | 2013-06-20 |   Kriens | 
 
+@needsXWindow
+Scenario: Save and load to/from a default profile using the shortcut
+  Given the following Tournament is open:
+    |name   |    date    | location |
+    | SM    | 2013-06-20 |   Kriens |
+  When I press the "Ctrl" and the "S" key together
+  And I restart the application
+  Then the mainscreen shows the following tournament:
+    | name  |   date     | location |
+    | SM    | 2013-06-20 |   Kriens |
+
 Scenario Outline: Save to a profile file
   Given the following Tournament is open:
     |name   |    date    | location |
@@ -511,6 +538,20 @@ Scenario Outline: Save to a profile file
 Examples:
   |      file           |
   | ~/tmp/myprofile.ktr |
+
+@needsXWindow
+Scenario Outline: Save to a profile file using the shortcut
+  Given the following Tournament is open:
+    |name   |    date    | location |
+    | SM    | 2013-06-20 |   Kriens |
+  When I press the "Ctrl" the "Shift" and the "S" key together
+  And save the profile to "&lt;file&gt;"
+  Then the file "&lt;file&gt;" exists
+
+Examples:
+  |      file           |
+  | ~/tmp/myprofile.ktr |
+
 
 # TODO make this test work. It works in real application
 @wip
@@ -532,7 +573,7 @@ Add Participant Dialog</h2>
 <pre class="fragment"># language: en
 
 Feature: Add participant Dialog
-  As a user of the Karate Tournament Manager
+  As a Kata tournament operator
   I want to open an add participant dialog
   In order to add participant to a tournament
 
@@ -555,7 +596,7 @@ Edit Tournament Dialog</h2>
 <pre class="fragment"># language: en
 
 Feature: Edit tournament data
-  As a user of the Karate Tournament Manager
+  As a Kata tournament operator
   I want to edit the tournament data
   In order to change an existing tournament
 
@@ -577,7 +618,7 @@ Kate Round Start Page</h2>
 <pre class="fragment"># language: en
 
 Feature: Kata Round Start Page
-  As a user of the Karate Tournament Manager
+  As a Kata tournament executor
   I want to have a startpage for each new kata round
   In order to have an overview on the startlist
 
@@ -585,7 +626,7 @@ Scenario: First round start page
 
   Given a tournaments is open
   And the Tournament has the following participants:
-    | name   | surname | date of birth |   dojo      | belt   |
+    | name   | surname | date of birth |   dojo      | rank   |
     |  Oyama |  Mas    |  1923-07-27   |   Honbu     | 10 Dan |
     | Arneil |  Steve  |  1934-08-29   |   London    |  9 Dan |
     | Norris |  Chuck  |  1940-03-10   | Chun Kuk Do |  6 Dan |
@@ -630,7 +671,7 @@ Final Rankedlist Page</h2>
 <pre class="fragment"># language: en
 
 Feature: Kata tournament rankedlist
-  As a Tournament Executor
+  As a Kata tournament executor
   I want to have a rankedlist of the participants after the final round
   In order to determine the winner of the tournament
 
@@ -672,7 +713,7 @@ Feature Results</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 28 2014 23:51:18 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 4 2014 00:19:21 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

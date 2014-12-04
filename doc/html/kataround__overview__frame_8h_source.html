@@ -114,59 +114,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>TournamentRunnerGUI</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="group__GUI.html#ga7eca742680bb103a459023c92dc19b4a">   29</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="group__GUI.html#ga7eca742680bb103a459023c92dc19b4a">Kataround</a></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    first_round = 0,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    second_round,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    final_round</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html">   41</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html">KataRoundOverviewFrame</a>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">public</span> QFrame</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a72ef0244cba79e0be27ab6a307bb1e1e">KataRoundOverviewFrame</a>(<a class="code" href="classTournamentRunner_1_1Tournament.html">TournamentRunner::Tournament</a>&amp; tournament,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                           uint8_t round,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                           QWidget* parent = 0);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#ac110e180ab620847c91dfed179e1f3e6">wizard_finished_slot</a> (<span class="keywordtype">int</span> result);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;signals:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a1dfe39bc240414d19846d2cf926513e0">next_kata_tournament</a> (uint8_t round);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a353f46044872e7c1a9d5211bc34322a5">tournament_finished</a> ();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">private</span> slots:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> on_StartTournamentButton_clicked ();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> on_NextRoundButton_clicked ();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> on_FinishButton_clicked ();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    QWizardPage* create_start_tournament_intro_page ();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    QWizardPage* create_participant_kata_run_page (<a class="code" href="classTournamentRunner_1_1Karateka.html">TournamentRunner::Karateka</a>&amp; participant);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    std::shared_ptr&lt;Ui::KataRoundOverviewFrame&gt; ui_{};</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="classTournamentRunner_1_1Tournament.html">TournamentRunner::Tournament</a>&amp; tournament_;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::vector&lt;size_t&gt; startlist_;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    uint8_t round_{};</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;} <span class="comment">// namespace TournamentRunnerGUI</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif // TOURNAMENT_RUNNER_GUI_KATAROUND_OVERVIEW_FRAME_H</span></div>
-<div class="ttc" id="classTournamentRunner_1_1Tournament_html"><div class="ttname"><a href="classTournamentRunner_1_1Tournament.html">TournamentRunner::Tournament</a></div><div class="ttdoc">The Tournament class is the starting point for the tournament management. </div><div class="ttdef"><b>Definition:</b> tournament.h:105</div></div>
-<div class="ttc" id="classTournamentRunner_1_1Karateka_html"><div class="ttname"><a href="classTournamentRunner_1_1Karateka.html">TournamentRunner::Karateka</a></div><div class="ttdoc">The Karateka class. </div><div class="ttdef"><b>Definition:</b> karateka.h:36</div></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="group__GUI.html#ga7eca742680bb103a459023c92dc19b4a">   30</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="group__GUI.html#ga7eca742680bb103a459023c92dc19b4a">Kataround</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    first_round = 0,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    second_round,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    final_round</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html">   42</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html">KataRoundOverviewFrame</a>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">public</span> QFrame</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a72ef0244cba79e0be27ab6a307bb1e1e">KataRoundOverviewFrame</a>(<a class="code" href="classTournamentRunner_1_1Tournament.html">TournamentRunner::Tournament</a>&amp; tournament,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                           uint8_t round,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                           QWidget* parent = 0);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#ac110e180ab620847c91dfed179e1f3e6">wizard_finished_slot</a> (<span class="keywordtype">int</span> result);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;signals:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a1dfe39bc240414d19846d2cf926513e0">next_kata_tournament</a> (uint8_t round);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a353f46044872e7c1a9d5211bc34322a5">tournament_finished</a> ();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">private</span> slots:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> on_StartTournamentButton_clicked ();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> on_NextRoundButton_clicked ();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> on_FinishButton_clicked ();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    QWizardPage* create_start_tournament_intro_page ();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    QWizardPage* create_participant_kata_run_page (<a class="code" href="classTournamentRunner_1_1Karateka.html">TournamentRunner::Karateka</a>&amp; participant);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::shared_ptr&lt;Ui::KataRoundOverviewFrame&gt; ui_{};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classTournamentRunner_1_1Tournament.html">TournamentRunner::Tournament</a>&amp; tournament_;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::vector&lt;size_t&gt; startlist_;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    uint8_t round_{};</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;};</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;} <span class="comment">// namespace TournamentRunnerGUI</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif // TOURNAMENT_RUNNER_GUI_KATAROUND_OVERVIEW_FRAME_H</span></div>
+<div class="ttc" id="classTournamentRunner_1_1Tournament_html"><div class="ttname"><a href="classTournamentRunner_1_1Tournament.html">TournamentRunner::Tournament</a></div><div class="ttdoc">The Tournament class is the starting point for the tournament management. </div><div class="ttdef"><b>Definition:</b> tournament.h:107</div></div>
+<div class="ttc" id="classTournamentRunner_1_1Karateka_html"><div class="ttname"><a href="classTournamentRunner_1_1Karateka.html">TournamentRunner::Karateka</a></div><div class="ttdoc">The Karateka class. </div><div class="ttdef"><b>Definition:</b> karateka.h:31</div></div>
 <div class="ttc" id="classTournamentRunnerGUI_1_1KataRoundOverviewFrame_html_a1dfe39bc240414d19846d2cf926513e0"><div class="ttname"><a href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a1dfe39bc240414d19846d2cf926513e0">TournamentRunnerGUI::KataRoundOverviewFrame::next_kata_tournament</a></div><div class="ttdeci">void next_kata_tournament(uint8_t round)</div><div class="ttdoc">Start tournament signal. </div></div>
 <div class="ttc" id="classTournamentRunnerGUI_1_1KataRoundOverviewFrame_html_a353f46044872e7c1a9d5211bc34322a5"><div class="ttname"><a href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a353f46044872e7c1a9d5211bc34322a5">TournamentRunnerGUI::KataRoundOverviewFrame::tournament_finished</a></div><div class="ttdeci">void tournament_finished()</div><div class="ttdoc">Tournament finished (Last round finsihed). </div></div>
-<div class="ttc" id="classTournamentRunnerGUI_1_1KataRoundOverviewFrame_html"><div class="ttname"><a href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html">TournamentRunnerGUI::KataRoundOverviewFrame</a></div><div class="ttdoc">The KataRoundOverviewFrame class shows an overview for a specific kata round. </div><div class="ttdef"><b>Definition:</b> kataround_overview_frame.h:41</div></div>
+<div class="ttc" id="classTournamentRunnerGUI_1_1KataRoundOverviewFrame_html"><div class="ttname"><a href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html">TournamentRunnerGUI::KataRoundOverviewFrame</a></div><div class="ttdoc">The KataRoundOverviewFrame class shows an overview for a specific kata round. </div><div class="ttdef"><b>Definition:</b> kataround_overview_frame.h:42</div></div>
 <div class="ttc" id="classTournamentRunnerGUI_1_1KataRoundOverviewFrame_html_a72ef0244cba79e0be27ab6a307bb1e1e"><div class="ttname"><a href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a72ef0244cba79e0be27ab6a307bb1e1e">TournamentRunnerGUI::KataRoundOverviewFrame::KataRoundOverviewFrame</a></div><div class="ttdeci">KataRoundOverviewFrame(TournamentRunner::Tournament &amp;tournament, uint8_t round, QWidget *parent=0)</div><div class="ttdoc">Default Constructor. </div><div class="ttdef"><b>Definition:</b> kataround_overview_frame.cpp:38</div></div>
-<div class="ttc" id="group__GUI_html_ga7eca742680bb103a459023c92dc19b4a"><div class="ttname"><a href="group__GUI.html#ga7eca742680bb103a459023c92dc19b4a">TournamentRunnerGUI::Kataround</a></div><div class="ttdeci">Kataround</div><div class="ttdoc">The Kataround enum. </div><div class="ttdef"><b>Definition:</b> kataround_overview_frame.h:29</div></div>
-<div class="ttc" id="classTournamentRunnerGUI_1_1KataRoundOverviewFrame_html_ac110e180ab620847c91dfed179e1f3e6"><div class="ttname"><a href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#ac110e180ab620847c91dfed179e1f3e6">TournamentRunnerGUI::KataRoundOverviewFrame::wizard_finished_slot</a></div><div class="ttdeci">void wizard_finished_slot(int result)</div><div class="ttdoc">Slot when the Kata Round Wizard finishes. </div><div class="ttdef"><b>Definition:</b> kataround_overview_frame.cpp:69</div></div>
+<div class="ttc" id="group__GUI_html_ga7eca742680bb103a459023c92dc19b4a"><div class="ttname"><a href="group__GUI.html#ga7eca742680bb103a459023c92dc19b4a">TournamentRunnerGUI::Kataround</a></div><div class="ttdeci">Kataround</div><div class="ttdoc">The Kataround enum. </div><div class="ttdef"><b>Definition:</b> kataround_overview_frame.h:30</div></div>
+<div class="ttc" id="classTournamentRunnerGUI_1_1KataRoundOverviewFrame_html_ac110e180ab620847c91dfed179e1f3e6"><div class="ttname"><a href="classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#ac110e180ab620847c91dfed179e1f3e6">TournamentRunnerGUI::KataRoundOverviewFrame::wizard_finished_slot</a></div><div class="ttdeci">void wizard_finished_slot(int result)</div><div class="ttdoc">Slot when the Kata Round Wizard finishes. </div><div class="ttdef"><b>Definition:</b> kataround_overview_frame.cpp:72</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 28 2014 23:51:18 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 4 2014 00:19:21 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

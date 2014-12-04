@@ -85,7 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>TournamentRunner</b></li><li class="navelem"><a class="el" href="classTournamentRunner_1_1Karateka.html">Karateka</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceTournamentRunner.html">TournamentRunner</a></li><li class="navelem"><a class="el" href="classTournamentRunner_1_1Karateka.html">Karateka</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -158,9 +158,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3363437aa311a2e26c007818158269b5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Karateka.html#a3363437aa311a2e26c007818158269b5">get_startnumber</a> () const </td></tr>
 <tr class="memdesc:a3363437aa311a2e26c007818158269b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the startnumber.  <a href="#a3363437aa311a2e26c007818158269b5">More...</a><br/></td></tr>
 <tr class="separator:a3363437aa311a2e26c007818158269b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfa83ecc51ffb4fa8b3cbcf9f26ecdcb"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Karateka.html#adfa83ecc51ffb4fa8b3cbcf9f26ecdcb">add_kata_score</a> (float score) final</td></tr>
-<tr class="memdesc:adfa83ecc51ffb4fa8b3cbcf9f26ecdcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a kata score for the current round.  <a href="#adfa83ecc51ffb4fa8b3cbcf9f26ecdcb">More...</a><br/></td></tr>
-<tr class="separator:adfa83ecc51ffb4fa8b3cbcf9f26ecdcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc040b711d6ebe11602d9058cc156cad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Karateka.html#afc040b711d6ebe11602d9058cc156cad">add_kata_score</a> (float score) final</td></tr>
+<tr class="memdesc:afc040b711d6ebe11602d9058cc156cad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a kata score for the current round.  <a href="#afc040b711d6ebe11602d9058cc156cad">More...</a><br/></td></tr>
+<tr class="separator:afc040b711d6ebe11602d9058cc156cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbae06ed16c7940a95bfee1b11c97b4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Karateka.html#afbae06ed16c7940a95bfee1b11c97b4c">add_deduction</a> (float deduction) final</td></tr>
 <tr class="memdesc:afbae06ed16c7940a95bfee1b11c97b4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a deduction, which is subtracted from the overall score.  <a href="#afbae06ed16c7940a95bfee1b11c97b4c">More...</a><br/></td></tr>
 <tr class="separator:afbae06ed16c7940a95bfee1b11c97b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,7 +218,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>boost::serialization
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classTournamentRunner_1_1Karateka.html" title="The Karateka class. ">Karateka</a> class. </p>
-<p>A karateka is a person practicing karate and participating at a tournament. Serializable </p>
+<p>A karateka is a person practicing karate and participating at a tournament. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>Serializable </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="afbae06ed16c7940a95bfee1b11c97b4c"></a>
 <div class="memitem">
@@ -269,7 +270,7 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a class="anchor" id="adfa83ecc51ffb4fa8b3cbcf9f26ecdcb"></a>
+<a class="anchor" id="afc040b711d6ebe11602d9058cc156cad"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -277,7 +278,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t TournamentRunner::Karateka::add_kata_score </td>
+          <td class="memname">void TournamentRunner::Karateka::add_kata_score </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>score</em></td><td>)</td>
@@ -298,22 +299,20 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the number of scores already added for this round </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::length_error</td><td>exception if more than number_of_kata_scores_per_round scores are added </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of kata scores added already for current round </dd></dl>
 
-<p>Implements <a class="el" href="classTournamentRunner_1_1IKataPerformer.html#a48183dbb05bee89b13d7c1fad827278d">TournamentRunner::IKataPerformer</a>.</p>
+<p>Implements <a class="el" href="classTournamentRunner_1_1IKataPerformer.html#ab23c9acc9274b0acf48b1538c2e72b4a">TournamentRunner::IKataPerformer</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classTournamentRunner_1_1Karateka_adfa83ecc51ffb4fa8b3cbcf9f26ecdcb_icgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_adfa83ecc51ffb4fa8b3cbcf9f26ecdcb_icgraph" alt=""/></div>
-<map name="classTournamentRunner_1_1Karateka_adfa83ecc51ffb4fa8b3cbcf9f26ecdcb_icgraph" id="classTournamentRunner_1_1Karateka_adfa83ecc51ffb4fa8b3cbcf9f26ecdcb_icgraph">
+<div class="center"><img src="classTournamentRunner_1_1Karateka_afc040b711d6ebe11602d9058cc156cad_icgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_afc040b711d6ebe11602d9058cc156cad_icgraph" alt=""/></div>
+<map name="classTournamentRunner_1_1Karateka_afc040b711d6ebe11602d9058cc156cad_icgraph" id="classTournamentRunner_1_1Karateka_afc040b711d6ebe11602d9058cc156cad_icgraph">
 <area shape="rect" id="node2" href="classTournamentRunnerGUI_1_1ParticipantKataRoundWizardPage.html#a924854f95b219041f6884826d0223995" title="TournamentRunnerGUI\l::ParticipantKataRoundWizard\lPage::validatePage" alt="" coords="249,4,447,60"/></map>
 </div>
 </p>
@@ -410,7 +409,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTournamentRunner_1_1Karateka_aec01c493b3f583571d86ef7e14f8d4c5_icgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_aec01c493b3f583571d86ef7e14f8d4c5_icgraph" alt=""/></div>
 <map name="classTournamentRunner_1_1Karateka_aec01c493b3f583571d86ef7e14f8d4c5_icgraph" id="classTournamentRunner_1_1Karateka_aec01c493b3f583571d86ef7e14f8d4c5_icgraph">
-<area shape="rect" id="node2" href="classTournamentRunnerGUI_1_1ParticipantKataRoundWizardPage.html#addeffbc92d02c33bfae24605cc5ca5ac" title="Default Constructor. " alt="" coords="248,5,507,61"/><area shape="rect" id="node3" href="classTournamentRunnerGUI_1_1ParticipantRankingModel.html#acdab1fab95782e811bde2a4dd5c526cf" title="TournamentRunnerGUI\l::ParticipantRankingModel::data" alt="" coords="273,85,481,126"/></map>
+<area shape="rect" id="node2" href="classTournamentRunnerGUI_1_1ParticipantKataRoundWizardPage.html#addeffbc92d02c33bfae24605cc5ca5ac" title="Default Constructor. " alt="" coords="248,4,507,60"/></map>
 </div>
 </p>
 
@@ -441,15 +440,6 @@ Here is the caller graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>the maximum score of the current round </dd></dl>
 
 <p>Implements <a class="el" href="classTournamentRunner_1_1IKataPerformer.html#afe4f5393d4c968d484aefd22f755ddb9">TournamentRunner::IKataPerformer</a>.</p>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTournamentRunner_1_1Karateka_a19610e028f77ea81ad1e4deae4d53d3d_cgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_a19610e028f77ea81ad1e4deae4d53d3d_cgraph" alt=""/></div>
-<map name="classTournamentRunner_1_1Karateka_a19610e028f77ea81ad1e4deae4d53d3d_cgraph" id="classTournamentRunner_1_1Karateka_a19610e028f77ea81ad1e4deae4d53d3d_cgraph">
-<area shape="rect" id="node2" href="classTournamentRunner_1_1Karateka.html#a3b82488ebe276be1f6f341e4f6e4190c" title="Return the maximum score of the given round. " alt="" coords="309,5,517,46"/></map>
-</div>
-</p>
 
 </div>
 </div>
@@ -486,15 +476,6 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classTournamentRunner_1_1IKataPerformer.html#afaab3b8894d2f3720146a4d913dc3796">TournamentRunner::IKataPerformer</a>.</p>
 
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTournamentRunner_1_1Karateka_a3b82488ebe276be1f6f341e4f6e4190c_icgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_a3b82488ebe276be1f6f341e4f6e4190c_icgraph" alt=""/></div>
-<map name="classTournamentRunner_1_1Karateka_a3b82488ebe276be1f6f341e4f6e4190c_icgraph" id="classTournamentRunner_1_1Karateka_a3b82488ebe276be1f6f341e4f6e4190c_icgraph">
-<area shape="rect" id="node2" href="classTournamentRunner_1_1Karateka.html#a811dbf840214063aad5a39f5fe091cb7" title="Return the overall score of the given round. " alt="" coords="293,11,486,53"/><area shape="rect" id="node4" href="classTournamentRunnerGUI_1_1ParticipantRankingModel.html#acdab1fab95782e811bde2a4dd5c526cf" title="TournamentRunnerGUI\l::ParticipantRankingModel::data" alt="" coords="580,70,788,111"/><area shape="rect" id="node5" href="classTournamentRunner_1_1Karateka.html#a19610e028f77ea81ad1e4deae4d53d3d" title="Return the maximum score of the current round. " alt="" coords="262,129,517,170"/><area shape="rect" id="node3" href="classTournamentRunner_1_1Karateka.html#a85f32ba1c9b10652865aa30f5e4d2ca8" title="Return the overall score of the current round. " alt="" coords="566,5,802,46"/></map>
-</div>
-</p>
-
 </div>
 </div>
 <a class="anchor" id="ad190926bae519b6c5d435deaa7303f3b"></a>
@@ -522,15 +503,6 @@ Here is the caller graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>the minimum score of the current round </dd></dl>
 
 <p>Implements <a class="el" href="classTournamentRunner_1_1IKataPerformer.html#ab306eaa78cb3f2d43a9ce32e646355fe">TournamentRunner::IKataPerformer</a>.</p>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTournamentRunner_1_1Karateka_ad190926bae519b6c5d435deaa7303f3b_cgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_ad190926bae519b6c5d435deaa7303f3b_cgraph" alt=""/></div>
-<map name="classTournamentRunner_1_1Karateka_ad190926bae519b6c5d435deaa7303f3b_cgraph" id="classTournamentRunner_1_1Karateka_ad190926bae519b6c5d435deaa7303f3b_cgraph">
-<area shape="rect" id="node2" href="classTournamentRunner_1_1Karateka.html#a970a9a1557693cc1c06ec074ba3a1d34" title="Return the minimum score of the given round. " alt="" coords="305,5,509,46"/></map>
-</div>
-</p>
 
 </div>
 </div>
@@ -567,15 +539,6 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classTournamentRunner_1_1IKataPerformer.html#aa012a15a1860d2090253637411da2a91">TournamentRunner::IKataPerformer</a>.</p>
 
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTournamentRunner_1_1Karateka_a970a9a1557693cc1c06ec074ba3a1d34_icgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_a970a9a1557693cc1c06ec074ba3a1d34_icgraph" alt=""/></div>
-<map name="classTournamentRunner_1_1Karateka_a970a9a1557693cc1c06ec074ba3a1d34_icgraph" id="classTournamentRunner_1_1Karateka_a970a9a1557693cc1c06ec074ba3a1d34_icgraph">
-<area shape="rect" id="node2" href="classTournamentRunner_1_1Karateka.html#a811dbf840214063aad5a39f5fe091cb7" title="Return the overall score of the given round. " alt="" coords="287,11,481,53"/><area shape="rect" id="node4" href="classTournamentRunnerGUI_1_1ParticipantRankingModel.html#acdab1fab95782e811bde2a4dd5c526cf" title="TournamentRunnerGUI\l::ParticipantRankingModel::data" alt="" coords="572,70,780,111"/><area shape="rect" id="node5" href="classTournamentRunner_1_1Karateka.html#ad190926bae519b6c5d435deaa7303f3b" title="Return the minimum score of the current round. " alt="" coords="259,129,509,170"/><area shape="rect" id="node3" href="classTournamentRunner_1_1Karateka.html#a85f32ba1c9b10652865aa30f5e4d2ca8" title="Return the overall score of the current round. " alt="" coords="558,5,794,46"/></map>
-</div>
-</p>
-
 </div>
 </div>
 <a class="anchor" id="a85f32ba1c9b10652865aa30f5e4d2ca8"></a>
@@ -603,15 +566,6 @@ Here is the caller graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>the overall score of the current round </dd></dl>
 
 <p>Implements <a class="el" href="classTournamentRunner_1_1IKataPerformer.html#a2d5710f6c6e8bfaf9efa6501f46d463a">TournamentRunner::IKataPerformer</a>.</p>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTournamentRunner_1_1Karateka_a85f32ba1c9b10652865aa30f5e4d2ca8_cgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_a85f32ba1c9b10652865aa30f5e4d2ca8_cgraph" alt=""/></div>
-<map name="classTournamentRunner_1_1Karateka_a85f32ba1c9b10652865aa30f5e4d2ca8_cgraph" id="classTournamentRunner_1_1Karateka_a85f32ba1c9b10652865aa30f5e4d2ca8_cgraph">
-<area shape="rect" id="node2" href="classTournamentRunner_1_1Karateka.html#a811dbf840214063aad5a39f5fe091cb7" title="Return the overall score of the given round. " alt="" coords="291,38,485,79"/><area shape="rect" id="node3" href="classTournamentRunner_1_1Karateka.html#a3b82488ebe276be1f6f341e4f6e4190c" title="Return the maximum score of the given round. " alt="" coords="533,5,741,46"/><area shape="rect" id="node4" href="classTournamentRunner_1_1Karateka.html#a970a9a1557693cc1c06ec074ba3a1d34" title="Return the minimum score of the given round. " alt="" coords="535,70,739,111"/></map>
-</div>
-</p>
 
 </div>
 </div>
@@ -647,24 +601,6 @@ Here is the call graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>the overall score </dd></dl>
 
 <p>Implements <a class="el" href="classTournamentRunner_1_1IKataPerformer.html#a777f6aabbaabba165e2429e8869b843b">TournamentRunner::IKataPerformer</a>.</p>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTournamentRunner_1_1Karateka_a811dbf840214063aad5a39f5fe091cb7_cgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_a811dbf840214063aad5a39f5fe091cb7_cgraph" alt=""/></div>
-<map name="classTournamentRunner_1_1Karateka_a811dbf840214063aad5a39f5fe091cb7_cgraph" id="classTournamentRunner_1_1Karateka_a811dbf840214063aad5a39f5fe091cb7_cgraph">
-<area shape="rect" id="node2" href="classTournamentRunner_1_1Karateka.html#a3b82488ebe276be1f6f341e4f6e4190c" title="Return the maximum score of the given round. " alt="" coords="248,5,456,46"/><area shape="rect" id="node3" href="classTournamentRunner_1_1Karateka.html#a970a9a1557693cc1c06ec074ba3a1d34" title="Return the minimum score of the given round. " alt="" coords="250,70,454,111"/></map>
-</div>
-</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTournamentRunner_1_1Karateka_a811dbf840214063aad5a39f5fe091cb7_icgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_a811dbf840214063aad5a39f5fe091cb7_icgraph" alt=""/></div>
-<map name="classTournamentRunner_1_1Karateka_a811dbf840214063aad5a39f5fe091cb7_icgraph" id="classTournamentRunner_1_1Karateka_a811dbf840214063aad5a39f5fe091cb7_icgraph">
-<area shape="rect" id="node2" href="classTournamentRunner_1_1Karateka.html#a85f32ba1c9b10652865aa30f5e4d2ca8" title="Return the overall score of the current round. " alt="" coords="249,5,485,46"/><area shape="rect" id="node3" href="classTournamentRunnerGUI_1_1ParticipantRankingModel.html#acdab1fab95782e811bde2a4dd5c526cf" title="TournamentRunnerGUI\l::ParticipantRankingModel::data" alt="" coords="263,70,471,111"/></map>
-</div>
-</p>
 
 </div>
 </div>
@@ -757,7 +693,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTournamentRunner_1_1Karateka_aa4913fc295cc335c54376a858717a338_icgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_aa4913fc295cc335c54376a858717a338_icgraph" alt=""/></div>
 <map name="classTournamentRunner_1_1Karateka_aa4913fc295cc335c54376a858717a338_icgraph" id="classTournamentRunner_1_1Karateka_aa4913fc295cc335c54376a858717a338_icgraph">
-<area shape="rect" id="node2" href="classTournamentRunnerGUI_1_1ParticipantKataRoundWizardPage.html#addeffbc92d02c33bfae24605cc5ca5ac" title="Default Constructor. " alt="" coords="248,5,507,61"/><area shape="rect" id="node3" href="classTournamentRunnerGUI_1_1ParticipantRankingModel.html#acdab1fab95782e811bde2a4dd5c526cf" title="TournamentRunnerGUI\l::ParticipantRankingModel::data" alt="" coords="273,85,481,126"/></map>
+<area shape="rect" id="node2" href="classTournamentRunnerGUI_1_1ParticipantKataRoundWizardPage.html#addeffbc92d02c33bfae24605cc5ca5ac" title="Default Constructor. " alt="" coords="248,4,507,60"/></map>
 </div>
 </p>
 
@@ -902,7 +838,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTournamentRunner_1_1Karateka_ae934c9c6c716eed40a6ab63044d63734_icgraph.png" border="0" usemap="#classTournamentRunner_1_1Karateka_ae934c9c6c716eed40a6ab63044d63734_icgraph" alt=""/></div>
 <map name="classTournamentRunner_1_1Karateka_ae934c9c6c716eed40a6ab63044d63734_icgraph" id="classTournamentRunner_1_1Karateka_ae934c9c6c716eed40a6ab63044d63734_icgraph">
-<area shape="rect" id="node2" href="classTournamentRunnerGUI_1_1ParticipantKataRoundWizardPage.html#addeffbc92d02c33bfae24605cc5ca5ac" title="Default Constructor. " alt="" coords="248,5,507,61"/><area shape="rect" id="node3" href="classTournamentRunnerGUI_1_1ParticipantRankingModel.html#acdab1fab95782e811bde2a4dd5c526cf" title="TournamentRunnerGUI\l::ParticipantRankingModel::data" alt="" coords="273,85,481,126"/></map>
+<area shape="rect" id="node2" href="classTournamentRunnerGUI_1_1ParticipantKataRoundWizardPage.html#addeffbc92d02c33bfae24605cc5ca5ac" title="Default Constructor. " alt="" coords="248,4,507,60"/></map>
 </div>
 </p>
 
@@ -915,7 +851,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 28 2014 23:51:18 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 4 2014 00:19:21 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

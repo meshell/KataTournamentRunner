@@ -123,36 +123,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                         Qt::Orientation orientation,</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                         <span class="keywordtype">int</span> role = Qt::DisplayRole ) <span class="keyword">const</span>  <span class="keyword">final</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">enum</span> participant_model_column_indices</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        index_of_name = 0,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        index_of_surname,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        index_of_date_of_birth,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        index_of_dojo,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        index_of_rank,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        index_last</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    };</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classTournamentRunner_1_1Tournament.html">TournamentRunner::Tournament</a>&amp; tournament_;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;} <span class="comment">// namespace TournamentRunnerGUI</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span> removeRows(<span class="keywordtype">int</span> position, <span class="keywordtype">int</span> rows, <span class="keyword">const</span> QModelIndex &amp;index = QModelIndex()) <span class="keyword">final</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    Qt::ItemFlags flags(<span class="keyword">const</span> QModelIndex &amp;index) <span class="keyword">const</span> <span class="keyword">final</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">enum</span> participant_model_column_indices</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        index_of_name = 0,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        index_of_surname,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        index_of_date_of_birth,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        index_of_dojo,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        index_of_rank,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        index_last</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    };</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="classTournamentRunner_1_1Tournament.html">TournamentRunner::Tournament</a>&amp; tournament_;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif // TOURNAMENT_RUNNER_GUI_PARTICIPANT_MODEL_H</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;} <span class="comment">// namespace TournamentRunnerGUI</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif // TOURNAMENT_RUNNER_GUI_PARTICIPANT_MODEL_H</span></div>
 <div class="ttc" id="classTournamentRunnerGUI_1_1ParticipantModel_html"><div class="ttname"><a href="classTournamentRunnerGUI_1_1ParticipantModel.html">TournamentRunnerGUI::ParticipantModel</a></div><div class="ttdoc">The ParticipantModel class. </div><div class="ttdef"><b>Definition:</b> participant_model.h:20</div></div>
-<div class="ttc" id="classTournamentRunner_1_1Tournament_html"><div class="ttname"><a href="classTournamentRunner_1_1Tournament.html">TournamentRunner::Tournament</a></div><div class="ttdoc">The Tournament class is the starting point for the tournament management. </div><div class="ttdef"><b>Definition:</b> tournament.h:105</div></div>
-<div class="ttc" id="classTournamentRunnerGUI_1_1ParticipantModel_html_a945f5d1f2d79d6b3e00d978771ebda1b"><div class="ttname"><a href="classTournamentRunnerGUI_1_1ParticipantModel.html#a945f5d1f2d79d6b3e00d978771ebda1b">TournamentRunnerGUI::ParticipantModel::rowCount</a></div><div class="ttdeci">int rowCount(const QModelIndex &amp;parent=QModelIndex()) const final</div><div class="ttdef"><b>Definition:</b> participant_model.cpp:21</div></div>
-<div class="ttc" id="classTournamentRunnerGUI_1_1ParticipantModel_html_a15ce47a78c946b7e304f02fd4d08c2e5"><div class="ttname"><a href="classTournamentRunnerGUI_1_1ParticipantModel.html#a15ce47a78c946b7e304f02fd4d08c2e5">TournamentRunnerGUI::ParticipantModel::columnCount</a></div><div class="ttdeci">int columnCount(const QModelIndex &amp;parent=QModelIndex()) const final</div><div class="ttdef"><b>Definition:</b> participant_model.cpp:26</div></div>
-<div class="ttc" id="classTournamentRunnerGUI_1_1ParticipantModel_html_a636812e9bae4c7001bbd217f0936f508"><div class="ttname"><a href="classTournamentRunnerGUI_1_1ParticipantModel.html#a636812e9bae4c7001bbd217f0936f508">TournamentRunnerGUI::ParticipantModel::ParticipantModel</a></div><div class="ttdeci">ParticipantModel(TournamentRunner::Tournament &amp;tournament, QObject *parent=0)</div><div class="ttdoc">ParticipantModel. </div><div class="ttdef"><b>Definition:</b> participant_model.cpp:13</div></div>
-<div class="ttc" id="classTournamentRunnerGUI_1_1ParticipantModel_html_ac8746d59a5bde6cf1c5bde33c4cf7576"><div class="ttname"><a href="classTournamentRunnerGUI_1_1ParticipantModel.html#ac8746d59a5bde6cf1c5bde33c4cf7576">TournamentRunnerGUI::ParticipantModel::headerData</a></div><div class="ttdeci">QVariant headerData(int section, Qt::Orientation orientation, int role=Qt::DisplayRole) const final</div><div class="ttdef"><b>Definition:</b> participant_model.cpp:75</div></div>
-<div class="ttc" id="classTournamentRunnerGUI_1_1ParticipantModel_html_a191fd6fdc53e4be59995a023123d1c52"><div class="ttname"><a href="classTournamentRunnerGUI_1_1ParticipantModel.html#a191fd6fdc53e4be59995a023123d1c52">TournamentRunnerGUI::ParticipantModel::data</a></div><div class="ttdeci">QVariant data(const QModelIndex &amp;index, int role=Qt::DisplayRole) const final</div><div class="ttdef"><b>Definition:</b> participant_model.cpp:31</div></div>
+<div class="ttc" id="classTournamentRunner_1_1Tournament_html"><div class="ttname"><a href="classTournamentRunner_1_1Tournament.html">TournamentRunner::Tournament</a></div><div class="ttdoc">The Tournament class is the starting point for the tournament management. </div><div class="ttdef"><b>Definition:</b> tournament.h:107</div></div>
+<div class="ttc" id="classTournamentRunnerGUI_1_1ParticipantModel_html_a945f5d1f2d79d6b3e00d978771ebda1b"><div class="ttname"><a href="classTournamentRunnerGUI_1_1ParticipantModel.html#a945f5d1f2d79d6b3e00d978771ebda1b">TournamentRunnerGUI::ParticipantModel::rowCount</a></div><div class="ttdeci">int rowCount(const QModelIndex &amp;parent=QModelIndex()) const final</div><div class="ttdef"><b>Definition:</b> participant_model.cpp:22</div></div>
+<div class="ttc" id="classTournamentRunnerGUI_1_1ParticipantModel_html_a15ce47a78c946b7e304f02fd4d08c2e5"><div class="ttname"><a href="classTournamentRunnerGUI_1_1ParticipantModel.html#a15ce47a78c946b7e304f02fd4d08c2e5">TournamentRunnerGUI::ParticipantModel::columnCount</a></div><div class="ttdeci">int columnCount(const QModelIndex &amp;parent=QModelIndex()) const final</div><div class="ttdef"><b>Definition:</b> participant_model.cpp:27</div></div>
+<div class="ttc" id="classTournamentRunnerGUI_1_1ParticipantModel_html_a636812e9bae4c7001bbd217f0936f508"><div class="ttname"><a href="classTournamentRunnerGUI_1_1ParticipantModel.html#a636812e9bae4c7001bbd217f0936f508">TournamentRunnerGUI::ParticipantModel::ParticipantModel</a></div><div class="ttdeci">ParticipantModel(TournamentRunner::Tournament &amp;tournament, QObject *parent=0)</div><div class="ttdoc">ParticipantModel. </div><div class="ttdef"><b>Definition:</b> participant_model.cpp:14</div></div>
+<div class="ttc" id="classTournamentRunnerGUI_1_1ParticipantModel_html_ac8746d59a5bde6cf1c5bde33c4cf7576"><div class="ttname"><a href="classTournamentRunnerGUI_1_1ParticipantModel.html#ac8746d59a5bde6cf1c5bde33c4cf7576">TournamentRunnerGUI::ParticipantModel::headerData</a></div><div class="ttdeci">QVariant headerData(int section, Qt::Orientation orientation, int role=Qt::DisplayRole) const final</div><div class="ttdef"><b>Definition:</b> participant_model.cpp:77</div></div>
+<div class="ttc" id="classTournamentRunnerGUI_1_1ParticipantModel_html_a191fd6fdc53e4be59995a023123d1c52"><div class="ttname"><a href="classTournamentRunnerGUI_1_1ParticipantModel.html#a191fd6fdc53e4be59995a023123d1c52">TournamentRunnerGUI::ParticipantModel::data</a></div><div class="ttdeci">QVariant data(const QModelIndex &amp;index, int role=Qt::DisplayRole) const final</div><div class="ttdef"><b>Definition:</b> participant_model.cpp:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 28 2014 23:51:18 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 4 2014 00:19:21 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

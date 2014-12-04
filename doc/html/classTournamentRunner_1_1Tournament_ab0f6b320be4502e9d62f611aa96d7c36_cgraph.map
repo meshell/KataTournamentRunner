@@ -1,0 +1,6 @@
+<map id="TournamentRunner::Tournament::get_anotated_ranked_list_of_participants" name="TournamentRunner::Tournament::get_anotated_ranked_list_of_participants">
+<area shape="rect" id="node2" href="$classTournamentRunner_1_1Tournament.html#a642d78acd8db8b21334851e364d3e1af" title="Return a ranked list of participants. The highest ranked comes first. " alt="" coords="264,5,475,46"/>
+<area shape="rect" id="node5" href="$namespaceTournamentRunner.html#adc499f153ff1c794d5c8c20cf2f94a5c" title="kata_score_is_equal " alt="" coords="286,70,453,111"/>
+<area shape="rect" id="node3" href="$namespaceTournamentRunner.html#a783a09622cf101f9f69404424eb5fe44" title="Karateka score compare method for std::sort algorithm. " alt="" coords="523,38,690,79"/>
+<area shape="rect" id="node4" href="$classTournamentRunner_1_1IKataPerformer.html#a777f6aabbaabba165e2429e8869b843b" title="Return the overall score of the given round. " alt="" coords="739,38,968,79"/>
+</map>

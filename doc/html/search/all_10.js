@@ -6,5 +6,6 @@ var searchData=
   ['tournament_5ffinished',['tournament_finished',['../classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a353f46044872e7c1a9d5211bc34322a5',1,'TournamentRunnerGUI::KataRoundOverviewFrame']]],
   ['tournament_5ffinished_5fslot',['tournament_finished_slot',['../classTournamentRunnerGUI_1_1MainWindow.html#a8fa3c3c5aba946cd28a3c5e493e68d06',1,'TournamentRunnerGUI::MainWindow']]],
   ['tournamentdata',['TournamentData',['../structTournamentRunner_1_1TournamentData.html',1,'TournamentRunner']]],
+  ['tournamentrunner',['TournamentRunner',['../namespaceTournamentRunner.html',1,'']]],
   ['tournamentrunnergui',['TournamentRunnerGUI',['../namespaceTournamentRunnerGUI.html',1,'']]]
 ];

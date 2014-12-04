@@ -85,12 +85,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>TournamentRunner</b></li><li class="navelem"><a class="el" href="classTournamentRunner_1_1Tournament.html">Tournament</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceTournamentRunner.html">TournamentRunner</a></li><li class="navelem"><a class="el" href="classTournamentRunner_1_1Tournament.html">Tournament</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classTournamentRunner_1_1Tournament-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -103,6 +105,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="tournament_8h_source.html">tournament.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a8cdf31ee3517a6cbec91d8e2f3ea4feb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8cdf31ee3517a6cbec91d8e2f3ea4feb"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>RankAnnotatedParticipant</b> = std::pair&lt; size_t, <a class="el" href="classTournamentRunner_1_1Karateka.html">Karateka</a> &gt;</td></tr>
+<tr class="separator:a8cdf31ee3517a6cbec91d8e2f3ea4feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a385affeb9a3fd41aa9505c19a0d8ea72"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a385affeb9a3fd41aa9505c19a0d8ea72"></a>
@@ -119,7 +127,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af3dfe86b6dc014e5cd503642acdc5f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the date the tournament is held as ISO 8601 extended format string (CCYY-MM-DD)  <a href="#af3dfe86b6dc014e5cd503642acdc5f34">More...</a><br/></td></tr>
 <tr class="separator:af3dfe86b6dc014e5cd503642acdc5f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11d256fd825db4430513c91a44c38aba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTournamentRunner_1_1Date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Tournament.html#a11d256fd825db4430513c91a44c38aba">date</a> () const </td></tr>
-<tr class="memdesc:a11d256fd825db4430513c91a44c38aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the date the tournament is held as <a class="el" href="classTournamentRunner_1_1Date.html" title="The Date class provides Date handling Serializable. ">Date</a>.  <a href="#a11d256fd825db4430513c91a44c38aba">More...</a><br/></td></tr>
+<tr class="memdesc:a11d256fd825db4430513c91a44c38aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the date the tournament is held as <a class="el" href="classTournamentRunner_1_1Date.html" title="The Date class provides Date handling. ">Date</a>.  <a href="#a11d256fd825db4430513c91a44c38aba">More...</a><br/></td></tr>
 <tr class="separator:a11d256fd825db4430513c91a44c38aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91f89a674cb866b042399e8d17497128"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Tournament.html#a91f89a674cb866b042399e8d17497128">location</a> () const </td></tr>
 <tr class="memdesc:a91f89a674cb866b042399e8d17497128"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classTournamentRunner_1_1Tournament.html" title="The Tournament class is the starting point for the tournament management. ">Tournament</a> location address.  <a href="#a91f89a674cb866b042399e8d17497128">More...</a><br/></td></tr>
@@ -136,13 +144,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a920dc72b8e9cb4e52b893f13f88a9778"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTournamentRunner_1_1Karateka.html">Karateka</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Tournament.html#a920dc72b8e9cb4e52b893f13f88a9778">get_participant</a> (size_t start_number)</td></tr>
 <tr class="memdesc:a920dc72b8e9cb4e52b893f13f88a9778"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the participant with the given startnumber.  <a href="#a920dc72b8e9cb4e52b893f13f88a9778">More...</a><br/></td></tr>
 <tr class="separator:a920dc72b8e9cb4e52b893f13f88a9778"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a110fa4b61fa49d87a13e05db02cdb7b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Tournament.html#a110fa4b61fa49d87a13e05db02cdb7b6">remove_participant</a> (size_t start_number)</td></tr>
+<tr class="memdesc:a110fa4b61fa49d87a13e05db02cdb7b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove_participant  <a href="#a110fa4b61fa49d87a13e05db02cdb7b6">More...</a><br/></td></tr>
+<tr class="separator:a110fa4b61fa49d87a13e05db02cdb7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a642d78acd8db8b21334851e364d3e1af"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classTournamentRunner_1_1Karateka.html">Karateka</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Tournament.html#a642d78acd8db8b21334851e364d3e1af">get_ranked_list_of_participants</a> () const </td></tr>
 <tr class="memdesc:a642d78acd8db8b21334851e364d3e1af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a ranked list of participants. The highest ranked comes first.  <a href="#a642d78acd8db8b21334851e364d3e1af">More...</a><br/></td></tr>
 <tr class="separator:a642d78acd8db8b21334851e364d3e1af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75ce4d0138ef09cf3526100c97509c13"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; size_t, <br class="typebreak"/>
-<a class="el" href="classTournamentRunner_1_1Karateka.html">Karateka</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Tournament.html#a75ce4d0138ef09cf3526100c97509c13">get_anotated_ranked_list_of_participants</a> () const </td></tr>
-<tr class="memdesc:a75ce4d0138ef09cf3526100c97509c13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a ranked list of participants anotated with the actual rank.  <a href="#a75ce4d0138ef09cf3526100c97509c13">More...</a><br/></td></tr>
-<tr class="separator:a75ce4d0138ef09cf3526100c97509c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f6b320be4502e9d62f611aa96d7c36"><td class="memItemLeft" align="right" valign="top">std::vector<br class="typebreak"/>
+&lt; RankAnnotatedParticipant &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Tournament.html#ab0f6b320be4502e9d62f611aa96d7c36">get_anotated_ranked_list_of_participants</a> () const </td></tr>
+<tr class="memdesc:ab0f6b320be4502e9d62f611aa96d7c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a ranked list of participants anotated with the actual rank.  <a href="#ab0f6b320be4502e9d62f611aa96d7c36">More...</a><br/></td></tr>
+<tr class="separator:ab0f6b320be4502e9d62f611aa96d7c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0ab706579d620d23a9c12679687e8ff"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Tournament.html#ac0ab706579d620d23a9c12679687e8ff">get_current_round</a> () const </td></tr>
 <tr class="memdesc:ac0ab706579d620d23a9c12679687e8ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current active round.  <a href="#ac0ab706579d620d23a9c12679687e8ff">More...</a><br/></td></tr>
 <tr class="separator:ac0ab706579d620d23a9c12679687e8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,6 +164,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a300cde290c7b3870700eaa7914932976"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the startlist for the next kata round.  <a href="#a300cde290c7b3870700eaa7914932976">More...</a><br/></td></tr>
 <tr class="separator:a300cde290c7b3870700eaa7914932976"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a0a0070246bcf30fbb48f80a3bdb26797"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a0070246bcf30fbb48f80a3bdb26797"></a>
+static const auto&#160;</td><td class="memItemRight" valign="bottom"><b>rank_annotated_participant_rank_idx</b> = 0u</td></tr>
+<tr class="separator:a0a0070246bcf30fbb48f80a3bdb26797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb93b7c739311bc940c172ced4797a78"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb93b7c739311bc940c172ced4797a78"></a>
+static const auto&#160;</td><td class="memItemRight" valign="bottom"><b>rank_annotated_participant_karateka_idx</b> = 1u</td></tr>
+<tr class="separator:acb93b7c739311bc940c172ced4797a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:ac98d07dd8f7b70e16ccb9a01abf56b9c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac98d07dd8f7b70e16ccb9a01abf56b9c"></a>
@@ -161,7 +181,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>boost::serialization
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classTournamentRunner_1_1Tournament.html" title="The Tournament class is the starting point for the tournament management. ">Tournament</a> class is the starting point for the tournament management. </p>
-<p>Serializable </p>
+<dl class="section remark"><dt>Remarks</dt><dd>Serializable </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ad0968824270ccb5fde2f7cdecbe92704"></a>
 <div class="memitem">
@@ -251,7 +271,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Return the date the tournament is held as <a class="el" href="classTournamentRunner_1_1Date.html" title="The Date class provides Date handling Serializable. ">Date</a>. </p>
+<p>Return the date the tournament is held as <a class="el" href="classTournamentRunner_1_1Date.html" title="The Date class provides Date handling. ">Date</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classTournamentRunner_1_1Tournament.html" title="The Tournament class is the starting point for the tournament management. ">Tournament</a> date </dd></dl>
 
 </div>
@@ -292,12 +312,12 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a class="anchor" id="a75ce4d0138ef09cf3526100c97509c13"></a>
+<a class="anchor" id="ab0f6b320be4502e9d62f611aa96d7c36"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::pair&lt; size_t, <a class="el" href="classTournamentRunner_1_1Karateka.html">Karateka</a> &gt; &gt; TournamentRunner::Tournament::get_anotated_ranked_list_of_participants </td>
+          <td class="memname">std::vector&lt; Tournament::RankAnnotatedParticipant &gt; TournamentRunner::Tournament::get_anotated_ranked_list_of_participants </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -311,9 +331,9 @@ Here is the caller graph for this function:</div>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classTournamentRunner_1_1Tournament_a75ce4d0138ef09cf3526100c97509c13_cgraph.png" border="0" usemap="#classTournamentRunner_1_1Tournament_a75ce4d0138ef09cf3526100c97509c13_cgraph" alt=""/></div>
-<map name="classTournamentRunner_1_1Tournament_a75ce4d0138ef09cf3526100c97509c13_cgraph" id="classTournamentRunner_1_1Tournament_a75ce4d0138ef09cf3526100c97509c13_cgraph">
-<area shape="rect" id="node2" href="classTournamentRunner_1_1Tournament.html#a642d78acd8db8b21334851e364d3e1af" title="Return a ranked list of participants. The highest ranked comes first. " alt="" coords="264,11,475,53"/></map>
+<div class="center"><img src="classTournamentRunner_1_1Tournament_ab0f6b320be4502e9d62f611aa96d7c36_cgraph.png" border="0" usemap="#classTournamentRunner_1_1Tournament_ab0f6b320be4502e9d62f611aa96d7c36_cgraph" alt=""/></div>
+<map name="classTournamentRunner_1_1Tournament_ab0f6b320be4502e9d62f611aa96d7c36_cgraph" id="classTournamentRunner_1_1Tournament_ab0f6b320be4502e9d62f611aa96d7c36_cgraph">
+<area shape="rect" id="node2" href="classTournamentRunner_1_1Tournament.html#a642d78acd8db8b21334851e364d3e1af" title="Return a ranked list of participants. The highest ranked comes first. " alt="" coords="264,5,475,46"/><area shape="rect" id="node5" href="namespaceTournamentRunner.html#adc499f153ff1c794d5c8c20cf2f94a5c" title="kata_score_is_equal " alt="" coords="286,70,453,111"/><area shape="rect" id="node3" href="namespaceTournamentRunner.html#a783a09622cf101f9f69404424eb5fe44" title="Karateka score compare method for std::sort algorithm. " alt="" coords="523,38,690,79"/><area shape="rect" id="node4" href="classTournamentRunner_1_1IKataPerformer.html#a777f6aabbaabba165e2429e8869b843b" title="Return the overall score of the given round. " alt="" coords="739,38,968,79"/></map>
 </div>
 </p>
 
@@ -405,11 +425,20 @@ Here is the caller graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>list of the participants ranked by the scores </dd></dl>
 
 <p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classTournamentRunner_1_1Tournament_a642d78acd8db8b21334851e364d3e1af_cgraph.png" border="0" usemap="#classTournamentRunner_1_1Tournament_a642d78acd8db8b21334851e364d3e1af_cgraph" alt=""/></div>
+<map name="classTournamentRunner_1_1Tournament_a642d78acd8db8b21334851e364d3e1af_cgraph" id="classTournamentRunner_1_1Tournament_a642d78acd8db8b21334851e364d3e1af_cgraph">
+<area shape="rect" id="node2" href="namespaceTournamentRunner.html#a783a09622cf101f9f69404424eb5fe44" title="Karateka score compare method for std::sort algorithm. " alt="" coords="265,5,431,46"/><area shape="rect" id="node3" href="classTournamentRunner_1_1IKataPerformer.html#a777f6aabbaabba165e2429e8869b843b" title="Return the overall score of the given round. " alt="" coords="480,5,709,46"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTournamentRunner_1_1Tournament_a642d78acd8db8b21334851e364d3e1af_icgraph.png" border="0" usemap="#classTournamentRunner_1_1Tournament_a642d78acd8db8b21334851e364d3e1af_icgraph" alt=""/></div>
 <map name="classTournamentRunner_1_1Tournament_a642d78acd8db8b21334851e364d3e1af_icgraph" id="classTournamentRunner_1_1Tournament_a642d78acd8db8b21334851e364d3e1af_icgraph">
-<area shape="rect" id="node2" href="classTournamentRunner_1_1Tournament.html#a75ce4d0138ef09cf3526100c97509c13" title="Return a ranked list of participants anotated with the actual rank. " alt="" coords="264,4,475,60"/></map>
+<area shape="rect" id="node2" href="classTournamentRunner_1_1Tournament.html#ab0f6b320be4502e9d62f611aa96d7c36" title="Return a ranked list of participants anotated with the actual rank. " alt="" coords="264,4,475,60"/></map>
 </div>
 </p>
 
@@ -538,6 +567,30 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="a110fa4b61fa49d87a13e05db02cdb7b6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TournamentRunner::Tournament::remove_participant </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>start_number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>remove_participant </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start_number</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a57ea22959d92b3b1a038bbd8432ea0e2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -613,7 +666,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 28 2014 23:51:18 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 4 2014 00:19:21 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

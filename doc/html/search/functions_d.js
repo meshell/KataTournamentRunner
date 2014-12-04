@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['rank',['rank',['../classTournamentRunner_1_1Karateka.html#a24bc6213b38838266164e7fa28ecb83a',1,'TournamentRunner::Karateka']]],
-  ['register_5fparticipant',['register_participant',['../classTournamentRunnerGUI_1_1AddParticipantDialog.html#abaa203344bca2b85acd1b09a2c1720d3',1,'TournamentRunnerGUI::AddParticipantDialog']]],
-  ['register_5fparticipant_5fslot',['register_participant_slot',['../classTournamentRunnerGUI_1_1MainFrame.html#adeed5ba9470200e2c9e9ba5cce214396',1,'TournamentRunnerGUI::MainFrame']]],
-  ['rowcount',['rowCount',['../classTournamentRunnerGUI_1_1KataRoundParticipantModel.html#a81863db9900217468f96092ef09bdd31',1,'TournamentRunnerGUI::KataRoundParticipantModel::rowCount()'],['../classTournamentRunnerGUI_1_1ParticipantModel.html#a945f5d1f2d79d6b3e00d978771ebda1b',1,'TournamentRunnerGUI::ParticipantModel::rowCount()'],['../classTournamentRunnerGUI_1_1ParticipantRankingModel.html#a9fe31074ba8132618167a17c90f1a836',1,'TournamentRunnerGUI::ParticipantRankingModel::rowCount()']]]
+  ['participantkataroundwizardpage',['ParticipantKataRoundWizardPage',['../classTournamentRunnerGUI_1_1ParticipantKataRoundWizardPage.html#addeffbc92d02c33bfae24605cc5ca5ac',1,'TournamentRunnerGUI::ParticipantKataRoundWizardPage']]],
+  ['participantmodel',['ParticipantModel',['../classTournamentRunnerGUI_1_1ParticipantModel.html#a636812e9bae4c7001bbd217f0936f508',1,'TournamentRunnerGUI::ParticipantModel']]],
+  ['participantrankingmodel',['ParticipantRankingModel',['../classTournamentRunnerGUI_1_1ParticipantRankingModel.html#a7357d1bec0b742a30707f7589ca80b46',1,'TournamentRunnerGUI::ParticipantRankingModel']]],
+  ['persistency',['Persistency',['../classTournamentRunner_1_1Persistency.html#a7910be987782a6e9551017aef9ad83ac',1,'TournamentRunner::Persistency::Persistency()=default'],['../classTournamentRunner_1_1Persistency.html#a37d439352fae2bc945b6a53d79641d34',1,'TournamentRunner::Persistency::Persistency(std::string default_path)']]]
 ];

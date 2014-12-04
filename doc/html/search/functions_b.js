@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['on_5factionabout_5ftriggered',['on_actionAbout_triggered',['../classTournamentRunnerGUI_1_1MainWindow.html#a9af95ef80a5d421989de844e8113f3f3',1,'TournamentRunnerGUI::MainWindow']]],
-  ['on_5factionnewtournament_5ftriggered',['on_actionNewTournament_triggered',['../classTournamentRunnerGUI_1_1MainWindow.html#ab7eb97086932380cc9be56decfe21e7a',1,'TournamentRunnerGUI::MainWindow']]],
-  ['on_5factionopen_5ftriggered',['on_actionOpen_triggered',['../classTournamentRunnerGUI_1_1MainWindow.html#af6c161e166aa3c4abeaac32690d2027e',1,'TournamentRunnerGUI::MainWindow']]],
-  ['on_5factionsave_5ftriggered',['on_actionSave_triggered',['../classTournamentRunnerGUI_1_1MainWindow.html#ac3303ce352e45b431826858bd453c784',1,'TournamentRunnerGUI::MainWindow']]],
-  ['on_5factionsaveas_5ftriggered',['on_actionSaveAs_triggered',['../classTournamentRunnerGUI_1_1MainWindow.html#a877fa98b9bea2547e1e1fd1db7f94332',1,'TournamentRunnerGUI::MainWindow']]],
-  ['on_5fdate',['on_date',['../structTournamentRunner_1_1TournamentData.html#a1bf01046d8ee81b40928c2b6d0fa724a',1,'TournamentRunner::TournamentData::on_date(const Date &amp;date)'],['../structTournamentRunner_1_1TournamentData.html#a351f46b4e38ab5c58205b1b8c4901f59',1,'TournamentRunner::TournamentData::on_date(Date &amp;&amp;date) noexcept'],['../structTournamentRunner_1_1TournamentData.html#a565b3b41ce82afe08c7e347e8eb24935',1,'TournamentRunner::TournamentData::on_date(const std::string &amp;date_as_string)']]]
+  ['name',['name',['../classTournamentRunner_1_1Karateka.html#aa4913fc295cc335c54376a858717a338',1,'TournamentRunner::Karateka::name()'],['../classTournamentRunner_1_1Tournament.html#abc531f81be90622285267b0f6209ec5e',1,'TournamentRunner::Tournament::name()']]],
+  ['new_5ftournament',['new_tournament',['../classTournamentRunnerGUI_1_1NewTournamentDialog.html#af62c21e046ef6d3bd40a3727000cdf42',1,'TournamentRunnerGUI::NewTournamentDialog']]],
+  ['newtournamentdialog',['NewTournamentDialog',['../classTournamentRunnerGUI_1_1NewTournamentDialog.html#af3d8c53c01ce549826333c55504c9424',1,'TournamentRunnerGUI::NewTournamentDialog']]],
+  ['next_5fkata_5fround_5fslot',['next_kata_round_slot',['../classTournamentRunnerGUI_1_1MainWindow.html#aace17016a1708e349f0b1d574b10969d',1,'TournamentRunnerGUI::MainWindow']]],
+  ['next_5fkata_5ftournament',['next_kata_tournament',['../classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a1dfe39bc240414d19846d2cf926513e0',1,'TournamentRunnerGUI::KataRoundOverviewFrame']]],
+  ['next_5fround',['next_round',['../classTournamentRunner_1_1Karateka.html#a4326ffd5c71397d9671a98ef1e96163c',1,'TournamentRunner::Karateka::next_round()'],['../classTournamentRunner_1_1IKataPerformer.html#a390ab9637490009f3fa39b4d9a3a67f9',1,'TournamentRunner::IKataPerformer::next_round()']]],
+  ['number_5fof_5fparticipants',['number_of_participants',['../classTournamentRunner_1_1Tournament.html#ac4974e7fde00b78cc1385f0f60dbf458',1,'TournamentRunner::Tournament']]]
 ];

@@ -7,5 +7,6 @@ var searchData=
   ['next_5fkata_5fround_5fslot',['next_kata_round_slot',['../classTournamentRunnerGUI_1_1MainWindow.html#aace17016a1708e349f0b1d574b10969d',1,'TournamentRunnerGUI::MainWindow']]],
   ['next_5fkata_5ftournament',['next_kata_tournament',['../classTournamentRunnerGUI_1_1KataRoundOverviewFrame.html#a1dfe39bc240414d19846d2cf926513e0',1,'TournamentRunnerGUI::KataRoundOverviewFrame']]],
   ['next_5fround',['next_round',['../classTournamentRunner_1_1Karateka.html#a4326ffd5c71397d9671a98ef1e96163c',1,'TournamentRunner::Karateka::next_round()'],['../classTournamentRunner_1_1IKataPerformer.html#a390ab9637490009f3fa39b4d9a3a67f9',1,'TournamentRunner::IKataPerformer::next_round()']]],
+  ['number_5fof_5fkata_5fscores_5fper_5fround',['number_of_kata_scores_per_round',['../namespaceTournamentRunner.html#aab0e3f5c505fc933f05dac2df62f36f1',1,'TournamentRunner']]],
   ['number_5fof_5fparticipants',['number_of_participants',['../classTournamentRunner_1_1Tournament.html#ac4974e7fde00b78cc1385f0f60dbf458',1,'TournamentRunner::Tournament']]]
 ];

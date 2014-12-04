@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['get_5fanotated_5franked_5flist_5fof_5fparticipants',['get_anotated_ranked_list_of_participants',['../classTournamentRunner_1_1Tournament.html#a75ce4d0138ef09cf3526100c97509c13',1,'TournamentRunner::Tournament']]],
+  ['get_5fanotated_5franked_5flist_5fof_5fparticipants',['get_anotated_ranked_list_of_participants',['../classTournamentRunner_1_1Tournament.html#ab0f6b320be4502e9d62f611aa96d7c36',1,'TournamentRunner::Tournament']]],
   ['get_5fcurrent_5fround',['get_current_round',['../classTournamentRunner_1_1Tournament.html#ac0ab706579d620d23a9c12679687e8ff',1,'TournamentRunner::Tournament']]],
   ['get_5fmaximum_5fscore_5fof_5fcurrent_5fround',['get_maximum_score_of_current_round',['../classTournamentRunner_1_1Karateka.html#a19610e028f77ea81ad1e4deae4d53d3d',1,'TournamentRunner::Karateka::get_maximum_score_of_current_round()'],['../classTournamentRunner_1_1IKataPerformer.html#afe4f5393d4c968d484aefd22f755ddb9',1,'TournamentRunner::IKataPerformer::get_maximum_score_of_current_round()']]],
   ['get_5fmaximum_5fscore_5fof_5fround',['get_maximum_score_of_round',['../classTournamentRunner_1_1Karateka.html#a3b82488ebe276be1f6f341e4f6e4190c',1,'TournamentRunner::Karateka::get_maximum_score_of_round()'],['../classTournamentRunner_1_1IKataPerformer.html#afaab3b8894d2f3720146a4d913dc3796',1,'TournamentRunner::IKataPerformer::get_maximum_score_of_round()']]],

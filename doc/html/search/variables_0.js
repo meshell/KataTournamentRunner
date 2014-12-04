@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['round_5fconfiguration',['round_configuration',['../namespaceTournamentRunnerGUI.html#ae6d1f86d2a7e7971be1af63f03bf7445',1,'TournamentRunnerGUI']]]
+  ['max_5fnumber_5fof_5fkata_5frounds',['max_number_of_kata_rounds',['../namespaceTournamentRunner.html#acb8617f96da51aa6a221f86bc21f595c',1,'TournamentRunner']]]
 ];
