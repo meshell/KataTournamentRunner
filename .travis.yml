@@ -53,6 +53,6 @@ script:
 - if [ "${DOC}" = '1' ] ; then xvfb-run --server-args="-screen 0 1024x768x24" make
   doc ; fi
 after_success:
-- if [ "${COVERAGE}" = '1' ] ; then coveralls -E.*/externals/.* -E.*build.* -E.*/tests/.*;
+- if [ "${COVERAGE}" = '1' ] ; then coveralls -E.*/externals/.* -E/usr/include/.* -E.*/tests/.*;
   fi
 - if [ "${DOC}" = '1' ] ; then ./update-gh-pages.sh ; fi
