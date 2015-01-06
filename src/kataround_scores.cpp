@@ -19,11 +19,6 @@ void KataRoundScores::add_kata_score (float score)
     }
 }
 
-void KataRoundScores::add_deduction (float deduction)
-{
-    deduction_ = deduction;
-}
-
 float KataRoundScores::get_overall_score () const
 {
     const auto init_value = 0.0F;
@@ -46,16 +41,11 @@ float KataRoundScores::get_minimum_score () const
     return (*std::min_element(std::begin(kata_scores_), first_zero_entry));
 }
 
-std::vector<float> KataRoundScores::get_scores () const
+KataRoundScores::ScoreVectorType KataRoundScores::get_scores() const
 {
-    std::vector<float> scores;
+    ScoreVectorType scores;
     scores.assign(std::begin(kata_scores_), std::end(kata_scores_));
     return scores;
-}
-
-float KataRoundScores::get_deduction() const
-{
-    return deduction_;
 }
 
 } // namespace

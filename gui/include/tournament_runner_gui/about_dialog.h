@@ -31,7 +31,7 @@ public:
      * @param version Programm version
      * @param minor_version Minor version
      * @param patch_version Patch version
-     * @param parent Parent Widget
+     * @param parentWidget Parent Widget
      */
     AboutDialog (const QString& version,
                  const QString& minor_version,

@@ -21,7 +21,7 @@ namespace TournamentRunner
 /**
  * @brief Max number of kata rounds (3)
  */
-const uint8_t max_number_of_kata_rounds = 3;
+constexpr auto max_number_of_kata_rounds = 3;
 
 /**
  * @brief The Karateka class
@@ -44,6 +44,7 @@ public:
     Karateka& from_dojo (std::string&& dojo) noexcept;
     Karateka& with_rank (const std::string& rank);
     Karateka& with_rank (std::string&& rank) noexcept;
+
 
     /**
      * @brief set_startnumber
@@ -105,12 +106,13 @@ public:
      */
     float get_overall_score_of_current_round () const final;
 
+
     /**
      * @brief Return all scores of a round
      * @param round Which round ?
      * @return All scores of round round
      */
-    std::vector<float> get_scores (uint8_t round) const;
+    KataRoundScores::ScoreVectorType get_scores (uint8_t round) const;
 
     float get_deduction (uint8_t round) const;
 

@@ -121,7 +121,7 @@ float Karateka::get_overall_score_of_current_round () const
     return kata_scores_[current_kata_round_].get_overall_score();
 }
 
-std::vector<float> Karateka::get_scores (uint8_t round) const
+KataRoundScores::ScoreVectorType Karateka::get_scores(uint8_t round) const
 {
     return kata_scores_[round].get_scores();
 }

@@ -53,9 +53,9 @@ void MainWindow::on_actionSave_triggered ()
 void MainWindow::on_actionSaveAs_triggered ()
 {
     auto file_dialog = create_file_dialog(QFileDialog::AcceptSave);
-    connect(file_dialog, &QFileDialog::fileSelected, [=](QString filename)
+    connect(file_dialog, &QFileDialog::fileSelected, [this](QString filename)
     {
-        this->persistency_handler_.save_profile(*tournament_, filename.toStdString());
+        this->persistency_handler_.save_profile(*(this->tournament_), filename.toStdString());
     });
     file_dialog->show();
 }
@@ -63,7 +63,7 @@ void MainWindow::on_actionSaveAs_triggered ()
 void MainWindow::on_actionOpen_triggered ()
 {
     auto file_dialog = create_file_dialog(QFileDialog::AcceptOpen);
-    connect(file_dialog, &QFileDialog::fileSelected, [=](QString filename)
+    connect(file_dialog, &QFileDialog::fileSelected, [this](QString filename)
     {
         auto tournament = this->persistency_handler_.load_profile(filename.toStdString());
         this->tournament_ = std::make_shared<TournamentRunner::Tournament>(tournament);

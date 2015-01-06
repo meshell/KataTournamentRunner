@@ -16,7 +16,8 @@ class IPersistency
 {
 public:
 
-    virtual ~IPersistency() {};
+    virtual ~IPersistency () {};
+
 
     /**
      * @brief Save a profile
@@ -24,13 +25,13 @@ public:
      * @param to_file Path to the file it should be saved to
      */
     virtual void save_profile (const Tournament& tournament_to_save,
-                               const std::string& to_file) = 0;
+                               const std::string& to_file) const = 0;
 
     /**
      * @brief Save the profile to the file currently loaded.
      * @param tournament_to_save The tournament to save
      */
-    virtual void save_profile (const Tournament& tournament_to_save) = 0;
+    virtual void save_profile (const Tournament& tournament_to_save) const = 0;
 
     /**
      * @brief Load a profile

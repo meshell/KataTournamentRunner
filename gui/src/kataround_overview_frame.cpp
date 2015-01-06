@@ -50,7 +50,7 @@ KataRoundOverviewFrame::KataRoundOverviewFrame (TournamentRunner::Tournament& to
     }
     else
     {
-       ui_->FinishButton->hide();
+        ui_->FinishButton->hide();
     }
 
     ui_->RoundTableView->verticalHeader()->hide();

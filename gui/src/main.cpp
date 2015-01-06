@@ -13,6 +13,7 @@
 
 using ::TournamentRunnerGUI::MainWindow;
 using ::TournamentRunnerGUI::AboutDialog;
+using TournamentRunner::Tournament;
 
 int main (int argc, char* argv[])
 {
@@ -44,20 +45,19 @@ int main (int argc, char* argv[])
     const auto patch_version = QString::fromStdString(TournamentRunner::version_patch);
     AboutDialog about_dialog{version, minor_version, patch_version};
 
-    std::shared_ptr<TournamentRunner::Tournament> tournament{};
+    std::shared_ptr<Tournament> tournament{};
     TournamentRunner::Persistency persistency_handler{default_profile_path};
     try
     {
         // load default profile
-        const auto default_tournament = persistency_handler.load_profile();
-        tournament = std::make_shared<TournamentRunner::Tournament>(default_tournament);
+        tournament = std::make_shared<Tournament>(persistency_handler.load_profile());
     }
     catch (const std::ios_base::failure&)
     {
         // do nothing it is absolutely ok if file doesn't exist yet
     }
 
-    MainWindow main_window{about_dialog, persistency_handler, tournament};
+    MainWindow main_window{about_dialog, persistency_handler, std::move(tournament)};
     main_window.show();
 
     return main_application.exec();

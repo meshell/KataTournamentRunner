@@ -3,15 +3,13 @@
 #ifndef KATA_TOURNAMENT_RUNNER_CONFIG_H
 #define KATA_TOURNAMENT_RUNNER_CONFIG_H
 
-#include <string>
-
 namespace TournamentRunner
 {
 
 // the configured versions for the KataTournamentRunner
-const std::string version_major{"@kata_tournament_runner_VERSION_MAJOR@"};
-const std::string version_minor{"@kata_tournament_runner_VERSION_MINOR@"};
-const std::string version_patch{"@kata_tournament_runner_VERSION_PATCH@"};
+constexpr auto version_major = "@kata_tournament_runner_VERSION_MAJOR@";
+constexpr auto version_minor = "@kata_tournament_runner_VERSION_MINOR@";
+constexpr auto version_patch = "@kata_tournament_runner_VERSION_PATCH@";
 
 } // namespace TournamentRunner
 

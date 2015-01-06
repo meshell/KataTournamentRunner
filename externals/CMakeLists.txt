@@ -59,9 +59,9 @@ set(GMOCK_LIBRARY_DIRS ${INSTALL_DIR})
 ####################
 
 # Set boost minimal version in order to build cucumber-cpp with the same library versions
-set(BOOST_MIN_VERSION 1.56)
+set(BOOST_MIN_VERSION 1.57)
 set(Boost_Version ${BOOST_MIN_VERSION}.0)
-set(Boost_MD5 a744cf167b05d72335f27c88115f211d)
+set(Boost_MD5 1be49befbdd9a5ce9def2983ba3e7b76)
 
 # cucumber-cpp needs filesystem, date_time, chrono, thread, system, regex and program_options
 # library need date_time and serialization

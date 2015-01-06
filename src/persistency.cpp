@@ -19,7 +19,7 @@ Persistency::Persistency (std::string default_path):
 }
 
 void Persistency::save_profile (const Tournament& tournament_to_save,
-                                const std::string& to_file)
+                                const std::string& to_file) const
 {
     std::ofstream output_file{};
     output_file.exceptions(std::ifstream::failbit);
@@ -39,7 +39,7 @@ void Persistency::save_profile (const Tournament& tournament_to_save,
     output_archive & tournament_to_save;
 }
 
-void Persistency::save_profile (const Tournament& tournament_to_save)
+void Persistency::save_profile (const Tournament& tournament_to_save) const
 {
     save_profile(tournament_to_save, current_profile_file_);
 }

@@ -30,10 +30,11 @@ void AddParticipantDialog::on_addButton_accepted ()
     const auto name = ui_->ParticipantNameEdit->text().toStdString();
     const auto surname = ui_->ParticipantSurnameEdit->text().toStdString();
 
+    const auto year = static_cast<boost::gregorian::gregorian_calendar::year_type>(ui_->DateOfBirthEdit->date().year());
+    const auto month = static_cast<boost::gregorian::gregorian_calendar::month_type>(ui_->DateOfBirthEdit->date().month());
+    const auto day = static_cast<boost::gregorian::gregorian_calendar::day_type>(ui_->DateOfBirthEdit->date().day());
 
-    auto date_of_birth = boost::gregorian::date{ui_->DateOfBirthEdit->date().year(),
-                                                ui_->DateOfBirthEdit->date().month(),
-                                                ui_->DateOfBirthEdit->date().day()};
+    auto date_of_birth = boost::gregorian::date{year, month, day};
     const auto dojo = ui_->DojoEdit->text().toStdString();
     const auto rank = ui_->RankComboBox->currentText().toStdString();
 

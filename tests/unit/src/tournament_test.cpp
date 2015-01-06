@@ -1119,7 +1119,7 @@ TEST(A_Tournament, should_remove_participant_and_reassign_startnumbers_when_remo
     const auto no_of_participants_before_delete = 2u;
     EXPECT_EQ(no_of_participants_before_delete, testee.number_of_participants());
 
-    const auto startnumber_participant1 = 0;
+    const auto startnumber_participant1 = 0U;
     testee.remove_participant(startnumber_participant1);
     const auto no_of_participants_after_delete = 1u;
     EXPECT_EQ(no_of_participants_after_delete, testee.number_of_participants());

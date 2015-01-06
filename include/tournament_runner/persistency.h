@@ -35,12 +35,12 @@ public:
      * @exception std::ios_base::failure Thrown if the profile can not be saved.
     */
     void save_profile (const Tournament& tournament_to_save,
-                       const std::string& to_file) final;
+                       const std::string& to_file) const final;
     /**
      * @copydoc IPersistency::save_profile(const Tournament&)
      * @exception std::ios_base::failure Thrown if the profile can not be saved.
      */
-    void save_profile (const Tournament& tournament_to_save) final;
+    void save_profile (const Tournament& tournament_to_save) const final;
 
     /**
      * @copydoc IPersistency::load_profile(std::string)

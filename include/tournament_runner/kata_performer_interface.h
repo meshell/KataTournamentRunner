@@ -15,7 +15,7 @@ namespace TournamentRunner
 class IKataPerformer
 {
 public:
-    virtual ~IKataPerformer() = default;
+    virtual ~IKataPerformer () = default;
 
     /**
      * @brief Add a kata score for the current round

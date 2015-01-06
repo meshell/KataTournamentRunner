@@ -38,8 +38,14 @@ find_package(Boost COMPONENTS ${CORE_BOOST_LIBS} REQUIRED)
 set(${PROJECT_NAME}_EXT_LIBRARIES ${Boost_LIBRARIES})
 
 if (CMAKE_COMPILER_IS_GNUCXX)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -pedantic")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wextra -pedantic")
 endif(CMAKE_COMPILER_IS_GNUCXX)
+
+
+# To many errors with boost -> disable
+#if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+#  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded -Wno-disabled-macro-expansion")
+#endif()
 
 add_library(${@PROJECT_NAME@_LIBRARY}
 	STATIC  

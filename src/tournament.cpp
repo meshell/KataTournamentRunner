@@ -17,11 +17,6 @@ std::string Tournament::date_as_string () const
     return data_.date_.to_iso_extended_string();
 }
 
-Date Tournament::date () const
-{
-    return data_.date_;
-}
-
 void Tournament::add_participant (const Karateka& participant)
 {
     auto tmp_participant = participant;
@@ -29,16 +24,6 @@ void Tournament::add_participant (const Karateka& participant)
     participants_.push_back(tmp_participant);
 }
 
-size_t Tournament::number_of_participants() const
-{
-    return participants_.size();
-}
-
-
-Karateka& Tournament::get_participant (size_t start_number)
-{
-    return participants_.at(start_number);
-}
 
 void Tournament::remove_participant(size_t start_number)
 {
@@ -64,7 +49,7 @@ std::vector<Karateka> Tournament::get_ranked_list_of_participants () const
 
 std::vector<Tournament::RankAnnotatedParticipant> Tournament::get_anotated_ranked_list_of_participants() const
 {
-    auto ranklist = std::vector<std::pair<size_t, Karateka>>{};
+    auto ranklist = std::vector<Tournament::RankAnnotatedParticipant>{};
     auto rankedlist = get_ranked_list_of_participants();
     if(rankedlist.empty())
     {
@@ -76,10 +61,10 @@ std::vector<Tournament::RankAnnotatedParticipant> Tournament::get_anotated_ranke
     for (const auto& participant : rankedlist)
     {
         auto next_rank = ++rank;
-        const auto& last_ranked_participant = std::get<1>(ranklist.back());
+        const auto& last_ranked_participant = std::get<rank_annotated_participant_karateka_idx>(ranklist.back());
         if(kata_score_is_equal(last_ranked_participant, participant))
         {
-            next_rank = std::get<0>(ranklist.back());
+            next_rank = std::get<rank_annotated_participant_rank_idx>(ranklist.back());
         }
         ranklist.push_back(std::make_pair(next_rank, participant));
     }
@@ -114,7 +99,7 @@ std::vector<size_t> Tournament::get_list_of_participants_for_next_kata_round (si
     std::advance(iter, std::min(no_of_participants_for_round, ranked_list.size()));
     next_round_list.assign(std::begin(ranked_list), iter);
 
-    auto copy_if_predicate = [&next_round_list] (Karateka next)
+    const auto copy_if_predicate = [&next_round_list](Karateka next)
     {
         return kata_score_is_equal(next, next_round_list.back());
     };
@@ -128,7 +113,7 @@ std::vector<size_t> Tournament::get_list_of_participants_for_next_kata_round (si
     std::for_each(std::begin(next_round_list), std::end(next_round_list),
                   [&next_round_startnumbers_list](const Karateka& karateka)
                   {
-                      next_round_startnumbers_list.push_back(karateka.get_startnumber());
+                      next_round_startnumbers_list.emplace_back(karateka.get_startnumber());
                   });
 
     return next_round_startnumbers_list;

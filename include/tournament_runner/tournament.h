@@ -181,8 +181,8 @@ public:
 
     using RankAnnotatedParticipant = std::pair<size_t, Karateka>;
 
-    static const auto rank_annotated_participant_rank_idx = 0u;
-    static const auto rank_annotated_participant_karateka_idx = 1u;
+    static constexpr auto rank_annotated_participant_rank_idx = 0u;
+    static constexpr auto rank_annotated_participant_karateka_idx = 1u;
     /**
      * @brief Return a ranked list of participants anotated with the actual rank.
      * @return list of the (rank, participants) tuples ranked by the scores.
@@ -235,6 +235,11 @@ inline std::string Tournament::location () const
     return data_.location_;
 }
 
+inline Date Tournament::date () const
+{
+    return data_.date_;
+}
+
 inline void Tournament::update_data(const TournamentData& data)
 {
     data_ = data;
@@ -243,6 +248,17 @@ inline void Tournament::update_data(const TournamentData& data)
 inline int8_t Tournament::get_current_round() const
 {
     return current_kata_round_;
+}
+
+inline size_t Tournament::number_of_participants() const
+{
+    return participants_.size();
+}
+
+
+inline Karateka& Tournament::get_participant (size_t start_number)
+{
+    return participants_.at(start_number);
 }
 
 template<class Archive>

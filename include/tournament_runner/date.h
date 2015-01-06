@@ -12,7 +12,7 @@ namespace TournamentRunner
 {
 
 /**
- * @brief The Date class provides Date handling
+ * @brief The Date class provides Date handling based on the boost::gregorian::date
  * @remark Serializable
  */
 class Date
@@ -100,7 +100,7 @@ std::ostream& operator<<(std::ostream& os,
 
 template<class Archive>
 void Date::save (Archive& archive,
-                 const unsigned int version) const
+                 const unsigned int /*version*/) const
 {
     const auto date_as_string = boost::gregorian::to_iso_extended_string(date_);
     archive & date_as_string;
@@ -108,7 +108,7 @@ void Date::save (Archive& archive,
 
 template<class Archive>
 void Date::load (Archive& archive,
-                 const unsigned int version)
+                 const unsigned int /*version*/)
 {
     auto date_as_string = std::string{};
     archive & date_as_string;

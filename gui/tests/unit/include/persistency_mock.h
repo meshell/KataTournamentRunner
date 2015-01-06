@@ -15,10 +15,10 @@ class PersistencyMock:
     public TournamentRunner::IPersistency
 {
 public:
-    MOCK_METHOD2(save_profile, void (const TournamentRunner::Tournament& tournament_to_save,
-                                     const std::string& to_file));
+    MOCK_CONST_METHOD2(save_profile, void (const TournamentRunner::Tournament& tournament_to_save,
+                                           const std::string& to_file));
 
-    MOCK_METHOD1(save_profile, void (const TournamentRunner::Tournament& tournament_to_save));
+    MOCK_CONST_METHOD1(save_profile, void (const TournamentRunner::Tournament& tournament_to_save));
 
     MOCK_METHOD1(load_profile, TournamentRunner::Tournament (const std::string& from_file));
 

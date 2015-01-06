@@ -21,12 +21,14 @@ const uint8_t number_of_kata_scores_per_round = 5;
 class KataRoundScores
 {
 public:
+   using ScoreVectorType = std::vector<float>;
+
    void add_kata_score (float score);
    void add_deduction (float deduction);
    float get_overall_score () const;
    float get_maximum_score () const;
    float get_minimum_score () const;
-   std::vector<float> get_scores () const;
+   ScoreVectorType get_scores () const;
    float get_deduction () const;
 
 private:
@@ -42,6 +44,17 @@ private:
    float deduction_{};
    uint8_t current_score_{};
 };
+
+
+inline void KataRoundScores::add_deduction (float deduction)
+{
+    deduction_ = deduction;
+}
+
+inline float KataRoundScores::get_deduction() const
+{
+    return deduction_;
+}
 
 template<class Archive>
 void KataRoundScores::serialize (Archive& archive,
