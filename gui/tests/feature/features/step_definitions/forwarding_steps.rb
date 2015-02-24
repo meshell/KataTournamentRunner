@@ -15,3 +15,14 @@ When(/^I save the profile to "(.*?)"$/) do |file|
     step "I choose the \"Save As\" menu entry"
     step "save the profile to \"#{file}\""
 end
+
+When(/^I enter the following tournament data in the "(.*?)" dialog:$/) do |dialog, table|
+    step "I enter the \"#{dialog}\" dialog"
+    step "I enter the following tournament data:", table
+end
+
+
+When(/^I enter the following participant data in the "(.*?)" dialog:$/) do |dialog, table|
+  step "I enter the \"#{dialog}\" dialog"
+  step "I enter the following participant data:", table
+end

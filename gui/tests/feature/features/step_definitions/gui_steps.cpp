@@ -35,9 +35,11 @@ using ::TournamentRunner::TournamentData;
 using ::TournamentRunner::Persistency;
 using ::TournamentRunner::Date;
 using ::TournamentRunner::Karateka;
+
 using ::testing::StartsWith;
 using ::testing::NotNull;
 using ::testing::Eq;
+using ::testing::StrEq;
 using ::testing::FloatEq;
 
 
@@ -60,6 +62,8 @@ static const std::map<std::string, std::string> dialog_map
     {"About", "AboutDialog"}
     ,{"New Tournament", "NewTournamentDialog"}
     ,{"Edit Tournament", "EditTournamentDialog"}
+    ,{"Add Participant", "AddParticipantDialog"}
+    ,{"Edit Participant", "EditParticipantDialog"}
 };
 
 static const std::map<std::string, std::string> button_map
@@ -334,7 +338,7 @@ WHEN("^I choose the \"([^\"]*)\" menu entry$")
 
     auto action = get_action(*(context->mainwindow), action_string);
 
-    ASSERT_TRUE(action);
+    ASSERT_THAT(action, NotNull());
 
     action->trigger();
 }
@@ -346,7 +350,7 @@ WHEN("^I press the \"([^\"]*)\" button$")
 
     auto* button = get_button(*(context->mainwindow), button_string);
 
-    ASSERT_TRUE(button);
+    ASSERT_THAT(button, NotNull());
 
     button->click();
 }
@@ -358,7 +362,7 @@ WHEN("^save the profile to \"([^\"]*)\"$")
     context->profile_file = file_path;
 
     auto* file_dialog = context->mainwindow->findChild<QFileDialog*>();
-    ASSERT_TRUE(file_dialog);
+    ASSERT_THAT(file_dialog, NotNull());
     file_dialog->fileSelected(QString::fromStdString(file_path));
     file_dialog->close();
 }
@@ -369,11 +373,11 @@ WHEN("^I load the profile \"([^\"]*)\"$")
     ScenarioScope<gui_context> context;
     context->profile_file = file_path;
     auto* open_action = get_action(*(context->mainwindow), "Open");
-    ASSERT_TRUE(open_action);
+    ASSERT_THAT(open_action, NotNull());
     open_action->trigger();
 
     auto* file_dialog = context->mainwindow->findChild<QFileDialog*>();
-    ASSERT_TRUE(file_dialog);
+    ASSERT_THAT(file_dialog, NotNull());
     file_dialog->fileSelected(QString::fromStdString(file_path));
     file_dialog->close();
 }
@@ -386,16 +390,21 @@ WHEN("^the startpage for the second round is shown$")
     context->tournament->start_next_kata_round();
 }
 
-WHEN("^I enter the following tournament data in the \"([^\"]*)\" dialog:$")
+WHEN("I enter the \"([^\"]*)\" dialog")
 {
     REGEX_PARAM(std::string, dialog_name);
     ScenarioScope<gui_context> context;
 
     auto* dialog = get_dialog(*(context->mainwindow), dialog_name);
 
-    ASSERT_TRUE(dialog);
+    ASSERT_THAT(dialog, NotNull());
 
     context->current_dialog = dialog;
+}
+
+WHEN("^I enter the following tournament data:$")
+{
+    ScenarioScope<gui_context> context;
 
     TABLE_PARAM(tournament_param);
     const auto& tournament_table = tournament_param.hashes();
@@ -427,12 +436,6 @@ WHEN("^I enter the following tournament data in the \"([^\"]*)\" dialog:$")
 WHEN("^I enter the following participant data:$")
 {
     ScenarioScope<gui_context> context;
-
-    auto* add_participant_dialog = context->mainwindow->findChild<QDialog*>("AddParticipantDialog");
-
-    ASSERT_TRUE(add_participant_dialog);
-
-    context->current_dialog = add_participant_dialog;
 
     TABLE_PARAM(participant_param);
     const auto& participant_table = participant_param.hashes();
@@ -487,6 +490,23 @@ WHEN("^I select the (\\d+)(?:nd|st|rd|th) row$")
     context->current_widget = participantTable;
 }
 
+WHEN("^I doubleclick the (\\d+)(?:nd|st|rd|th) row$") {
+    ScenarioScope<gui_context> context;
+    REGEX_PARAM(int, row);
+
+    auto* participantTable = context->mainwindow->findChild<QTableView*>("ParticipantTableView");
+
+    participantTable->selectRow(row-1);
+
+    const auto xPos = participantTable->columnViewportPosition(2) + 5;
+    const auto yPos = participantTable->rowViewportPosition(row-1) + 10;
+
+    auto* viewport = participantTable->viewport();
+
+    //QTest::mouseClick(viewport, Qt::LeftButton, NULL, QPoint(xPos, yPos));
+    QTest::mouseDClick(viewport, Qt::LeftButton, NULL, QPoint(xPos, yPos));
+}
+
 WHEN("^I press the \"([^\"]*)\" key$")
 {
     ScenarioScope<gui_context> context;
@@ -533,7 +553,7 @@ WHEN("^I press the \"([^\"]*)\" the \"([^\"]*)\" and the \"([^\"]*)\" key togeth
 THEN("^the \"About\" dialog is shown$")
 {
     ScenarioScope<gui_context> context;
-    EXPECT_TRUE(QTest::qWaitForWindowExposed(&(context->about_dialog)));
+    ASSERT_TRUE(QTest::qWaitForWindowExposed(&(context->about_dialog)));
 }
 
 THEN("^the mainscreen shows the following tournament:$")
@@ -546,27 +566,24 @@ THEN("^the mainscreen shows the following tournament:$")
     for (const auto& table_row : tournament_table)
     {
         const auto* tournament_name = context->mainwindow->findChild<QLabel*>("TournamentName");
-        EXPECT_TRUE(tournament_name != nullptr);
+        EXPECT_THAT(tournament_name, NotNull());
         if (tournament_name != nullptr)
         {
-            const auto name = std::string(table_row.at("name"));
-            EXPECT_EQ(name, tournament_name->text().toStdString());
+            EXPECT_THAT(tournament_name->text().toStdString(), StrEq(std::string(table_row.at("name"))));
         }
 
         const auto* tournament_date = context->mainwindow->findChild<QLabel*>("TournamentDate");
-        EXPECT_TRUE(tournament_date != nullptr);
+        EXPECT_THAT(tournament_date, NotNull());
         if (tournament_date != nullptr)
         {
-            const auto date = std::string(table_row.at("date"));
-            EXPECT_EQ(date, tournament_date->text().toStdString());
+            EXPECT_THAT(tournament_date->text().toStdString(), StrEq(std::string(table_row.at("date"))));
         }
 
         const auto* tournament_location = context->mainwindow->findChild<QLabel*>("TournamentLocation");
-        EXPECT_TRUE(tournament_location != nullptr);
+        EXPECT_THAT(tournament_location, NotNull());
         if (tournament_location != nullptr)
         {
-            const auto location = std::string(table_row.at("location"));
-            EXPECT_EQ(location, tournament_location->text().toStdString());
+            EXPECT_THAT(tournament_location->text().toStdString(), StrEq(std::string(table_row.at("location"))));
         }
     }
 }
@@ -584,19 +601,19 @@ THEN("^the participant list contains the following participants:$")
 
         auto* model = participantTable->model();
         const auto name = model->data(model->index(index, 0)).toString().toStdString();
-        ASSERT_EQ(std::string(table_row.at("name")), name);
+        EXPECT_THAT(name, StrEq(std::string(table_row.at("name"))));
 
         const auto surname = model->data(model->index(index, 1)).toString().toStdString();
-        ASSERT_EQ(std::string(table_row.at("surname")), surname);
+        EXPECT_THAT(surname, StrEq(std::string(table_row.at("surname"))));
 
         const auto date_of_birth = model->data(model->index(index, 2)).toString().toStdString();
-        ASSERT_EQ(std::string(table_row.at("date of birth")), date_of_birth);
+        EXPECT_THAT(date_of_birth, StrEq(std::string(table_row.at("date of birth"))));
 
         const auto dojo = model->data(model->index(index, 3)).toString().toStdString();
-        ASSERT_EQ(std::string(table_row.at("dojo")), dojo);
+        EXPECT_THAT(dojo, StrEq(std::string(table_row.at("dojo"))));
 
         const auto rank = model->data(model->index(index, 4)).toString().toStdString();
-        ASSERT_EQ(std::string(table_row.at("rank")), rank);
+        EXPECT_THAT(rank, StrEq(std::string(table_row.at("rank"))));
 
         index++;
     }
@@ -658,34 +675,33 @@ THEN("^the following table is shown on the finalpage:$")
     for (const auto& table_row : participant_table)
     {
         const auto rank = model->data(model->index(index, 0)).toInt();
-        ASSERT_THAT(rank, Eq(std::stoi(table_row.at("rank"))));
+        EXPECT_THAT(rank, Eq(std::stoi(table_row.at("rank"))));
         const auto name = model->data(model->index(index, 1)).toString().toStdString();
-        ASSERT_THAT(name, StartsWith(std::string(table_row.at("name"))));
+        EXPECT_THAT(name, StartsWith(std::string(table_row.at("name"))));
         const auto overall_1 = model->data(model->index(index, 2)).toFloat();
-        ASSERT_THAT(overall_1, FloatEq(std::stof(table_row.at("overall 1")))) << name;
+        EXPECT_THAT(overall_1, FloatEq(std::stof(table_row.at("overall 1")))) << name;
         const auto min_1 = model->data(model->index(index, 3)).toFloat();
-        ASSERT_THAT(min_1, FloatEq(std::stof(table_row.at("min 1")))) << name;
+        EXPECT_THAT(min_1, FloatEq(std::stof(table_row.at("min 1")))) << name;
         const auto max_1 = model->data(model->index(index, 4)).toFloat();
-        ASSERT_THAT(max_1, FloatEq(std::stof(table_row.at("max 1")))) << name;
+        EXPECT_THAT(max_1, FloatEq(std::stof(table_row.at("max 1")))) << name;
         if (!table_row.at("overall 2").empty())
         {
             const auto overall_2 = model->data(model->index(index, 5)).toFloat();
-            ASSERT_THAT(overall_2, FloatEq(std::stof(table_row.at("overall 2")))) << name;
+            EXPECT_THAT(overall_2, FloatEq(std::stof(table_row.at("overall 2")))) << name;
             const auto min_2 = model->data(model->index(index, 6)).toFloat();
-            ASSERT_THAT(min_2, FloatEq(std::stof(table_row.at("min 2")))) << name;
+            EXPECT_THAT(min_2, FloatEq(std::stof(table_row.at("min 2")))) << name;
             const auto max_2 = model->data(model->index(index, 7)).toFloat();
-            ASSERT_THAT(max_2, FloatEq(std::stof(table_row.at("max 2")))) << name;
+            EXPECT_THAT(max_2, FloatEq(std::stof(table_row.at("max 2")))) << name;
             if (!table_row.at("overall 3").empty())
             {
                 const auto overall_3 = model->data(model->index(index, 8)).toFloat();
-                ASSERT_THAT(overall_3, FloatEq(std::stof(table_row.at("overall 3")))) << name;
+                EXPECT_THAT(overall_3, FloatEq(std::stof(table_row.at("overall 3")))) << name;
                 const auto min_3 = model->data(model->index(index, 9)).toFloat();
-                ASSERT_THAT(min_3, FloatEq(std::stof(table_row.at("min 3")))) << name;
+                EXPECT_THAT(min_3, FloatEq(std::stof(table_row.at("min 3")))) << name;
                 const auto max_3 = model->data(model->index(index, 10)).toFloat();
-                ASSERT_THAT(max_3, FloatEq(std::stof(table_row.at("max 3")))) << name;
+                EXPECT_THAT(max_3, FloatEq(std::stof(table_row.at("max 3")))) << name;
             }
         }
-
         index++;
     }
 }

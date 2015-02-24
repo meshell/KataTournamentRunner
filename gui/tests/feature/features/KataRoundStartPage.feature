@@ -3,7 +3,7 @@
 Feature: Kata Round Start Page
   As a Kata tournament executor
   I want to have a startpage for each new kata round
-  In order to have an overview on the startlist
+  In order to have an overview of the startlist for the round
 
 Scenario: First round start page
 

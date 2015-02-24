@@ -63,7 +63,7 @@ QVariant ParticipantModel::data (const QModelIndex& index,
             }
             case index_of_rank:
             {
-                return QString::fromStdString(participant.rank());
+                return QString::fromStdString(participant.grade());
             }
             default:
             {
