@@ -61,13 +61,13 @@ Karateka& Karateka::from_dojo (std::string&& dojo) noexcept
 
 Karateka& Karateka::with_rank (const std::string& rank)
 {
-    rank_ = rank;
+    grade_ = rank;
     return *this;
 }
 
 Karateka& Karateka::with_rank (std::string&& rank) noexcept
 {
-    rank_ = std::move(rank);
+    grade_ = std::move(rank);
     return *this;
 }
 

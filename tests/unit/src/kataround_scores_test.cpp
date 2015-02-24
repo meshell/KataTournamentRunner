@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
-#include <boost/archive/text_oarchive.hpp>
-#include <boost/archive/text_iarchive.hpp>
+#include <sstream>
+#include <boost/archive/xml_oarchive.hpp>
+#include <boost/archive/xml_iarchive.hpp>
+#include <boost/serialization/nvp.hpp>
 #include "tournament_runner/kataround_scores.h"
 
 namespace
@@ -158,11 +160,50 @@ TEST(The_KataRoundScores, should_have_the_sum_of_all_scores_except_minimum_and_m
     TournamentRunner::KataRoundScores testee{};
     const auto score_1 = 5.0F;
     const auto score_2 = 5.1F;
-    const auto score_3 = 5.2F;
+    const auto score_3 = 5.1F;
+    const auto score_4 = 5.2F;
     testee.add_kata_score(score_1);
     testee.add_kata_score(score_2);
     testee.add_kata_score(score_3);
-    ASSERT_FLOAT_EQ(score_2, testee.get_overall_score());
+    testee.add_kata_score(score_4);
+    ASSERT_FLOAT_EQ(score_2 + score_3, testee.get_overall_score());
+}
+
+TEST(A_serialized_KataRoundScores, should_persist_the_kata_scores)
+{
+    TournamentRunner::KataRoundScores testee{};
+
+    const auto minimum_score = 5.0F;
+    const auto score_2 = 5.1F;
+    const auto score_3 = 5.2F;
+    const auto score_4 = 5.3F;
+    const auto maximum_score = 5.4F;
+    testee.add_kata_score(minimum_score);
+    testee.add_kata_score(score_2);
+    testee.add_kata_score(score_3);
+    testee.add_kata_score(score_4);
+    testee.add_kata_score(maximum_score);
+
+    std::stringbuf buffer{};
+    std::ostream output_stream{&buffer};
+    boost::archive::xml_oarchive out_archive{output_stream};
+
+    const auto xml_element_name = "Scores";
+    out_archive & make_nvp(xml_element_name, testee);
+
+    auto deserialized_kataroundscores = TournamentRunner::KataRoundScores{};
+
+    std::istream inputStream{&buffer};
+    boost::archive::xml_iarchive in_archive{inputStream};
+
+    in_archive & make_nvp(xml_element_name, deserialized_kataroundscores);
+
+    const auto overall_score = score_2 + score_3 + score_4;
+
+    ASSERT_FLOAT_EQ(minimum_score, deserialized_kataroundscores.get_minimum_score());
+    ASSERT_FLOAT_EQ(maximum_score, deserialized_kataroundscores.get_maximum_score());
+    ASSERT_FLOAT_EQ(overall_score, deserialized_kataroundscores.get_overall_score());
+
 }
 
 } //namespace

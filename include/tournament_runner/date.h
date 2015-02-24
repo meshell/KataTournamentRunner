@@ -5,8 +5,11 @@
 #include <ostream>
 
 #include <boost/date_time/gregorian/gregorian.hpp>
+#include <boost/serialization/nvp.hpp>
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/split_member.hpp>
+
+using boost::serialization::make_nvp;
 
 namespace TournamentRunner
 {
@@ -103,7 +106,7 @@ void Date::save (Archive& archive,
                  const unsigned int /*version*/) const
 {
     const auto date_as_string = boost::gregorian::to_iso_extended_string(date_);
-    archive & date_as_string;
+    archive & make_nvp("Date", date_as_string);
 }
 
 template<class Archive>
@@ -111,7 +114,7 @@ void Date::load (Archive& archive,
                  const unsigned int /*version*/)
 {
     auto date_as_string = std::string{};
-    archive & date_as_string;
+    archive & make_nvp("Date", date_as_string);
     date_ = boost::gregorian::from_simple_string(date_as_string);
 }
 

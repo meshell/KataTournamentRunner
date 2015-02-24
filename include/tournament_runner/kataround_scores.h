@@ -6,9 +6,11 @@
 #include <array>
 
 #include <boost/serialization/access.hpp>
+#include <boost/serialization/nvp.hpp>
 #include <boost/serialization/array.hpp>
 
 using boost::array;
+using boost::serialization::make_nvp;
 
 namespace TournamentRunner
 {
@@ -60,9 +62,9 @@ template<class Archive>
 void KataRoundScores::serialize (Archive& archive,
                           const unsigned int)
 {
-    archive & kata_scores_;
-    archive & deduction_;
-    archive & current_score_;
+    archive & make_nvp("Scores", kata_scores_);
+    archive & make_nvp("Deduction", deduction_);
+    archive & make_nvp("CurrentScore", current_score_);
 }
 
 } //namespace TournamentRunner

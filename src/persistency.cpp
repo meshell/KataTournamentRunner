@@ -2,16 +2,23 @@
 
 #include <fstream>
 
-#include <boost/archive/text_iarchive.hpp>
-#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/xml_iarchive.hpp>
+#include <boost/archive/xml_oarchive.hpp>
+#include <boost/serialization/nvp.hpp>
 #include <boost/filesystem.hpp>
 
 #include "tournament_runner/tournament.h"
 
-using boost::filesystem::exists;
+namespace bf = boost::filesystem;
+namespace ba = boost::archive;
+
+using boost::serialization::make_nvp;
 
 namespace TournamentRunner
 {
+
+static const auto serialization_xml_element_name = "Tournament";
+
 
 Persistency::Persistency (std::string default_path):
     current_profile_file_{std::move(default_path)}
@@ -24,19 +31,19 @@ void Persistency::save_profile (const Tournament& tournament_to_save,
     std::ofstream output_file{};
     output_file.exceptions(std::ifstream::failbit);
 
-    const auto output_file_path = boost::filesystem::path{to_file};
-    const auto parent_directory = boost::filesystem::path{output_file_path.parent_path()};
+    const auto output_file_path = bf::path{to_file};
+    const auto parent_directory = bf::path{output_file_path.parent_path()};
 
     if (!exists(parent_directory))
     {
-        boost::filesystem::create_directories(parent_directory);
+        bf::create_directories(parent_directory);
     }
 
     output_file.open(to_file);
 
-    boost::archive::text_oarchive output_archive{output_file};
+    ba::xml_oarchive output_archive{output_file};
 
-    output_archive & tournament_to_save;
+    output_archive & make_nvp(serialization_xml_element_name, tournament_to_save);
 }
 
 void Persistency::save_profile (const Tournament& tournament_to_save) const
@@ -59,9 +66,9 @@ Tournament Persistency::load_profile ()
 
     auto tournament = Tournament{};
 
-    boost::archive::text_iarchive input_archive{input_file};
+    ba::xml_iarchive input_archive{input_file};
 
-    input_archive & tournament;
+    input_archive & make_nvp(serialization_xml_element_name, tournament);
 
     return tournament;
 }

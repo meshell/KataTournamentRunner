@@ -4,11 +4,14 @@
 #include <cstdint>
 
 #include <gtest/gtest.h>
-#include <boost/archive/text_oarchive.hpp>
-#include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/xml_oarchive.hpp>
+#include <boost/archive/xml_iarchive.hpp>
+#include <boost/serialization/nvp.hpp>
 
 #include "tournament_runner/tournament.h"
 #include "tournament_runner/karateka.h"
+
+using boost::serialization::make_nvp;
 
 using ::TournamentRunner::Tournament;
 using ::TournamentRunner::Karateka;
@@ -711,7 +714,7 @@ TEST(A_serialized_Tournament, should_persist_the_tournament_data)
 {
     std::stringbuf buffer{};
     std::ostream output_stream{&buffer};
-    boost::archive::text_oarchive out_archive{output_stream};
+    boost::archive::xml_oarchive out_archive{output_stream};
 
 
     std::string tournament_name{"Schweizermeisterschaft"};
@@ -726,15 +729,16 @@ TEST(A_serialized_Tournament, should_persist_the_tournament_data)
                       .at_location(tournament_location)
                      };
 
-    out_archive & testee;
+    const auto xml_element_name = "Tournament";
+    out_archive & make_nvp(xml_element_name, testee);
 
     std::istream inputStream{&buffer};
 
-    boost::archive::text_iarchive in_archive{inputStream};
+    boost::archive::xml_iarchive in_archive{inputStream};
 
     Tournament deserialized_tournament{};
 
-    in_archive & deserialized_tournament;
+    in_archive & make_nvp(xml_element_name, deserialized_tournament);
 
     EXPECT_EQ(tournament_name, deserialized_tournament.name());
     EXPECT_EQ(tournament_date, deserialized_tournament.date());
@@ -745,7 +749,7 @@ TEST(A_serialized_Tournament, should_persist_the_next_round)
 {
     std::stringbuf buffer{};
     std::ostream output_stream{&buffer};
-    boost::archive::text_oarchive out_archive{output_stream};
+    boost::archive::xml_oarchive out_archive{output_stream};
 
     Tournament testee{TournamentData()
                       .with_name("Schweizermeisterschaft")
@@ -756,15 +760,16 @@ TEST(A_serialized_Tournament, should_persist_the_next_round)
     auto next_round = testee.start_next_kata_round();
     next_round = testee.start_next_kata_round();
 
-    out_archive & testee;
+    const auto xml_element_name = "Tournament";
+    out_archive & make_nvp(xml_element_name, testee);
 
     std::istream inputStream{&buffer};
 
-    boost::archive::text_iarchive in_archive{inputStream};
+    boost::archive::xml_iarchive in_archive{inputStream};
 
     Tournament deserialized_tournament{};
 
-    in_archive & deserialized_tournament;
+    in_archive & make_nvp(xml_element_name, deserialized_tournament);
 
     const auto expected_next_round = next_round + 1;
 
@@ -775,7 +780,7 @@ TEST(A_serialized_Tournament, should_persist_the_participant_list)
 {
     std::stringbuf buffer{};
     std::ostream output_stream{&buffer};
-    boost::archive::text_oarchive out_archive{output_stream};
+    boost::archive::xml_oarchive out_archive{output_stream};
 
     Tournament testee{};
 
@@ -797,15 +802,16 @@ TEST(A_serialized_Tournament, should_persist_the_participant_list)
 
     testee.add_participant(participant2);
 
-    out_archive & testee;
+    const auto xml_element_name = "Tournament";
+    out_archive & make_nvp(xml_element_name, testee);
 
     std::istream inputStream{&buffer};
 
-    boost::archive::text_iarchive in_archive{inputStream};
+    boost::archive::xml_iarchive in_archive{inputStream};
 
     Tournament deserialized_tournament{};
 
-    in_archive& deserialized_tournament;
+    in_archive & make_nvp(xml_element_name, deserialized_tournament);
 
     const auto expected_number_of_participants = 2U;
 
@@ -815,13 +821,13 @@ TEST(A_serialized_Tournament, should_persist_the_participant_list)
     EXPECT_EQ(testee.get_participant(0).surname(), deserialized_tournament.get_participant(0).surname());
     EXPECT_EQ(testee.get_participant(0).date_of_birth_as_string(), deserialized_tournament.get_participant(0).date_of_birth_as_string());
     EXPECT_EQ(testee.get_participant(0).dojo(), deserialized_tournament.get_participant(0).dojo());
-    EXPECT_EQ(testee.get_participant(0).rank(), deserialized_tournament.get_participant(0).rank());
+    EXPECT_EQ(testee.get_participant(0).grade(), deserialized_tournament.get_participant(0).grade());
 
     EXPECT_EQ(testee.get_participant(1).name(), deserialized_tournament.get_participant(1).name());
     EXPECT_EQ(testee.get_participant(1).surname(), deserialized_tournament.get_participant(1).surname());
     EXPECT_EQ(testee.get_participant(1).date_of_birth_as_string(), deserialized_tournament.get_participant(1).date_of_birth_as_string());
     EXPECT_EQ(testee.get_participant(1).dojo(), deserialized_tournament.get_participant(1).dojo());
-    EXPECT_EQ(testee.get_participant(1).rank(), deserialized_tournament.get_participant(1).rank());
+    EXPECT_EQ(testee.get_participant(1).grade(), deserialized_tournament.get_participant(1).grade());
 }
 
 TEST(A_Tournament, should_all_participants_move_to_the_next_round_when_starting_next_round)

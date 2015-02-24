@@ -8,12 +8,14 @@
 
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/array.hpp>
+#include <boost/serialization/nvp.hpp>
 
 #include "tournament_runner/date.h"
 #include "tournament_runner/kata_performer_interface.h"
 #include "tournament_runner/kataround_scores.h"
 
 using boost::array;
+using boost::serialization::make_nvp;
 
 namespace TournamentRunner
 {
@@ -42,8 +44,8 @@ public:
     Karateka& with_birthdate (const std::string& date_of_birth);
     Karateka& from_dojo (const std::string& dojo);
     Karateka& from_dojo (std::string&& dojo) noexcept;
-    Karateka& with_rank (const std::string& rank);
-    Karateka& with_rank (std::string&& rank) noexcept;
+    Karateka& with_rank (const std::string& grade);
+    Karateka& with_rank (std::string&& grade) noexcept;
 
 
     /**
@@ -148,7 +150,7 @@ public:
      * @brief Return the rank of the Karateka
      * @return The karateka's rank
      */
-    std::string rank () const;
+    std::string grade () const;
 
 private:
 
@@ -164,7 +166,7 @@ private:
     std::string surname_{};
     Date date_of_birth_{};
     std::string dojo_{};
-    std::string rank_{};
+    std::string grade_{};
     array<KataRoundScores, max_number_of_kata_rounds> kata_scores_;
     size_t start_number_{};
     uint8_t current_kata_round_{};
@@ -228,23 +230,23 @@ inline std::string Karateka::dojo () const
     return dojo_;
 }
 
-inline std::string Karateka::rank () const
+inline std::string Karateka::grade () const
 {
-    return rank_;
+    return grade_;
 }
 
 template<class Archive>
 void Karateka::serialize (Archive& archive,
                           const unsigned int)
 {
-    archive & name_;
-    archive & surname_;
-    archive & date_of_birth_;
-    archive & dojo_;
-    archive & rank_;
-    archive & kata_scores_;
-    archive & start_number_;
-    archive & current_kata_round_;
+    archive & make_nvp("Name", name_);
+    archive & make_nvp("Surname", surname_);
+    archive & make_nvp("DateOfBirth", date_of_birth_);
+    archive & make_nvp("Dojo", dojo_);
+    archive & make_nvp("Grade", grade_);
+    archive & make_nvp("Scores", kata_scores_);
+    archive & make_nvp("Startnumber", start_number_);
+    archive & make_nvp("CurrentKataRound", current_kata_round_);
 }
 
 } //namespace TournamentRunner

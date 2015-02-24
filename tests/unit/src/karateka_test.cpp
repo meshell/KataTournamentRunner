@@ -2,9 +2,12 @@
 
 #include <gtest/gtest.h>
 #include <boost/date_time/gregorian/gregorian.hpp>
-#include <boost/archive/text_oarchive.hpp>
-#include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/xml_iarchive.hpp>
+#include <boost/archive/xml_oarchive.hpp>
+#include <boost/serialization/nvp.hpp>
 #include "tournament_runner/karateka.h"
+
+using boost::serialization::make_nvp;
 
 namespace
 {
@@ -359,22 +362,23 @@ TEST(A_serialized_Karateka, should_persists_the_data)
 
     std::stringbuf buffer{};
     std::ostream output_stream{&buffer};
-    boost::archive::text_oarchive out_archive{output_stream};
+    boost::archive::xml_oarchive out_archive{output_stream};
 
-    out_archive & testee;
+    const auto xml_element_name = "Karateka";
+    out_archive & make_nvp(xml_element_name, testee);
 
     auto deserialized_karateka = TournamentRunner::Karateka{};
 
     std::istream inputStream{&buffer};
-    boost::archive::text_iarchive in_archive{inputStream};
+    boost::archive::xml_iarchive in_archive{inputStream};
 
-    in_archive & deserialized_karateka;
+    in_archive & make_nvp(xml_element_name, deserialized_karateka);
 
     ASSERT_EQ(testee.name(), deserialized_karateka.name());
     ASSERT_EQ(testee.surname(), deserialized_karateka.surname());
     ASSERT_EQ(testee.date_of_birth_as_string(), deserialized_karateka.date_of_birth_as_string());
     ASSERT_EQ(testee.dojo(), deserialized_karateka.dojo());
-    ASSERT_EQ(testee.rank(), deserialized_karateka.rank());
+    ASSERT_EQ(testee.grade(), deserialized_karateka.grade());
     ASSERT_EQ(start_number, deserialized_karateka.get_startnumber());
 }
 
@@ -386,16 +390,17 @@ TEST(A_serialized_Karateka, should_persist_the_current_kata_round)
 
     std::stringbuf buffer{};
     std::ostream output_stream{&buffer};
-    boost::archive::text_oarchive out_archive{output_stream};
+    boost::archive::xml_oarchive out_archive{output_stream};
 
-    out_archive & testee;
+    const auto xml_element_name = "Karateka";
+    out_archive & make_nvp(xml_element_name, testee);
 
     auto deserialized_karateka = TournamentRunner::Karateka{};
 
     std::istream inputStream{&buffer};
-    boost::archive::text_iarchive in_archive{inputStream};
+    boost::archive::xml_iarchive in_archive{inputStream};
 
-    in_archive & deserialized_karateka;
+    in_archive & make_nvp(xml_element_name, deserialized_karateka);
 
     const auto expected_next_round = current_round + 1;
 
@@ -427,16 +432,17 @@ TEST(A_serialized_Karateka, should_persist_the_kata_scores)
 
     std::stringbuf buffer{};
     std::ostream output_stream{&buffer};
-    boost::archive::text_oarchive out_archive{output_stream};
+    boost::archive::xml_oarchive out_archive{output_stream};
 
-    out_archive & testee;
+    const auto xml_element_name = "Karateka";
+    out_archive & make_nvp(xml_element_name, testee);
 
     auto deserialized_karateka = TournamentRunner::Karateka{};
 
     std::istream inputStream{&buffer};
-    boost::archive::text_iarchive in_archive{inputStream};
+    boost::archive::xml_iarchive in_archive{inputStream};
 
-    in_archive & deserialized_karateka;
+    in_archive & make_nvp(xml_element_name,deserialized_karateka);
 
     const auto overall_score_first_round = score_2 + score_3 + score_4;
 
@@ -482,16 +488,17 @@ TEST(A_serialized_Karateka, should_persist_the_kata_scores_and_deductions)
 
     std::stringbuf buffer{};
     std::ostream output_stream{&buffer};
-    boost::archive::text_oarchive out_archive{output_stream};
+    boost::archive::xml_oarchive out_archive{output_stream};
 
-    out_archive & testee;
+    const auto xml_element_name = "Karateka";
+    out_archive & make_nvp(xml_element_name, testee);
 
     auto deserialized_karateka = TournamentRunner::Karateka{};
 
     std::istream inputStream{&buffer};
-    boost::archive::text_iarchive in_archive{inputStream};
+    boost::archive::xml_iarchive in_archive{inputStream};
 
-    in_archive & deserialized_karateka;
+    in_archive & make_nvp(xml_element_name, deserialized_karateka);
 
     const auto overall_score_first_round = score_2 + score_3 + score_4 - deduction_round1;
 

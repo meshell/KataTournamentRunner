@@ -8,9 +8,12 @@
 
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/vector.hpp>
+#include <boost/serialization/nvp.hpp>
 
 #include "tournament_runner/karateka.h"
 #include "tournament_runner/date.h"
+
+using boost::serialization::make_nvp;
 
 /**
  * Namespace of the Tournament Runner core-library
@@ -265,11 +268,11 @@ template<class Archive>
 void Tournament::serialize (Archive& archive,
                             const unsigned int)
 {
-    archive & current_kata_round_;
-    archive & data_.name_;
-    archive & data_.location_;
-    archive & data_.date_;
-    archive & participants_;
+    archive & make_nvp("CurrentKataRound", current_kata_round_);
+    archive & make_nvp("Name", data_.name_);
+    archive & make_nvp("Location", data_.location_);
+    archive & make_nvp("Date", data_.date_);
+    archive & make_nvp("Participants", participants_);
 }
 
 } // namespace TournamentRunner
