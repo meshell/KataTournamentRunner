@@ -86,16 +86,12 @@ set(BOOST_TOOLSET_BUILD)
 
 # Use the same compiler for building boost as for your own project
 if(CMAKE_COMPILER_IS_GNUCXX)
-  set(BOOST_TOOLSET "gcc")
-  set(BOOST_TOOLSET_BUILD "toolset=gcc-${GCC_VERSION}")
-elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-  set(BOOST_TOOLSET "clang")
-  set(BOOST_TOOLSET_BUILD "toolset=clang")
+  set(BOOST_TOOLSET "toolset=gcc-${GCC_VERSION}")
+elseif(CMAKE_CXX_COMPILER MATCHES ".*clang")
+  set(BOOST_TOOLSET "toolset=clang")
   set(BOOST_CXX_FLAGS "cxxflags='-Wno-c99-extensions'")
 elseif(MSVC)
-  if (NOT BOOST_TOOLSET)
-    set(BOOST_TOOLSET "msvc")
-  endif(NOT BOOST_TOOLSET)
+	set(BOOST_TOOLSET "toolset=msvc")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 ExternalProject_Add(
@@ -104,7 +100,7 @@ ExternalProject_Add(
   URL_MD5 ${Boost_MD5}
   INSTALL_DIR ${CMAKE_SOURCE_DIR}/externals/
   UPDATE_COMMAND ""
-  CONFIGURE_COMMAND ./bootstrap${SCRIPT_SUFFIX} --with-toolset=${BOOST_TOOLSET} --prefix=<INSTALL_DIR>
+  CONFIGURE_COMMAND ./bootstrap${SCRIPT_SUFFIX} --prefix=<INSTALL_DIR>
   BUILD_COMMAND ./b2 install --prefix=<INSTALL_DIR>
                     ${BOOST_LIBRARIES}
                     --build-type=complete
@@ -113,7 +109,7 @@ ExternalProject_Add(
                     threading=${BOOST_THREADING}
                     --layout=${BOOST_LAYOUT}
                     ${BOOST_CXX_FLAGS}
-                    ${BOOST_TOOLSET_BUILD}
+                    ${BOOST_TOOLSET}
   BUILD_IN_SOURCE 1
   INSTALL_COMMAND ""
 )
