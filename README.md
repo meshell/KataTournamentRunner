@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/meshell/KataTournamentRunner.png)](https://travis-ci.org/meshell/KataTournamentRunner)
-[![Coverage Status](https://coveralls.io/repos/meshell/KataTournamentRunner/badge.png)](https://coveralls.io/r/meshell/KataTournamentRunner)
+[![Coverage Status](https://coveralls.io/repos/meshell/KataTournamentRunner/badge.svg?branch=master)](https://coveralls.io/r/meshell/KataTournamentRunner?branch=master)
 [![coverity Status](https://scan.coverity.com/projects/2824/badge.svg)](https://scan.coverity.com/projects/2824)
 
 KataTournamentRunner
