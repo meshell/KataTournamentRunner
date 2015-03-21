@@ -5,69 +5,69 @@
 namespace TournamentRunner
 {
 
-Karateka& Karateka::with_name (const std::string& name)
+Karateka& Karateka::with_name (const std::string& karateka_name)
 {
-    name_ = name;
+    name_ = karateka_name;
     return *this;
 }
 
-Karateka& Karateka::with_name (std::string&& name) noexcept
+Karateka& Karateka::with_name (std::string&& karateka_name) noexcept
 {
-    name_ = std::move(name);
+    name_ = std::move(karateka_name);
     return *this;
 }
 
-Karateka& Karateka::with_surname (const std::string& surname)
+Karateka& Karateka::with_surname (const std::string& karateka_surname)
 {
-    surname_ = surname;
+    surname_ = karateka_surname;
     return *this;
 }
 
-Karateka& Karateka::with_surname (std::string&& surname) noexcept
+Karateka& Karateka::with_surname (std::string&& karateka_surname) noexcept
 {
-    surname_ = std::move(surname);
+    surname_ = std::move(karateka_surname);
     return *this;
 }
 
-Karateka& Karateka::with_birthdate (const Date& date_of_birth)
+Karateka& Karateka::with_birthdate (const Date& birthdate)
 {
-    date_of_birth_ = date_of_birth;
+    date_of_birth_ = birthdate;
     return *this;
 }
 
-Karateka& Karateka::with_birthdate (Date&& date_of_birth) noexcept
+Karateka& Karateka::with_birthdate (Date&& birthdate) noexcept
 {
-    date_of_birth_ = std::move(date_of_birth);
+    date_of_birth_ = std::move(birthdate);
     return *this;
 }
 
-Karateka& Karateka::with_birthdate (const std::string& date_of_birth)
+Karateka& Karateka::with_birthdate (const std::string& birthdate_as_string)
 {
-    date_of_birth_ = Date(date_of_birth);
+    date_of_birth_ = Date(birthdate_as_string);
     return *this;
 }
 
-Karateka& Karateka::from_dojo (const std::string& dojo)
+Karateka& Karateka::from_dojo (const std::string& dojo_name)
 {
-    dojo_ = dojo;
+    dojo_ = dojo_name;
     return *this;
 }
 
-Karateka& Karateka::from_dojo (std::string&& dojo) noexcept
+Karateka& Karateka::from_dojo (std::string&& dojo_name) noexcept
 {
-    dojo_ = std::move(dojo);
+    dojo_ = std::move(dojo_name);
     return *this;
 }
 
-Karateka& Karateka::with_rank (const std::string& rank)
+Karateka& Karateka::with_grade (const std::string& grade_as_string)
 {
-    grade_ = rank;
+    grade_ = grade_as_string;
     return *this;
 }
 
-Karateka& Karateka::with_rank (std::string&& rank) noexcept
+Karateka& Karateka::with_grade (std::string&& grade_as_string) noexcept
 {
-    grade_ = std::move(rank);
+    grade_ = std::move(grade_as_string);
     return *this;
 }
 
@@ -171,10 +171,11 @@ static int compare_scores_for_round (const IKataPerformer& lhs,
 bool kata_score_sort_greater (const IKataPerformer& lhs,
                               const IKataPerformer& rhs)
 {
-    for(auto round = max_number_of_kata_rounds-1; round >= 0; --round)
+    for(uint8_t i = max_number_of_kata_rounds; i > 0; --i)
     {
+        const uint8_t round = i-1u;
         const auto compare_result = compare_scores_for_round(lhs, rhs, round);
-        if ((0 != lhs.get_overall_score_of_round(round)) || (0 != rhs.get_overall_score_of_round(round)))
+        if ((0 < lhs.get_overall_score_of_round(round)) || (0 < rhs.get_overall_score_of_round(round)))
         {
             return (compare_result > 0);
         }

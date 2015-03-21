@@ -78,6 +78,12 @@ private slots:
     void on_FinishButton_clicked ();
 
 private:
+    const std::map<uint8_t, std::string> titel_map = {
+        {first_round, "First Round"},
+        {second_round, "Second Round"},
+        {final_round, "Final Round"}
+    };
+
     QWizardPage* create_start_tournament_intro_page ();
     QWizardPage* create_participant_kata_run_page (TournamentRunner::Karateka& participant);
 

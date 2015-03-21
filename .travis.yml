@@ -6,53 +6,56 @@ env:
   - CONFIG=Release COVERAGE=0 MAKECOMMAND='make' DOC=0
   global:
     secure: Bnm4GAikzZUomuhCEhj+iy+N7he1fJHigv9obldC0rKTAjwUSYKyQYmavDJW4Q1V1yoRpAiUOhjQVfNjrtVMnhD/yE/sqwMq5sTtgldFfwqbcG8x670c2+VTa8i0QMzyu6xeOindftsRgOMx+qf06tR6fSKaz6ViOyCxtLsyA1I=
+
 language: cpp
 compiler:
-- gcc
-- clang
+  - gcc
+  - clang
+
 matrix:
   exclude:
-  - compiler: clang
-    env: CONFIG=Debug COVERAGE=1 MAKECOMMAND='make coverage'
-  - compiler: clang
-    env: CONFIG=Release COVERAGE=0 MAKECOMMAND='make' DOC=0
-  - compiler: gcc
-    env: CONFIG=Release COVERAGE=0 MAKECOMMAND='make' DOC=1
+   - compiler: clang
+     env: CONFIG=Debug COVERAGE=1 MAKECOMMAND='make coverage'
+   - compiler: clang
+     env: CONFIG=Release COVERAGE=0 MAKECOMMAND='make' DOC=0
+   - compiler: gcc
+     env: CONFIG=Release COVERAGE=0 MAKECOMMAND='make' DOC=1
+
 branches:
   only:
   - master
+
 notifications:
   recipients:
   - estermann.michel@gmail.com
   email:
     on_success: change
     on_failure: always
+
 before_install:
-- if test ${CC} = gcc ; then sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
-  ; fi
-- sudo apt-add-repository -y ppa:ubuntu-sdk-team/ppa
-- sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty universe"
-- sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty main"
-- sudo apt-get update -qq
-- sudo apt-get install libqt5gui5 libqt5printsupport5 libqt5widgets5 libpango-1.0-0
-  qt5-default qtbase5-dev qt5-qmake qtbase5-dev-tools xvfb
-- if test ${CC} = gcc ; then sudo apt-get install -qq g++-4.8 ; fi
-- if test ${CC} = gcc ; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8
-  40 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8 --slave /usr/bin/gcov gcov /usr/bin/gcov-4.8
-  ; fi
-- if test ${CC} = gcc ; then sudo update-alternatives --set gcc /usr/bin/gcc-4.8 ;
-  fi
-- gem install cucumber
-- if [ "${COVERAGE}" = '1' ] ; then sudo pip install cpp-coveralls --use-mirrors;
-  fi
-- if [ "${DOC}" = '1' ] ; then sudo apt-get install doxygen graphviz libgvc6; fi
+  - if test ${CC} = gcc ; then sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test ; fi
+  - sudo apt-add-repository -y ppa:ubuntu-sdk-team/ppa
+  - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty universe"
+  - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty main"
+  - sudo apt-get update -qq
+  - sudo apt-get install libqt5gui5 libqt5printsupport5 libqt5widgets5 libpango-1.0-0
+    qt5-default qtbase5-dev qt5-qmake qtbase5-dev-tools xvfb
+  - if test ${CC} = gcc ; then sudo apt-get install -qq g++-4.8 ; fi
+  - if test ${CC} = gcc ; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8
+    40 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8 --slave /usr/bin/gcov gcov /usr/bin/gcov-4.8
+    ; fi
+  - if test ${CC} = gcc ; then sudo update-alternatives --set gcc /usr/bin/gcc-4.8 ; fi
+  - gem install cucumber
+  - if [ "${COVERAGE}" = '1' ] ; then sudo pip install cpp-coveralls --use-mirrors; fi
+  - if [ "${DOC}" = '1' ] ; then sudo apt-get install doxygen graphviz libgvc6; fi
+
 before_script:
-- make prepare CONFIG=$CONFIG
+  - make prepare CONFIG=$CONFIG
+
 script:
-- xvfb-run --server-args="-screen 0 1024x768x24" ${MAKECOMMAND}
-- if [ "${DOC}" = '1' ] ; then xvfb-run --server-args="-screen 0 1024x768x24" make
-  doc ; fi
+  - xvfb-run --server-args="-screen 0 1024x768x24" ${MAKECOMMAND}
+  - if [ "${DOC}" = '1' ] ; then xvfb-run --server-args="-screen 0 1024x768x24" make doc ; fi
+
 after_success:
-- if [ "${COVERAGE}" = '1' ] ; then coveralls -E.*/externals/.* -E/usr/include/.* -E.*/tests/.* -E.*/CMakeFiles/.* -E.*/tournament_runner_gui/moc_.*;
-  fi
-- if [ "${DOC}" = '1' ] ; then ./update-gh-pages.sh ; fi
+  - if [ "${COVERAGE}" = '1' ] ; then coveralls -E.*/externals/.* -E/usr/include/.* -E.*/tests/.* -E.*/CMakeFiles/.* -E.*/tournament_runner_gui/moc_.*; fi
+  - if [ "${DOC}" = '1' ] ; then ./update-gh-pages.sh ; fi

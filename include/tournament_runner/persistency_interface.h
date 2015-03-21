@@ -16,7 +16,12 @@ class IPersistency
 {
 public:
 
-    virtual ~IPersistency () {};
+    IPersistency () = default;
+    IPersistency (const IPersistency&) = default;
+    IPersistency (IPersistency&&) = default;
+    IPersistency& operator=(const IPersistency&) = default;
+    IPersistency& operator=(IPersistency&&) = default;
+    virtual ~IPersistency () {}
 
 
     /**

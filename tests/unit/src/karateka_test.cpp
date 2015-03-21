@@ -19,7 +19,7 @@ TournamentRunner::Karateka a_default_karateka ()
            .with_surname("Chuck")
            .with_birthdate("1940-03-10")
            .from_dojo("Chun Kuk Do")
-           .with_rank("2nd Dan");
+           .with_grade("2nd Dan");
 }
 
 TEST(A_KataPerformer, should_be_able_to_get_five_kata_scores)

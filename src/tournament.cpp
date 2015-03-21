@@ -29,7 +29,9 @@ void Tournament::remove_participant(size_t start_number)
 {
     if (start_number < participants_.size())
     {
-        participants_.erase(std::begin(participants_)+start_number);
+        auto it = std::begin(participants_);
+        std::advance(it, start_number);
+        participants_.erase(it);
         reassign_startnumbers();
     }
     else
@@ -122,7 +124,7 @@ std::vector<size_t> Tournament::get_list_of_participants_for_next_kata_round (si
 
 void Tournament::reassign_startnumbers ()
 {
-    auto startnumber = 0;
+    auto startnumber = 0u;
     for (auto& participant : participants_)
     {
         participant.set_startnumber(startnumber++);

@@ -15,8 +15,14 @@ namespace TournamentRunner
 class IKataPerformer
 {
 public:
-    virtual ~IKataPerformer () = default;
 
+
+    IKataPerformer () = default;
+    IKataPerformer (const IKataPerformer&) = default;
+    IKataPerformer (IKataPerformer&&) = default;
+    IKataPerformer& operator= (const IKataPerformer&) = default;
+    IKataPerformer& operator= (IKataPerformer&&) = default;
+    virtual ~IKataPerformer () = default;
     /**
      * @brief Add a kata score for the current round
      * @param score  The score given

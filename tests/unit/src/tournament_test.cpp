@@ -73,7 +73,7 @@ TEST(A_Tournament, should_have_one_participant_more_if_a_participant_is_added)
                        .with_surname("Mas")
                        .with_birthdate("1923-07-27")
                        .from_dojo("Honbu")
-                       .with_rank("10th Dan");
+                       .with_grade("10th Dan");
     Tournament testee{};
     testee.add_participant(participant);
     const auto expected_no_of_participants = 1U;
@@ -87,7 +87,7 @@ TEST(A_Tournament, should_throw_an_exception_if_trying_to_retrieve_an_non_existi
                        .with_surname("Mas")
                        .with_birthdate("1923-07-27")
                        .from_dojo("Honbu")
-                       .with_rank("10th Dan");
+                       .with_grade("10th Dan");
     Tournament testee{};
     testee.add_participant(participant);
     ASSERT_THROW(testee.get_participant(2), std::out_of_range);
@@ -100,7 +100,7 @@ TEST(A_Tournament, should_give_a_ranked_list_with_the_higher_of_two_scores_first
                         .with_surname("Mas")
                         .with_birthdate("1923-07-27")
                         .from_dojo("Honbu")
-                        .with_rank("10th Dan");
+                        .with_grade("10th Dan");
 
     const auto score_1_1 = 5.0F;
     const auto score_1_2 = 5.1F;
@@ -119,7 +119,7 @@ TEST(A_Tournament, should_give_a_ranked_list_with_the_higher_of_two_scores_first
                         .with_surname("Steve")
                         .with_birthdate("1934-08-29")
                         .from_dojo("London")
-                        .with_rank("9th Dan");
+                        .with_grade("9th Dan");
 
     const auto score_2_1 = 5.1F;
     const auto score_2_2 = 5.2F;
@@ -153,7 +153,7 @@ TEST(A_Tournament, should_give_a_ranked_list_with_the_highest_score_first_and_lo
                                    .with_surname("Steve")
                                    .with_birthdate("1934-08-29")
                                    .from_dojo("London")
-                                   .with_rank("9th Dan");
+                                   .with_grade("9th Dan");
 
     const auto score_1_1 = 5.1F;
     const auto score_1_2 = 5.2F;
@@ -172,7 +172,7 @@ TEST(A_Tournament, should_give_a_ranked_list_with_the_highest_score_first_and_lo
                                     .with_surname("Dolph")
                                     .with_birthdate("1957-11-03")
                                     .from_dojo("Stockholm ")
-                                    .with_rank("3 Dan");
+                                    .with_grade("3 Dan");
 
     const auto score_2_1 = 5.1F;
     const auto score_2_2 = 5.2F;
@@ -192,7 +192,7 @@ TEST(A_Tournament, should_give_a_ranked_list_with_the_highest_score_first_and_lo
                                    .with_surname("Mas")
                                    .with_birthdate("1923-07-27")
                                    .from_dojo("Honbu")
-                                   .with_rank("10th Dan");
+                                   .with_grade("10th Dan");
 
     const auto score_3_1 = 5.0F;
     const auto score_3_2 = 5.1F;
@@ -229,7 +229,7 @@ TEST(A_Tournament, should_give_a_ranked_list_with_the_highest_minimal_score_firs
                         .with_surname("Mas")
                         .with_birthdate("1923-07-27")
                         .from_dojo("Honbu")
-                        .with_rank("10th Dan");
+                        .with_grade("10th Dan");
 
     const auto score_1_1 = 5.0F;
     const auto score_1_2 = 5.1F;
@@ -248,7 +248,7 @@ TEST(A_Tournament, should_give_a_ranked_list_with_the_highest_minimal_score_firs
                         .with_surname("Steve")
                         .with_birthdate("1934-08-29")
                         .from_dojo("London")
-                        .with_rank("9th Dan");
+                        .with_grade("9th Dan");
 
     const auto score_2_1 = 5.1F;
     const auto score_2_2 = 5.1F;
@@ -281,7 +281,7 @@ TEST(A_Tournament, should_give_a_ranked_list_with_the_highest_maximal_score_firs
                         .with_surname("Mas")
                         .with_birthdate("1923-07-27")
                         .from_dojo("Honbu")
-                        .with_rank("10th Dan");
+                        .with_grade("10th Dan");
 
     const auto score_1_1 = 5.0F;
     const auto score_1_2 = 5.1F;
@@ -300,7 +300,7 @@ TEST(A_Tournament, should_give_a_ranked_list_with_the_highest_maximal_score_firs
                         .with_surname("Steve")
                         .with_birthdate("1934-08-29")
                         .from_dojo("London")
-                        .with_rank("9th Dan");
+                        .with_grade("9th Dan");
 
     const auto score_2_1 = 5.0F;
     const auto score_2_2 = 5.1F;
@@ -349,7 +349,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_next_round_which_conta
                                    .with_surname("Steve")
                                    .with_birthdate("1934-08-29")
                                    .from_dojo("London")
-                                   .with_rank("9th Dan");
+                                   .with_grade("9th Dan");
 
     const auto score_1_1 = 5.1F;
     const auto score_1_2 = 5.2F;
@@ -368,7 +368,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_next_round_which_conta
                                     .with_surname("Dolph")
                                     .with_birthdate("1957-11-03")
                                     .from_dojo("Stockholm")
-                                    .with_rank("3rd Dan");
+                                    .with_grade("3rd Dan");
 
 
     const auto score_2_1 = 5.1F;
@@ -409,7 +409,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_next_round_which_conta
                                    .with_surname("Steve")
                                    .with_birthdate("1934-08-29")
                                    .from_dojo("London")
-                                   .with_rank("9th Dan");
+                                   .with_grade("9th Dan");
 
     const auto score_1_1 = 5.1F;
     const auto score_1_2 = 5.2F;
@@ -428,7 +428,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_next_round_which_conta
                                     .with_surname("Dolph")
                                     .with_birthdate("1957-11-03")
                                     .from_dojo("Stockholm")
-                                    .with_rank("3rd Dan");
+                                    .with_grade("3rd Dan");
 
 
     const auto score_2_1 = 5.1F;
@@ -449,7 +449,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_next_round_which_conta
                                    .with_surname("Mas")
                                    .with_birthdate("1923-07-27")
                                    .from_dojo("Honbu")
-                                   .with_rank("10th Dan");
+                                   .with_grade("10th Dan");
 
     const auto score_3_1 = 5.0F;
     const auto score_3_2 = 5.1F;
@@ -491,7 +491,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_next_round_ordered_wit
                                    .with_surname("Steve")
                                    .with_birthdate("1934-08-29")
                                    .from_dojo("London")
-                                   .with_rank("9th Dan");
+                                   .with_grade("9th Dan");
 
     const auto score_1_1 = 5.1F;
     const auto score_1_2 = 5.2F;
@@ -510,7 +510,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_next_round_ordered_wit
                                     .with_surname("Dolph")
                                     .with_birthdate("1957-11-03")
                                     .from_dojo("Stockholm")
-                                    .with_rank("3rd Dan");
+                                    .with_grade("3rd Dan");
 
     const auto score_2_1 = 5.1F;
     const auto score_2_2 = 5.2F;
@@ -530,7 +530,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_next_round_ordered_wit
                                    .with_surname("Mas")
                                    .with_birthdate("1923-07-27")
                                    .from_dojo("Honbu")
-                                   .with_rank("10th Dan");
+                                   .with_grade("10th Dan");
 
     const auto score_3_1 = 5.0F;
     const auto score_3_2 = 5.1F;
@@ -567,7 +567,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_the_next_round_contain
                                    .with_surname("Steve")
                                    .with_birthdate("1934-08-29")
                                    .from_dojo("London")
-                                   .with_rank("9th Dan");
+                                   .with_grade("9th Dan");
 
     const auto score_1_1 = 5.1F;
     const auto score_1_2 = 5.2F;
@@ -586,7 +586,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_the_next_round_contain
                                     .with_surname("Dolph")
                                     .with_birthdate("1957-11-03")
                                     .from_dojo("Stockholm")
-                                    .with_rank("3rd Dan");
+                                    .with_grade("3rd Dan");
 
     const auto score_2_1 = 5.1F;
     const auto score_2_2 = 5.2F;
@@ -606,7 +606,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_the_next_round_contain
                                       .with_surname("Mas")
                                       .with_birthdate("1923-07-27")
                                       .from_dojo("Honbu")
-                                      .with_rank("10th Dan");
+                                      .with_grade("10th Dan");
     // total = 5.2 + 5.3 + 5.3 = 15.8
     participant_second_place_2.add_kata_score(score_2_1);
     participant_second_place_2.add_kata_score(score_2_3);
@@ -633,7 +633,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_the_next_round_contain
                                    .with_surname("Steve")
                                    .with_birthdate("1934-08-29")
                                    .from_dojo("London")
-                                   .with_rank("9th Dan");
+                                   .with_grade("9th Dan");
 
     const auto score_1_1 = 5.1F;
     const auto score_1_2 = 5.2F;
@@ -652,7 +652,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_the_next_round_contain
                                     .with_surname("Dolph")
                                     .with_birthdate("1957-11-03")
                                     .from_dojo("Stockholm")
-                                    .with_rank("3rd Dan");
+                                    .with_grade("3rd Dan");
 
     const auto score_2_1 = 5.1F;
     const auto score_2_2 = 5.2F;
@@ -672,7 +672,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_the_next_round_contain
                                       .with_surname("Mas")
                                       .with_birthdate("1923-07-27")
                                       .from_dojo("Honbu")
-                                      .with_rank("10th Dan");
+                                      .with_grade("10th Dan");
 
     // total = 5.2 + 5.3 + 5.3 = 15.8
     participant_second_place_2.add_kata_score(score_2_1);
@@ -686,7 +686,7 @@ TEST(A_Tournament, should_have_a_list_of_participants_for_the_next_round_contain
                                       .with_surname("Bobby")
                                       .with_birthdate("1933-08-30")
                                       .from_dojo("Hawaii")
-                                      .with_rank("9th Dan");
+                                      .with_grade("9th Dan");
 
     // total = 5.2 + 5.3 + 5.3 = 15.8
     participant_second_place_3.add_kata_score(score_2_4);
@@ -789,7 +789,7 @@ TEST(A_serialized_Tournament, should_persist_the_participant_list)
                         .with_surname("Mas")
                         .with_birthdate("1923-07-27")
                         .from_dojo("Honbu")
-                        .with_rank("10th Dan");
+                        .with_grade("10th Dan");
 
     testee.add_participant(participant1);
 
@@ -798,7 +798,7 @@ TEST(A_serialized_Tournament, should_persist_the_participant_list)
                         .with_surname("Steve")
                         .with_birthdate("1934-08-29")
                         .from_dojo("London")
-                        .with_rank("9th Dan");
+                        .with_grade("9th Dan");
 
     testee.add_participant(participant2);
 

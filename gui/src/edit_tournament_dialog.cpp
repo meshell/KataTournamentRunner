@@ -1,3 +1,6 @@
+#include <QDateTime>
+#include <boost/date_time/posix_time/posix_time.hpp>
+
 #include "tournament_runner_gui/edit_tournament_dialog.h"
 #include "ui_edit_tournament_dialog.h"
 
@@ -29,13 +32,9 @@ EditTournamentDialog::EditTournamentDialog (TournamentRunner::Tournament& tourna
 
 void EditTournamentDialog::on_updateButton_accepted ()
 {
-    const boost::gregorian::date date(ui_->TournamentDateEdit->date().year(),
-                                      ui_->TournamentDateEdit->date().month(),
-                                      ui_->TournamentDateEdit->date().day());
-
     const auto tournament = TournamentData{}
                                 .with_name(ui_->TournamentNameEdit->text().toStdString())
-                                .on_date(Date{date})
+                                .on_date(ui_->TournamentDateEdit->text().toStdString())
                                 .at_location(ui_->TournamentLocationEdit->document()->toPlainText().toStdString());
 
     emit update_tournament(tournament);

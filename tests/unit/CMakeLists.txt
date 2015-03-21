@@ -5,12 +5,16 @@
 find_package(GMock REQUIRED)
 find_package(GTest REQUIRED)
 
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGCXX)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-global-constructors -Wno-non-virtual-dtor")
+endif(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGCXX)
+
 if(GTEST_FOUND AND GMOCK_FOUND)
-  include_directories(${GTEST_INCLUDE_DIRS}
+  include_directories(SYSTEM
+                      ${GTEST_INCLUDE_DIRS}
                       ${GMOCK_INCLUDE_DIRS}
-                      ./include
-                      ${@PROJECT_NAME@_INCLUDE_DIRS})
-    
+                     )
+                      
   function(register_test TEST_FILE)
       get_filename_component(TEST_NAME ${TEST_FILE} NAME)
       message(STATUS "Adding " ${TEST_NAME})
@@ -34,7 +38,7 @@ if(GTEST_FOUND AND GMOCK_FOUND)
   find_package(Boost COMPONENTS filesystem system)
 
   if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
+    include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
     register_test(src/persistency_test ${Boost_LIBRARIES})
   endif(Boost_FOUND)
@@ -63,15 +67,7 @@ if(GMOCK_FOUND AND GTEST_FOUND)
       ${@PROJECT_NAME@_UNITTEST_LIBRARIES} 
       ${CMAKE_THREAD_LIBS_INIT})
   endif(UNIX)
-
-  if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
-  endif(Boost_FOUND)
-
-  include_directories(${GTEST_INCLUDE_DIRS}
-                      ${GMOCK_INCLUDE_DIRS}
-                      ./include
-                      ${@PROJECT_NAME@_INCLUDE_DIRS})
+          
   add_executable(${@PROJECT_NAME@_UNITTEST_NAME} ${@PROJECT_NAME@_UNITTEST_SOURCES})
   target_link_libraries(${@PROJECT_NAME@_UNITTEST_NAME} ${@PROJECT_NAME@_UNITTEST_LIBRARIES} )
 

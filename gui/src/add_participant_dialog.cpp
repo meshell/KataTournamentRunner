@@ -30,20 +30,16 @@ void AddParticipantDialog::on_addButton_accepted ()
     const auto name = ui_->ParticipantNameEdit->text().toStdString();
     const auto surname = ui_->ParticipantSurnameEdit->text().toStdString();
 
-    const auto year = static_cast<boost::gregorian::gregorian_calendar::year_type>(ui_->DateOfBirthEdit->date().year());
-    const auto month = static_cast<boost::gregorian::gregorian_calendar::month_type>(ui_->DateOfBirthEdit->date().month());
-    const auto day = static_cast<boost::gregorian::gregorian_calendar::day_type>(ui_->DateOfBirthEdit->date().day());
-
-    auto date_of_birth = boost::gregorian::date{year, month, day};
+    const auto date_of_birth = ui_->DateOfBirthEdit->text().toStdString();
     const auto dojo = ui_->DojoEdit->text().toStdString();
-    const auto rank = ui_->RankComboBox->currentText().toStdString();
+    const auto grade = ui_->RankComboBox->currentText().toStdString();
 
     const auto participant = Karateka{}
                                 .with_name(name)
                                 .with_surname(surname)
-                                .with_birthdate(Date(date_of_birth))
+                                .with_birthdate(date_of_birth)
                                 .from_dojo(dojo)
-                                .with_rank(rank);
+                                .with_grade(grade);
 
 
     emit register_participant(participant);

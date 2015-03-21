@@ -196,7 +196,7 @@ public:
      * @brief Return the current active round
      * @return current round
      */
-    int8_t get_current_round () const;
+    uint8_t get_current_round () const;
 
     /**
      * @brief Start the next kata round
@@ -248,7 +248,7 @@ inline void Tournament::update_data(const TournamentData& data)
     data_ = data;
 }
 
-inline int8_t Tournament::get_current_round() const
+inline uint8_t Tournament::get_current_round() const
 {
     return current_kata_round_;
 }

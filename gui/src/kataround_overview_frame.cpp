@@ -19,22 +19,6 @@
 namespace TournamentRunnerGUI
 {
 
-/**
-  Number of elements for the next round startlist
- */
-static const std::map<uint8_t, size_t> round_configuration = {
-    {first_round, std::numeric_limits<size_t>::max()},
-    {second_round, 8U},
-    {final_round, 4U}
-};
-
-
-static const std::map<uint8_t, std::string> titel_map = {
-    {first_round, "First Round"},
-    {second_round, "Second Round"},
-    {final_round, "Final Round"}
-};
-
 KataRoundOverviewFrame::KataRoundOverviewFrame (TournamentRunner::Tournament& tournament,
                                                 uint8_t round,
                                                 QWidget* parent) :
@@ -56,6 +40,12 @@ KataRoundOverviewFrame::KataRoundOverviewFrame (TournamentRunner::Tournament& to
     ui_->RoundTableView->verticalHeader()->hide();
     const auto label = titel_map.at(round_);
     ui_->RoundLabel->setText(QString(tr(label.c_str())));
+
+    const std::map<uint8_t, size_t> round_configuration = {
+        {first_round, std::numeric_limits<size_t>::max()},
+        {second_round, 8U},
+        {final_round, 4U}
+    };
 
     const auto startlist = tournament_.get_startlist_for_next_kata_round(round_configuration.at(round_));
     startlist_.assign(std::begin(startlist), std::end(startlist));

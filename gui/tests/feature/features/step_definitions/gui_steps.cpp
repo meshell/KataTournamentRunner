@@ -109,8 +109,8 @@ static QDialog* get_dialog (QMainWindow& mainwindow,
     return mainwindow.findChild<QDialog*>(dialog_map.at(which_dialog).c_str());
 }
 
-int qapplication_argc{};
-const auto test_profile_file = boost::filesystem::temp_directory_path() / "test_profile.ktm";
+static int qapplication_argc{};
+static const auto test_profile_file = boost::filesystem::temp_directory_path() / "test_profile.ktm";
 
 struct gui_context
 {
@@ -201,7 +201,7 @@ GIVEN("^the Tournament has the following participants:$")
         {
             attendee.with_birthdate(table_row.at("date of birth"));
             attendee.from_dojo(table_row.at("dojo"));
-            attendee.with_rank(table_row.at("rank"));
+            attendee.with_grade(table_row.at("rank"));
         }
         catch (const std::exception&)
         {
@@ -594,7 +594,7 @@ THEN("^the participant list contains the following participants:$")
 
     TABLE_PARAM(participant_param);
     const auto& participant_table = participant_param.hashes();
-    auto index = 0U;
+    auto index = 0;
     for (const auto& table_row : participant_table)
     {
         const auto* participantTable = context->mainwindow->findChild<QTableView*>("ParticipantTableView");

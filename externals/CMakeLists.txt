@@ -22,7 +22,6 @@ endif(MSVC)
 check_cxx_compiler_flag("-Wunused-local-typedefs" COMPILER_KNOWS_UNUSED_LOCAL_TYPEDEF)
 if(COMPILER_KNOWS_UNUSED_LOCAL_TYPEDEF)
   set(CXX_FLAGS "-Wno-unused-local-typedefs")
-  set(BOOST_CXX_FLAGS "cxxflags='-Wno-unused-local-typedefs'")
 endif(COMPILER_KNOWS_UNUSED_LOCAL_TYPEDEF)
 
 ####################
@@ -59,9 +58,9 @@ set(GMOCK_LIBRARY_DIRS ${INSTALL_DIR})
 ####################
 
 # Set boost minimal version in order to build cucumber-cpp with the same library versions
-set(BOOST_MIN_VERSION 1.57)
+set(BOOST_MIN_VERSION 1.55)
 set(Boost_Version ${BOOST_MIN_VERSION}.0)
-set(Boost_MD5 1be49befbdd9a5ce9def2983ba3e7b76)
+set(Boost_MD5 d6eef4b4cacb2183f2bf265a5a03a354)
 
 # cucumber-cpp needs filesystem, date_time, chrono, thread, system, regex and program_options
 # library need date_time and serialization
@@ -86,12 +85,16 @@ set(BOOST_TOOLSET_BUILD)
 
 # Use the same compiler for building boost as for your own project
 if(CMAKE_COMPILER_IS_GNUCXX)
-  set(BOOST_TOOLSET "toolset=gcc-${GCC_VERSION}")
+  set(BOOST_TOOLSET "gcc")
+  set(BOOST_TOOLSET_BUILD "toolset=gcc-${GCC_VERSION}")
 elseif(CMAKE_CXX_COMPILER MATCHES ".*clang")
-  set(BOOST_TOOLSET "toolset=clang")
+  set(BOOST_TOOLSET "clang")
+  set(BOOST_TOOLSET_BUILD "toolset=clang")
   set(BOOST_CXX_FLAGS "cxxflags='-Wno-c99-extensions'")
 elseif(MSVC)
-	set(BOOST_TOOLSET "toolset=msvc")
+  if (NOT BOOST_TOOLSET)
+    set(BOOST_TOOLSET "msvc")
+  endif(NOT BOOST_TOOLSET)
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 ExternalProject_Add(
@@ -100,7 +103,7 @@ ExternalProject_Add(
   URL_MD5 ${Boost_MD5}
   INSTALL_DIR ${CMAKE_SOURCE_DIR}/externals/
   UPDATE_COMMAND ""
-  CONFIGURE_COMMAND ./bootstrap${SCRIPT_SUFFIX} --prefix=<INSTALL_DIR>
+  CONFIGURE_COMMAND ./bootstrap${SCRIPT_SUFFIX} --with-toolset=${BOOST_TOOLSET} --prefix=<INSTALL_DIR>
   BUILD_COMMAND ./b2 install --prefix=<INSTALL_DIR>
                     ${BOOST_LIBRARIES}
                     --build-type=complete
@@ -109,7 +112,7 @@ ExternalProject_Add(
                     threading=${BOOST_THREADING}
                     --layout=${BOOST_LAYOUT}
                     ${BOOST_CXX_FLAGS}
-                    ${BOOST_TOOLSET}
+                    ${BOOST_TOOLSET_BUILD}
   BUILD_IN_SOURCE 1
   INSTALL_COMMAND ""
 )

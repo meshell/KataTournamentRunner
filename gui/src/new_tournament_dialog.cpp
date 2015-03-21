@@ -1,3 +1,6 @@
+#include <QDateTime>
+#include <boost/date_time/posix_time/posix_time.hpp>
+
 #include "tournament_runner_gui/new_tournament_dialog.h"
 #include "ui_new_tournament_dialog.h"
 
@@ -24,13 +27,10 @@ NewTournamentDialog::NewTournamentDialog (QWidget* parent) :
 
 void NewTournamentDialog::on_createButton_accepted ()
 {
-    const boost::gregorian::date date(ui_->TournamentDateEdit->date().year(),
-                                      ui_->TournamentDateEdit->date().month(),
-                                      ui_->TournamentDateEdit->date().day());
 
     TournamentData tournament = TournamentData{}
                                 .with_name(ui_->TournamentNameEdit->text().toStdString())
-                                .on_date(Date{date})
+                                .on_date(ui_->TournamentDateEdit->text().toStdString())
                                 .at_location(ui_->TournamentLocationEdit->document()->toPlainText().toStdString());
 
     emit new_tournament(tournament);

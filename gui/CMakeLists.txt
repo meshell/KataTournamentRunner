@@ -24,11 +24,21 @@ set(CMAKE_AUTOMOC ON)
 
 # The Qt5Widgets_INCLUDES also includes the include directories for
 # dependencies QtCore and QtGui
-include_directories(${Qt5Widgets_INCLUDE_DIRS} include ${Boost_INCLUDE_DIRS})
+include_directories(SYSTEM 
+                    ${Qt5Widgets_INCLUDE_DIRS} 
+                    ${Boost_INCLUDE_DIRS}
+                    )
+                    
+include_directories(./include)
 
 add_definitions(${Qt5Widgets_DEFINITIONS})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGCXX)
+  # Disable warnings due to same member names and in generated moc files
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-shadow -Wno-undefined-reinterpret-cast")
+endif(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGCXX)
 
 set(${PROJECT_NAME}_GUI_SOURCES
   src/about_dialog.cpp

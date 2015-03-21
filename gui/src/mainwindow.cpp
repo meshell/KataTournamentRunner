@@ -19,8 +19,8 @@ namespace TournamentRunnerGUI
 MainWindow::MainWindow (QDialog& about_dialog,
                         TournamentRunner::IPersistency& persistency_handler,
                         std::shared_ptr<TournamentRunner::Tournament> tournament,
-                        QWidget* parent) :
-    QMainWindow{parent},
+                        QWidget* parent_widget) :
+    QMainWindow{parent_widget},
     about_dialog_(about_dialog),
     persistency_handler_(persistency_handler),
     ui_{std::make_shared<Ui::MainWindow>()},

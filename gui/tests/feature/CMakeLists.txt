@@ -2,6 +2,10 @@
 # Create a single feature test executable
 #
 
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGCXX)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-non-virtual-dtor -Wno-global-constructors -Wno-exit-time-destructors")
+endif(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGCXX)
+
 # Find the QtWidgets library
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Test REQUIRED)
@@ -64,13 +68,13 @@ if(STEP_SOURCES)
   qt5_wrap_ui(MAIN_WINDOW_GUI_FORM_HEADER ../../ui/mainwindow.ui)
 
   include_directories(
-    ${@PROJECT_NAME@_INCLUDE_DIRS} 
+    SYSTEM 
     ${GTEST_INCLUDE_DIRS}
     ${CUKE_INCLUDE_DIR} 
     ${Boost_INCLUDE_DIRS}
     ${Qt5Widgets_INCLUDES}
     ${Qt5Test_INCLUDE})
-  
+
   set(${PROJECT_NAME}_UI_FEATURETEST_LIBRARIES 
     ${PROJECT_NAME}_GUI-library
     ${GTEST_LIBRARIES}

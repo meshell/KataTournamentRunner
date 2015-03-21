@@ -44,7 +44,7 @@ TEST(The_Kata_Round_overview_page, shows_a_Wizard_upon_StartButton_click_with_a_
     wizard = testee.findChild<QWizard*>();
     ASSERT_THAT(wizard, NotNull());
     auto page_ids = wizard->pageIds();
-    const int expected_no_of_wizard_pages = tournament.number_of_participants()+1;
+    const auto expected_no_of_wizard_pages = tournament.number_of_participants()+1;
     ASSERT_EQ(expected_no_of_wizard_pages, page_ids.size());
 }	
 

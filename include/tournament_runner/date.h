@@ -66,7 +66,8 @@ public:
      */
     int32_t day () const;
 
-    Date& operator= (const Date& rhs) = default;
+    Date& operator= (const Date&) = default;
+    Date (const Date&) = default;
 
 private:
     static boost::gregorian::date date_from_string (const std::string& date_as_string);

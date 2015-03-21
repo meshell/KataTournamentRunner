@@ -14,7 +14,7 @@ using ::TournamentRunner::Karateka;
 using ::TournamentRunnerGUI::ParticipantKataRoundWizardPage;
 using ::testing::FloatNear;
 
-const float float_compare_tolerance = 0.01F;
+const auto float_compare_tolerance = 0.01f;
 
 	
 TEST(The_ParticipantKataRoundWizardPage, sets_the_kata_scores_upon_validatePage)
@@ -42,13 +42,13 @@ TEST(The_ParticipantKataRoundWizardPage, sets_the_kata_scores_upon_validatePage)
 
     auto first_round_scores = karateka.get_scores(first_round);
     ASSERT_EQ(6, no_of_fields);
-    ASSERT_THAT(first_round_scores.at(0), FloatNear(5.1, float_compare_tolerance));
-    ASSERT_THAT(first_round_scores.at(1), FloatNear(5.1, float_compare_tolerance));
-    ASSERT_THAT(first_round_scores.at(2), FloatNear(5.1, float_compare_tolerance));
-    ASSERT_THAT(first_round_scores.at(3), FloatNear(5.1, float_compare_tolerance));
-    ASSERT_THAT(first_round_scores.at(4), FloatNear(5.1, float_compare_tolerance));
+    ASSERT_THAT(first_round_scores.at(0), FloatNear(5.1f, float_compare_tolerance));
+    ASSERT_THAT(first_round_scores.at(1), FloatNear(5.1f, float_compare_tolerance));
+    ASSERT_THAT(first_round_scores.at(2), FloatNear(5.1f, float_compare_tolerance));
+    ASSERT_THAT(first_round_scores.at(3), FloatNear(5.1f, float_compare_tolerance));
+    ASSERT_THAT(first_round_scores.at(4), FloatNear(5.1f, float_compare_tolerance));
 
-    ASSERT_THAT(karateka.get_deduction(first_round), FloatNear(0.5, float_compare_tolerance));
+    ASSERT_THAT(karateka.get_deduction(first_round), FloatNear(0.5f, float_compare_tolerance));
 }	
 
 TEST(The_ParticipantKataRoundWizardPage, sets_the_overall_kata_score_upon_validatePage)
@@ -75,7 +75,7 @@ TEST(The_ParticipantKataRoundWizardPage, sets_the_overall_kata_score_upon_valida
     const auto first_round = 0;
 
     auto first_round_overall_score = karateka.get_overall_score_of_round(first_round);
-    ASSERT_THAT(first_round_overall_score, FloatNear((3*5.1)-0.5, float_compare_tolerance));
+    ASSERT_THAT(first_round_overall_score, FloatNear((3.0f*5.1f)-0.5f, float_compare_tolerance));
 }
 	
 } // namespace

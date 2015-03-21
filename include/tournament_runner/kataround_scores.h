@@ -42,8 +42,8 @@ private:
    template<class Archive>
    void serialize (Archive& archive, const unsigned int version);
 
-   array<float, number_of_kata_scores_per_round> kata_scores_;
    float deduction_{};
+   array<float, number_of_kata_scores_per_round> kata_scores_;
    uint8_t current_score_{};
 };
 

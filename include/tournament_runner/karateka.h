@@ -35,17 +35,19 @@ class Karateka :
 {
 public:
 
-    Karateka& with_name (const std::string& name);
-    Karateka& with_name (std::string&& name) noexcept;
-    Karateka& with_surname (const std::string& surname);
-    Karateka& with_surname (std::string&& surname) noexcept;
-    Karateka& with_birthdate (const Date& date_of_birth);
-    Karateka& with_birthdate (Date&& date_of_birth) noexcept;
-    Karateka& with_birthdate (const std::string& date_of_birth);
-    Karateka& from_dojo (const std::string& dojo);
-    Karateka& from_dojo (std::string&& dojo) noexcept;
-    Karateka& with_rank (const std::string& grade);
-    Karateka& with_rank (std::string&& grade) noexcept;
+ //   Karateka() = default;
+
+    Karateka& with_name (const std::string& karateka_name);
+    Karateka& with_name (std::string&& karateka_name) noexcept;
+    Karateka& with_surname (const std::string& karateka_surname);
+    Karateka& with_surname (std::string&& karateka_surname) noexcept;
+    Karateka& with_birthdate (const Date& birthdate);
+    Karateka& with_birthdate (Date&& birthdate) noexcept;
+    Karateka& with_birthdate (const std::string& birthdate_as_string);
+    Karateka& from_dojo (const std::string& dojo_name);
+    Karateka& from_dojo (std::string&& dojo_name) noexcept;
+    Karateka& with_grade (const std::string& grade_as_string);
+    Karateka& with_grade (std::string&& grade_as_string) noexcept;
 
 
     /**

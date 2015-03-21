@@ -12,18 +12,23 @@ add_definitions(${Qt5Test_DEFINITIONS})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGCXX)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-global-constructors")
+endif(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGCXX)
+
 
 find_package(GMock REQUIRED)
 find_package(GTest REQUIRED)
 
 if(GTEST_FOUND AND GMOCK_FOUND)
-  include_directories(${GTEST_INCLUDE_DIRS} 
+  include_directories(SYSTEM
+                      ${GTEST_INCLUDE_DIRS}
                       ${GMOCK_INCLUDE_DIRS} 
                       ${Qt5Widgets_INCLUDES} 
                       ${Qt5Test_INCLUDE}
-                      ${@PROJECT_NAME@_INCLUDE_DIRS}
-                      include)
-    
+                      ./include
+                      )
+                      
   function(register_test TEST_FILE)
       get_filename_component(TEST_NAME ${TEST_FILE} NAME)
       message(STATUS "Adding " ${TEST_NAME})
@@ -66,12 +71,7 @@ if(GMOCK_FOUND AND GTEST_FOUND)
       ${@PROJECT_NAME@_UI_UNITTEST_LIBRARIES} 
       ${CMAKE_THREAD_LIBS_INIT})
   endif(UNIX)  
-  include_directories(${GTEST_INCLUDE_DIRS} 
-                      ${GMOCK_INCLUDE_DIRS} 
-                      ${Qt5Widgets_INCLUDES} 
-                      ${Qt5Test_INCLUDE}
-                      ${@PROJECT_NAME@_INCLUDE_DIRS}
-                      include)
+  
   add_executable(${@PROJECT_NAME@_UI_UNITTEST_NAME} ${@PROJECT_NAME@_UI_UNITTEST_SOURCES})
   target_link_libraries(${@PROJECT_NAME@_UI_UNITTEST_NAME} 
                         ${GTEST_LIBRARY}

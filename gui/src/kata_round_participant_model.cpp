@@ -24,7 +24,7 @@ KataRoundParticipantModel::KataRoundParticipantModel (const uint8_t kata_round,
 
 int KataRoundParticipantModel::rowCount (const QModelIndex&) const
 {
-  return startlist_.size();
+  return static_cast<int>(startlist_.size());
 }
 
 int KataRoundParticipantModel::columnCount (const QModelIndex&) const
@@ -43,7 +43,7 @@ QVariant KataRoundParticipantModel::data (const QModelIndex& index,
         return {};
     }
 
-    const auto startnumber = startlist_.at(index.row());
+    const auto startnumber = startlist_.at(static_cast<size_t>(index.row()));
     const auto& participant = tournament_.get_participant(startnumber);
 
     if (role == Qt::DisplayRole)
@@ -69,7 +69,8 @@ QVariant KataRoundParticipantModel::data (const QModelIndex& index,
                 const auto scores = participant.get_scores(round_);
                 if (scores.size() == TournamentRunner::number_of_kata_scores_per_round)
                 {
-                    return scores.at(index.column()-index_of_score_1);
+                    const auto score_idx = static_cast<size_t>(index.column()-index_of_score_1);
+                    return scores.at(score_idx);
                 }
             }
             case index_of_deduction:
@@ -96,7 +97,7 @@ QVariant KataRoundParticipantModel::headerData (int section,
                                        Qt::Orientation orientation,
                                        int role) const
 {
-    const std::map<size_t, std::string> header_data =
+    const std::map<int, std::string> header_data =
     {
         {index_of_name, "Name (Dojo)"},
         {index_of_score_1, "score 1"},

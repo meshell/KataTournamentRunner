@@ -21,7 +21,7 @@ ParticipantRankingModel::ParticipantRankingModel (Tournament& tournament,
 
 int ParticipantRankingModel::rowCount (const QModelIndex&) const
 {
-    return annotated_ranked_list_.size();
+    return static_cast<int>(annotated_ranked_list_.size());
 }
 
 int ParticipantRankingModel::columnCount (const QModelIndex&) const
@@ -30,7 +30,7 @@ int ParticipantRankingModel::columnCount (const QModelIndex&) const
 }
 
 QVariant ParticipantRankingModel::data (const QModelIndex& index,
-                                 int role) const
+                                        int role) const
 {
     if (!index.isValid() ||
          index.row() >= static_cast<int>(annotated_ranked_list_.size()) ||
@@ -39,7 +39,8 @@ QVariant ParticipantRankingModel::data (const QModelIndex& index,
         return {};
     }
 
-    Karateka participant = std::get<Tournament::rank_annotated_participant_karateka_idx>(annotated_ranked_list_.at(index.row()));
+    const auto participant_idx = static_cast<size_t>(index.row());
+    Karateka participant = std::get<Tournament::rank_annotated_participant_karateka_idx>(annotated_ranked_list_.at(participant_idx));
 
     const auto first_round = 0;
     const auto second_round = 1;
@@ -51,7 +52,7 @@ QVariant ParticipantRankingModel::data (const QModelIndex& index,
         {
             case index_of_rank:
             {
-                return QVariant::fromValue(std::get<Tournament::rank_annotated_participant_rank_idx>(annotated_ranked_list_.at(index.row())));
+                return QVariant::fromValue(std::get<Tournament::rank_annotated_participant_rank_idx>(annotated_ranked_list_.at(participant_idx)));
             }
             case index_of_name:
             {
@@ -111,7 +112,7 @@ QVariant ParticipantRankingModel::headerData (int section,
                                        Qt::Orientation orientation,
                                        int role) const
 {
-    const std::map<size_t, std::string> header_data =
+    const std::map<int, std::string> header_data =
     {
         {index_of_rank, "Rank"},
         {index_of_name, "Name,\nSurname\n(Dojo)"},

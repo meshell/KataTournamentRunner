@@ -21,7 +21,7 @@ ParticipantModel::ParticipantModel (TournamentRunner::Tournament& tournament,
 
 int ParticipantModel::rowCount (const QModelIndex&) const
 {
-    return tournament_.number_of_participants();
+    return static_cast<int>(tournament_.number_of_participants());
 }
 
 int ParticipantModel::columnCount (const QModelIndex&) const
@@ -39,7 +39,7 @@ QVariant ParticipantModel::data (const QModelIndex& index,
         return {};
     }
 
-    auto participant = tournament_.get_participant(index.row());
+    auto participant = tournament_.get_participant(static_cast<size_t>(index.row()));
 
     if (role == Qt::DisplayRole)
     {
@@ -78,7 +78,7 @@ QVariant ParticipantModel::headerData (int section,
                                        Qt::Orientation orientation,
                                        int role) const
 {
-    const std::map<size_t, std::string> header_data =
+    const std::map<int, std::string> header_data =
     {
         {index_of_name, "Name"},
         {index_of_surname, "Surname"},
@@ -99,14 +99,17 @@ QVariant ParticipantModel::headerData (int section,
     return {};
 }
 
-bool ParticipantModel::removeRows(int position, int rows, const QModelIndex &index)
+bool ParticipantModel::removeRows(int position, int rows, const QModelIndex& /*index*/)
 {
-    Q_UNUSED(index);
+    if (position < 0)
+    {
+        return false;
+    }
     beginRemoveRows(QModelIndex(), position, position+rows-1);
 
     for (int row = 0; row < rows; ++row)
     {
-        tournament_.remove_participant(position+row);
+        tournament_.remove_participant(static_cast<size_t>(position+row));
     }
     endRemoveRows();
     emit layoutChanged();

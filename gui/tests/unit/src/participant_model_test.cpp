@@ -40,14 +40,14 @@ TEST(The_ParticipantModel, number_of_rows_should_equal_the_number_of_registred_p
                         .with_surname("Steve")
                         .with_birthdate("1934-08-29")
                         .from_dojo("London")
-                        .with_rank("9th Dan");
+                        .with_grade("9th Dan");
 
     auto participant2 = Karateka{}
                         .with_name("Oyama")
                         .with_surname("Mas")
                         .with_birthdate("1923-07-27")
                         .from_dojo("Honbu")
-                        .with_rank("10th Dan");
+                        .with_grade("10th Dan");
     tournament.add_participant(participant1);
     tournament.add_participant(participant2);
     const auto expected_number_of_rows = 2;
@@ -69,7 +69,7 @@ TEST(The_ParticipantModel, has_the_registred_participant_in_the_first_row)
                         .with_surname(surname)
                         .with_birthdate("1934-08-29")
                         .from_dojo(dojo)
-                        .with_rank(rank);
+                        .with_grade(rank);
 
     tournament.add_participant(participant1);
 
@@ -84,7 +84,7 @@ TEST(The_ParticipantModel, has_the_registred_participant_in_the_first_row)
 
     testee.headerData(0, Qt::Horizontal).toString().toStdString();
 
-    for (auto column = 0U; column < 5U; ++column)
+    for (auto column = 0; column < 5; ++column)
     {
         const auto header = testee.headerData(column, Qt::Horizontal).toString().toStdString();
         EXPECT_EQ(header_to_data_map.at(header),

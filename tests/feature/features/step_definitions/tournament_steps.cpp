@@ -24,12 +24,16 @@ namespace FeatureTests
 
 const auto float_compare_tolerance = 0.01F;
 
-const auto default_participant = TournamentRunner::Karateka{}
+
+static TournamentRunner::Karateka create_default_participant ()
+{
+    return TournamentRunner::Karateka{}
                                  .with_name("Norris")
                                  .with_surname("Chuck")
                                  .with_birthdate("1940-03-10")
                                  .from_dojo("Chun Kuk Do")
-                                 .with_rank("3nd Dan");
+                                 .with_grade("3nd Dan");
+}
 
 GIVEN("^no tournament is open$")
 {
@@ -90,7 +94,7 @@ GIVEN("^the Tournament has the following participants:$")
         {
             attendee.with_birthdate(table_row.at("date of birth"));
             attendee.from_dojo(table_row.at("dojo"));
-            attendee.with_rank(table_row.at("belt"));
+            attendee.with_grade(table_row.at("belt"));
         }
         catch (const std::exception&)
         {
@@ -135,7 +139,7 @@ GIVEN("^the Tournament has the following participants:$")
 GIVEN("^a participant has performed a kata$")
 {
     ScenarioScope<TournamentContext> context;
-    context->tournament->add_participant(default_participant);
+    context->tournament->add_participant(create_default_participant());
 }
 
 GIVEN("^the following participants have performed a kata:$")
@@ -151,7 +155,7 @@ GIVEN("^the following participants have performed a kata:$")
                         .with_surname(table_row.at("surname"))
                         .with_birthdate(table_row.at("date of birth"))
                         .from_dojo(table_row.at("dojo"))
-                        .with_rank(table_row.at("belt"));
+                        .with_grade(table_row.at("belt"));
 
         const auto score1 = std::stof(table_row.at("score 1"));
         attendee.add_kata_score(score1);
@@ -286,7 +290,7 @@ WHEN("^I add the following participants to the tournament:$")
                         .with_surname(table_row.at("surname"))
                         .with_birthdate(table_row.at("date of birth"))
                         .from_dojo(table_row.at("dojo"))
-                        .with_rank(table_row.at("belt"));
+                        .with_grade(table_row.at("belt"));
 
         context->tournament->add_participant(attendee);
     }
@@ -339,7 +343,7 @@ THEN("^the Tournament should have the following participants:$")
         {
             attendee.with_birthdate(table_row.at("date of birth"));
             attendee.from_dojo(table_row.at("dojo"));
-            attendee.with_rank(table_row.at("belt"));
+            attendee.with_grade(table_row.at("belt"));
         }
         catch (const std::exception&)
         {

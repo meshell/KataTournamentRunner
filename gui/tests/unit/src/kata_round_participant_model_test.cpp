@@ -22,7 +22,7 @@ Karateka create_default_participant()
                      .with_surname("Steve")
                      .with_birthdate("1934-08-29")
                      .from_dojo("London")
-                     .with_rank("9th Dan");
+                     .with_grade("9th Dan");
 }
 
 TEST(The_KataRoundParticipantModel, number_of_rows_should_equal_to_the_size_of_the_startlist)
@@ -56,7 +56,7 @@ TEST(The_KataRoundParticipantModel, has_the_participant_of_the_startlist_in_the_
                         .with_surname(surname)
                         .with_birthdate("1934-08-29")
                         .from_dojo(dojo)
-                        .with_rank("9th Dan");
+                        .with_grade("9th Dan");
 
     const std::string name2{"Oyama"};
     const std::string surname2{"Mas"};
@@ -67,7 +67,7 @@ TEST(The_KataRoundParticipantModel, has_the_participant_of_the_startlist_in_the_
                         .with_surname(surname2)
                         .with_birthdate("1923-07-27")
                         .from_dojo(dojo2)
-                        .with_rank("10th Dan");
+                        .with_grade("10th Dan");
     tournament.add_participant(participant1);
     tournament.add_participant(participant2);
 
