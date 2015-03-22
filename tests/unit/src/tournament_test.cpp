@@ -1135,7 +1135,7 @@ TEST(A_Tournament, should_remove_participant_and_reassign_startnumbers_when_remo
     ASSERT_EQ(startnumber_participant1, new_participant1.get_startnumber());
 }
 
-TEST(A_Tournament, should_throw_an_out_of_range_exception_when_trying_to_remove_a_non_existing_participant)
+TEST(A_Tournament, should_not_throw_when_trying_to_remove_a_non_existing_participant)
 {
     auto participant = Karateka{}
                        .with_name("Oyama")
@@ -1145,7 +1145,7 @@ TEST(A_Tournament, should_throw_an_out_of_range_exception_when_trying_to_remove_
     testee.add_participant(participant);
 
     const auto nonexisting_startnumber = 3u;
-    ASSERT_THROW(testee.remove_participant(nonexisting_startnumber), std::out_of_range);
+    ASSERT_NO_THROW(testee.remove_participant(nonexisting_startnumber));
 }
 
 } //namespace

@@ -27,17 +27,14 @@ void Tournament::add_participant (const Karateka& participant)
 
 void Tournament::remove_participant(size_t start_number)
 {
-    if (start_number < participants_.size())
-    {
-        auto it = std::begin(participants_);
-        std::advance(it, start_number);
-        participants_.erase(it);
-        reassign_startnumbers();
-    }
-    else
-    {
-        throw std::out_of_range{"Cannot remove participant. Startnumber "+ std::to_string(start_number)+" doesn't exist."};
-    }
+    participants_.erase(
+                std::remove_if(
+                    std::begin(participants_),
+                    std::end(participants_),
+                    [start_number](const Karateka& karateka)
+                            { return start_number == karateka.get_startnumber(); }),
+                std::end(participants_));
+    reassign_startnumbers();
 }
 
 std::vector<Karateka> Tournament::get_ranked_list_of_participants () const
@@ -57,7 +54,7 @@ std::vector<Tournament::RankAnnotatedParticipant> Tournament::get_anotated_ranke
     {
         return ranklist;
     }
-    auto rank = 1U;
+    size_t rank = 1U;
     ranklist.push_back(std::make_pair(rank, rankedlist.front()));
     rankedlist.erase(std::begin(rankedlist));
     for (const auto& participant : rankedlist)
@@ -97,16 +94,17 @@ std::vector<size_t> Tournament::get_list_of_participants_for_next_kata_round (si
 {
     auto ranked_list = get_ranked_list_of_participants();
     auto next_round_list = std::vector<Karateka>{};
-    auto iter = std::begin(ranked_list);
-    std::advance(iter, std::min(no_of_participants_for_round, ranked_list.size()));
-    next_round_list.assign(std::begin(ranked_list), iter);
+    const auto no_of_participants_in_next_round = static_cast<long int>(std::min(no_of_participants_for_round, ranked_list.size()));
+    std::copy_n(std::begin(ranked_list), no_of_participants_in_next_round, std::back_inserter(next_round_list));
 
     const auto copy_if_predicate = [&next_round_list](Karateka next)
     {
         return kata_score_is_equal(next, next_round_list.back());
     };
 
-    std::copy_if(iter,
+    // The participants with same score as the last one of the startlict calculated before
+    // can also participate in the next round
+    std::copy_if(std::begin(ranked_list) + no_of_participants_in_next_round,
                  std::end(ranked_list),
                  std::back_inserter(next_round_list),
                  copy_if_predicate);

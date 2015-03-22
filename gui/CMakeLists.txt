@@ -36,9 +36,14 @@ add_definitions(${Qt5Widgets_DEFINITIONS})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGCXX)
-  # Disable warnings due to same member names and in generated moc files
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-shadow -Wno-undefined-reinterpret-cast")
+# Disable warnings due to same member names and warnings in generated moc files
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-shadow -Wno-sign-conversion")
 endif(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGCXX)
+
+if(CMAKE_COMPILER_IS_CLANGCXX)
+# Disable warnings due to same member names and warnings in generated moc files
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-undefined-reinterpret-cast")
+endif(CMAKE_COMPILER_IS_CLANGCXX)
 
 set(${PROJECT_NAME}_GUI_SOURCES
   src/about_dialog.cpp

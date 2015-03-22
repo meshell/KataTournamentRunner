@@ -1,5 +1,7 @@
 #include "tournament_runner/os_helper.h"
 
+#include <cstdlib>
+
 namespace TournamentRunner
 {
 namespace OS
@@ -7,7 +9,7 @@ namespace OS
 
 std::string get_home_folder ()
 {
-    const auto home = getenv("HOME");
+    const auto home = std::getenv("HOME");
     if (home)
     {
         return std::string{home};

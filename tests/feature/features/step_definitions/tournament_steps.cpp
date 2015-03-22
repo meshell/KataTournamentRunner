@@ -534,12 +534,19 @@ THEN("^the rankedlist is the following:$")
 
     for (const auto& table_row : rankedlist_table)
     {
-        const auto& rank = std::get<0>(rankedlist.front());
-        const auto& participant = std::get<1>(rankedlist.front());
-        ASSERT_EQ(std::stoul(table_row.at("rank")), rank);
-        ASSERT_EQ(table_row.at("name"), participant.name());
-        ASSERT_EQ(table_row.at("surname"), participant.surname());
-        rankedlist.erase(std::begin(rankedlist));
+        const auto predicate = [&table_row] (const Tournament::RankAnnotatedParticipant& element)
+            {
+                const auto rank = std::get<0>(element);
+                const auto participant = std::get<1>(element);
+                return ((std::stoul(table_row.at("rank")) == rank) &&
+                        (table_row.at("name") == participant.name()) &&
+                        (table_row.at("surname") == participant.surname()));
+
+            };
+        const auto found = std::count_if(std::begin(rankedlist),
+                                         std::end(rankedlist),
+                                         predicate);
+        ASSERT_TRUE(found == 1);
     }
 }
 

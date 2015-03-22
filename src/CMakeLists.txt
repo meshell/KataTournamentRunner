@@ -51,8 +51,7 @@ add_library(${@PROJECT_NAME@_LIBRARY}
 	STATIC  
 	${@PROJECT_NAME@_SOURCES})
 
-  include_directories(SYSTEM
-    ${Boost_INCLUDE_DIRS})
+include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
     
 target_link_libraries(${@PROJECT_NAME@_LIBRARY} ${@PROJECT_NAME@_EXT_LIBRARIES})
 

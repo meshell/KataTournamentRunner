@@ -64,14 +64,14 @@ if(CMAKE_COMPILER_IS_GNUCXX)
                           OUTPUT_VARIABLE GCC_VERSION)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-null-sentinel -Wstrict-overflow=5 -Wswitch-default -Wundef -Werror")
 elseif(CMAKE_COMPILER_IS_CLANGCXX)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Weverything -Werror -Wno-c++98-compat -Wno-documentation -Wno-padded -Wno-weak-vtables -Wno-implicit-fallthrough")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -Weverything -Werror -Wno-c++98-compat -Wno-documentation -Wno-padded -Wno-weak-vtables -Wno-implicit-fallthrough")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 if(UNIX)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -fPIC")
 endif(UNIX)
 
-# Enable C++11 or C++0x features if possible
+# Enable C++11 features
 include(CheckCXXCompilerFlag)
 enable_language(CXX)
 check_cxx_compiler_flag("-std=c++11" COMPILER_KNOWS_CXX11)
@@ -131,6 +131,7 @@ if(WIN32)
   set(CMAKE_PREFIX_PATH "C:\\Qt\\Qt5.2.0\\5.2.0\\lib\\cmake")
 else (WIN32)
   set(CMAKE_PREFIX_PATH "/opt/Qt/5.2.1/gcc/lib/cmake")
+  set(CMAKE_PREFIX_PATH "/opt/Qt/5.2.1/gcc_64/lib/cmake")
 endif(WIN32)
 
 find_package(Qt5Widgets)

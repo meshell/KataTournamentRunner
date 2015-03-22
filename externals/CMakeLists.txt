@@ -24,6 +24,10 @@ if(COMPILER_KNOWS_UNUSED_LOCAL_TYPEDEF)
   set(CXX_FLAGS "-Wno-unused-local-typedefs")
 endif(COMPILER_KNOWS_UNUSED_LOCAL_TYPEDEF)
 
+if(CMAKE_COMPILER_IS_CLANGCXX)
+  set(CXX_FLAGS "${CXX_FLAGS} -std=c++11 -stdlib=libc++")
+endif(CMAKE_COMPILER_IS_CLANGCXX)
+
 ####################
 # Google Mock
 ####################
@@ -87,10 +91,14 @@ set(BOOST_TOOLSET_BUILD)
 if(CMAKE_COMPILER_IS_GNUCXX)
   set(BOOST_TOOLSET "gcc")
   set(BOOST_TOOLSET_BUILD "toolset=gcc-${GCC_VERSION}")
+  set(BOOST_CXX_FLAGS "-std=c++11")
+  set(BOOST_LINK_FLAGS "")
 elseif(CMAKE_CXX_COMPILER MATCHES ".*clang")
   set(BOOST_TOOLSET "clang")
   set(BOOST_TOOLSET_BUILD "toolset=clang")
-  set(BOOST_CXX_FLAGS "cxxflags='-Wno-c99-extensions'")
+  set(BOOST_CXX_FLAGS "-std=c++11 -stdlib=libc++ -Wno-c99-extensions")
+  set(LINK_FLAGS "-stdlib=libc++")
+  set(BOOST_LINK_FLAGS "linkflags=${LINK_FLAGS}")
 elseif(MSVC)
   if (NOT BOOST_TOOLSET)
     set(BOOST_TOOLSET "msvc")
@@ -106,12 +114,14 @@ ExternalProject_Add(
   CONFIGURE_COMMAND ./bootstrap${SCRIPT_SUFFIX} --with-toolset=${BOOST_TOOLSET} --prefix=<INSTALL_DIR>
   BUILD_COMMAND ./b2 install --prefix=<INSTALL_DIR>
                     ${BOOST_LIBRARIES}
+                    -j10
                     --build-type=complete
                     variant=${BOOST_VARIANT}
                     link=shared,static
                     threading=${BOOST_THREADING}
                     --layout=${BOOST_LAYOUT}
-                    ${BOOST_CXX_FLAGS}
+                    cxxflags=${BOOST_CXX_FLAGS}
+                    ${BOOST_LINK_FLAGS}
                     ${BOOST_TOOLSET_BUILD}
   BUILD_IN_SOURCE 1
   INSTALL_COMMAND ""
