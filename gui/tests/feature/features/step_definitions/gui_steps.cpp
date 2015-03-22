@@ -658,6 +658,8 @@ THEN("^the following partipants are shown on the startpage:$")
 
 THEN("^the following table is shown on the finalpage:$")
 {
+    // TODO make this step more flexiable for different order of entries with same rank
+    // clang somehow reorders
     ScenarioScope<gui_context> context;
     auto* mainwindow = dynamic_cast<MainWindow*>(context->mainwindow.get());
     ASSERT_THAT(mainwindow, NotNull());

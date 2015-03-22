@@ -41,7 +41,7 @@ std::vector<Karateka> Tournament::get_ranked_list_of_participants () const
 {
     auto ranked_list = std::vector<Karateka>{};
     ranked_list.assign(std::begin(participants_), std::end(participants_));
-    std::sort(std::begin(ranked_list), std::end(ranked_list), &TournamentRunner::kata_score_sort_greater);
+    std::stable_sort(std::begin(ranked_list), std::end(ranked_list), &TournamentRunner::kata_score_sort_greater);
     std::reverse(std::begin(ranked_list), std::end(ranked_list));
     return ranked_list;
 }
