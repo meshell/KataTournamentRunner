@@ -1,4 +1,5 @@
 <map id="TournamentRunner::Karateka::get_startnumber" name="TournamentRunner::Karateka::get_startnumber">
 <area shape="rect" id="node2" href="$classTournamentRunnerGUI_1_1ParticipantKataRoundWizardPage.html#addeffbc92d02c33bfae24605cc5ca5ac" title="Default Constructor. " alt="" coords="248,5,507,61"/>
 <area shape="rect" id="node3" href="$classTournamentRunnerGUI_1_1ParticipantKataRoundWizardPage.html#a924854f95b219041f6884826d0223995" title="TournamentRunnerGUI\l::ParticipantKataRoundWizard\lPage::validatePage" alt="" coords="278,85,477,141"/>
+<area shape="rect" id="node4" href="$classTournamentRunner_1_1Tournament.html#a110fa4b61fa49d87a13e05db02cdb7b6" title="remove_participant " alt="" coords="272,165,483,206"/>
 </map>

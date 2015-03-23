@@ -103,31 +103,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classTournamentRunner_1_1IKataPerformer.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#ab23c9acc9274b0acf48b1538c2e72b4a">add_kata_score</a> (<span class="keywordtype">float</span> score) = 0;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#a4a99337ec6a0cb09a7adbe11321f6c80">add_deduction</a> (<span class="keywordtype">float</span> deduction) = 0;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a> () = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a> (<span class="keyword">const</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a>&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a> (<a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a>&amp; operator= (<span class="keyword">const</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a>&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a>&amp; operator= (<a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classTournamentRunner_1_1IKataPerformer.html">IKataPerformer</a> () = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#ab23c9acc9274b0acf48b1538c2e72b4a">add_kata_score</a> (<span class="keywordtype">float</span> score) = 0;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">virtual</span> uint8_t <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#a390ab9637490009f3fa39b4d9a3a67f9">next_round</a> () = 0;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#a4a99337ec6a0cb09a7adbe11321f6c80">add_deduction</a> (<span class="keywordtype">float</span> deduction) = 0;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#afaab3b8894d2f3720146a4d913dc3796">get_maximum_score_of_round</a> (uint8_t round) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#aa012a15a1860d2090253637411da2a91">get_minimum_score_of_round</a> (uint8_t round) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#a777f6aabbaabba165e2429e8869b843b">get_overall_score_of_round</a> (uint8_t round) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#afe4f5393d4c968d484aefd22f755ddb9">get_maximum_score_of_current_round</a> () <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span> uint8_t <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#a390ab9637490009f3fa39b4d9a3a67f9">next_round</a> () = 0;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#afaab3b8894d2f3720146a4d913dc3796">get_maximum_score_of_round</a> (uint8_t round) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#aa012a15a1860d2090253637411da2a91">get_minimum_score_of_round</a> (uint8_t round) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#a777f6aabbaabba165e2429e8869b843b">get_overall_score_of_round</a> (uint8_t round) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#ab306eaa78cb3f2d43a9ce32e646355fe">get_minimum_score_of_current_round</a> () <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#afe4f5393d4c968d484aefd22f755ddb9">get_maximum_score_of_current_round</a> () <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#a2d5710f6c6e8bfaf9efa6501f46d463a">get_overall_score_of_current_round</a> () <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#ab306eaa78cb3f2d43a9ce32e646355fe">get_minimum_score_of_current_round</a> () <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">//namespace TournamentRunner</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif // TOURNAMENT_RUNNER_KATA_PERFORMER_INTERFACE_H_</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="classTournamentRunner_1_1IKataPerformer.html#a2d5710f6c6e8bfaf9efa6501f46d463a">get_overall_score_of_current_round</a> () <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;} <span class="comment">//namespace TournamentRunner</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif // TOURNAMENT_RUNNER_KATA_PERFORMER_INTERFACE_H_</span></div>
 <div class="ttc" id="classTournamentRunner_1_1IKataPerformer_html_a390ab9637490009f3fa39b4d9a3a67f9"><div class="ttname"><a href="classTournamentRunner_1_1IKataPerformer.html#a390ab9637490009f3fa39b4d9a3a67f9">TournamentRunner::IKataPerformer::next_round</a></div><div class="ttdeci">virtual uint8_t next_round()=0</div><div class="ttdoc">Move to next round. </div></div>
 <div class="ttc" id="classTournamentRunner_1_1IKataPerformer_html_aa012a15a1860d2090253637411da2a91"><div class="ttname"><a href="classTournamentRunner_1_1IKataPerformer.html#aa012a15a1860d2090253637411da2a91">TournamentRunner::IKataPerformer::get_minimum_score_of_round</a></div><div class="ttdeci">virtual float get_minimum_score_of_round(uint8_t round) const =0</div><div class="ttdoc">Return the minimum score of the given round. </div></div>
 <div class="ttc" id="classTournamentRunner_1_1IKataPerformer_html_afaab3b8894d2f3720146a4d913dc3796"><div class="ttname"><a href="classTournamentRunner_1_1IKataPerformer.html#afaab3b8894d2f3720146a4d913dc3796">TournamentRunner::IKataPerformer::get_maximum_score_of_round</a></div><div class="ttdeci">virtual float get_maximum_score_of_round(uint8_t round) const =0</div><div class="ttdoc">Return the maximum score of the given round. </div></div>
@@ -141,7 +147,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 6 2015 12:11:56 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 23 2015 00:04:19 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -95,7 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Date.html">Date</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classTournamentRunner_1_1Date.html" title="The Date class provides Date handling. ">Date</a> class provides <a class="el" href="classTournamentRunner_1_1Date.html" title="The Date class provides Date handling. ">Date</a> handling.  <a href="classTournamentRunner_1_1Date.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classTournamentRunner_1_1Date.html" title="The Date class provides Date handling based on the boost::gregorian::date. ">Date</a> class provides <a class="el" href="classTournamentRunner_1_1Date.html" title="The Date class provides Date handling based on the boost::gregorian::date. ">Date</a> handling based on the boost::gregorian::date.  <a href="classTournamentRunner_1_1Date.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTournamentRunner_1_1Karateka.html">Karateka</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classTournamentRunner_1_1Karateka.html" title="The Karateka class. ">Karateka</a> class.  <a href="classTournamentRunner_1_1Karateka.html#details">More...</a><br/></td></tr>
@@ -141,19 +141,22 @@ static int&#160;</td><td class="memItemRight" valign="bottom"><b>compare_scores_
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:acb8617f96da51aa6a221f86bc21f595c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb8617f96da51aa6a221f86bc21f595c"></a>
-const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceTournamentRunner.html#acb8617f96da51aa6a221f86bc21f595c">max_number_of_kata_rounds</a> = 3</td></tr>
-<tr class="memdesc:acb8617f96da51aa6a221f86bc21f595c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max number of kata rounds (3) <br/></td></tr>
-<tr class="separator:acb8617f96da51aa6a221f86bc21f595c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f816b76d9c62447290f3d5c5bb05592"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f816b76d9c62447290f3d5c5bb05592"></a>
-const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>version_major</b> {&quot;0&quot;}</td></tr>
-<tr class="separator:a9f816b76d9c62447290f3d5c5bb05592"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95d7ee1be60b4adeb411f83359c55754"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a95d7ee1be60b4adeb411f83359c55754"></a>
-const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>version_minor</b> {&quot;1&quot;}</td></tr>
-<tr class="separator:a95d7ee1be60b4adeb411f83359c55754"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cbc6834a0dcd74d3c8ee477cb5d4b90"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5cbc6834a0dcd74d3c8ee477cb5d4b90"></a>
-const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>version_patch</b> {&quot;00&quot;}</td></tr>
-<tr class="separator:a5cbc6834a0dcd74d3c8ee477cb5d4b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3daface4cff68a658a66d9e5ea93d1b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3daface4cff68a658a66d9e5ea93d1b"></a>
+static const auto&#160;</td><td class="memItemRight" valign="bottom"><b>serialization_xml_element_name</b> = &quot;Tournament&quot;</td></tr>
+<tr class="separator:ac3daface4cff68a658a66d9e5ea93d1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11199265cff1145181b64755aad01570"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11199265cff1145181b64755aad01570"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceTournamentRunner.html#a11199265cff1145181b64755aad01570">max_number_of_kata_rounds</a> = 3</td></tr>
+<tr class="memdesc:a11199265cff1145181b64755aad01570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max number of kata rounds (3) <br/></td></tr>
+<tr class="separator:a11199265cff1145181b64755aad01570"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a116a5b3a4b74be697fa1dc58f7c056e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a116a5b3a4b74be697fa1dc58f7c056e8"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>version_major</b> = &quot;0&quot;</td></tr>
+<tr class="separator:a116a5b3a4b74be697fa1dc58f7c056e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b470293018f054c573bffae36908d2a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b470293018f054c573bffae36908d2a"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>version_minor</b> = &quot;1&quot;</td></tr>
+<tr class="separator:a4b470293018f054c573bffae36908d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37f9ee2160012645c7388fa13b948d56"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37f9ee2160012645c7388fa13b948d56"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>version_patch</b> = &quot;00&quot;</td></tr>
+<tr class="separator:a37f9ee2160012645c7388fa13b948d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab0e3f5c505fc933f05dac2df62f36f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab0e3f5c505fc933f05dac2df62f36f1"></a>
 const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceTournamentRunner.html#aab0e3f5c505fc933f05dac2df62f36f1">number_of_kata_scores_per_round</a> = 5</td></tr>
 <tr class="memdesc:aab0e3f5c505fc933f05dac2df62f36f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of kata scores per round (5) <br/></td></tr>
@@ -285,7 +288,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 6 2015 12:11:56 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 23 2015 00:04:19 for Kata Tournament Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
